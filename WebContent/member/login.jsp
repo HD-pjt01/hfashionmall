@@ -9,9 +9,9 @@
         <fieldset>
         <legend></legend>
           <label>User ID</label>
-          <input name="member_id" type="text" value="${id}" value="one"><br> 
+          <input name="member_id" type="text" value="${id}" placeholder="아이디"><br> 
           <label>Password</label> 
-          <input name="member_pw" type="password" value="1111"><br> 
+          <input name="member_pw" type="password" placeholder="비밀번호"><br> 
         </fieldset>
         <div class="clear"></div>
         <div id="buttons">
