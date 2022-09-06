@@ -53,9 +53,23 @@ body{
 footer{
 	background-color: yellow;
 }
-
-input.underline{
+input:focus {
+	outline: none;
+}
+input{
 	border-left-width : 0;
 	border-right-width : 0;
 	border-top-width : 0;
+	
 }
+
+input#mbrBrthdy.inp-reset{
+	width : 200px;
+}
+table{
+	margin-left: auto; margin-right: auto;
+	text-align: center;
+	
+}
+
+
