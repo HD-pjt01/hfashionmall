@@ -1,0 +1,3 @@
+오라클 드라이버를 위한 ojdbc8.jar
+JSTL을 위한 jstl.jar와 standard.jar
+상품 이미지 파일을 서버에 올리기 위한 cos.jar

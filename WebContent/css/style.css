@@ -1,0 +1,61 @@
+header{
+	background-color: black;
+	height : 580px;
+
+}
+
+.header-logo{
+	margin-top: 0px;
+	padding-left: 50px;
+    padding-top: 50px;
+}
+
+header a{
+	color : white;
+	text-decoration: none; /*a tag의 밑줄 없애기*/
+}
+
+/*navigation css*/
+nav{
+	display : inline-block;
+}
+
+nav ul{
+	list-style:none; 
+}
+nav ul li{
+	display : inline-block;
+}
+
+nav a{
+    text-decoration:none; /*a tag의 밑줄 없애기*/
+    display:inline-block;
+    width: 80px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+nav a:hover{
+    color: #F90;
+    font-weight: bold;
+}
+
+body{
+	margin : 0;
+}
+
+.container{
+	background-color: orange;
+	height : 400px;
+}
+
+footer{
+	background-color: yellow;
+}
+
+input.underline{
+	border-left-width : 0;
+	border-right-width : 0;
+	border-top-width : 0;
+}
