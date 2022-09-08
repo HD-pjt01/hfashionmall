@@ -15,10 +15,11 @@
 <title>H Fashion Mall</title>
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://unpkg.cdom/swiper/swiper-bundle.min.css" />
 <script type="text/javascript" src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 <script type="text/javascript" src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
+<script type="text/javascript" src="javascript/ui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/ui.min.css">
 <link href="css/style.css" rel="stylesheet">
 <!-- <link href="css/ui.css" rel="stylesheet">
  -->
