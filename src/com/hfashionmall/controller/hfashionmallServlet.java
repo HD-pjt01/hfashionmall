@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hfashionmall.controller.action.Action;
 
-// http://localhost:8181/hfashionmall/hfashionmallServlet?command=index
+// http://localhost:8081/hfashionmall/hfashionmallServlet?command=index
 @WebServlet("/hfashionmallServlet")
 public class hfashionmallServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -18,6 +18,7 @@ public class hfashionmallServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request,
       HttpServletResponse response) throws ServletException, IOException {
     String command = request.getParameter("command");
+    System.out.println("command : " + command);
     System.out.println("hfashionmallServlet에서 요청을 받음을 확인 : " + command);
 
     ActionFactory af = ActionFactory.getInstance();

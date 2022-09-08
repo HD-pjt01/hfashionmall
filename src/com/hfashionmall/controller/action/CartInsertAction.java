@@ -16,12 +16,12 @@ public class CartInsertAction implements Action {
   @Override
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String url = "NonageServlet?command=cart_list";
+    String url = "hfashionmallServlet?command=cart_list";
     
     HttpSession session = request.getSession();
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
     if (loginUser == null) {
-      url = "NonageServlet?command=login_form";
+      url = "hfashionmallServlet?command=login_form";
     } else {
       CartVO cartVO = new CartVO();
       cartVO.setId(loginUser.getMember_id());

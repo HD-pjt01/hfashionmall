@@ -6,13 +6,29 @@ public class ProductVO {
 	
 	private String product_code;
 	private String product_name;
-	private String product_kind;
+	
+	private String product_brand;
+	private String product_category;
+	
 	private int product_price;
 	private String product_color;
 	private String product_size;
 	private String product_best;
 	private Timestamp product_register;
 	private Timestamp product_update;
+	
+	public String getProduct_brand() {
+		return product_brand;
+	}
+	public void setProduct_brand(String product_brand) {
+		this.product_brand = product_brand;
+	}
+	public String getProduct_category() {
+		return product_category;
+	}
+	public void setProduct_category(String product_category) {
+		this.product_category = product_category;
+	}
 	
 	public String getProduct_code() {
 		return product_code;
@@ -25,12 +41,6 @@ public class ProductVO {
 	}
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
-	}
-	public String getProduct_kind() {
-		return product_kind;
-	}
-	public void setProduct_kind(String product_kind) {
-		this.product_kind = product_kind;
 	}
 	public int getProduct_price() {
 		return product_price;
