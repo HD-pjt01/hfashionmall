@@ -16,6 +16,7 @@ public class ProductVO {
 	private String product_best;
 	private Timestamp product_register;
 	private Timestamp product_update;
+	private int quantity;
 	
 	public String getProduct_brand() {
 		return product_brand;
@@ -77,6 +78,20 @@ public class ProductVO {
 	}
 	public void setProduct_update(Timestamp product_update) {
 		this.product_update = product_update;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	@Override
+	public String toString() {
+		return "ProductVO [product_code=" + product_code + ", product_name=" + product_name + ", product_brand="
+				+ product_brand + ", product_category=" + product_category + ", product_price=" + product_price
+				+ ", product_color=" + product_color + ", product_size=" + product_size + ", product_best="
+				+ product_best + ", product_register=" + product_register + ", product_update=" + product_update
+				+ ", quantity=" + quantity + "]";
 	}
 
   

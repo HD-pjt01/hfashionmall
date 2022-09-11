@@ -3,105 +3,131 @@ package com.hfashionmall.dto;
 import java.sql.Timestamp;
 
 public class OrderVO {
-  private int odseq;
-  private int oseq;
-  private String id; 
-  private Timestamp indate; 
-  private String mname;
-  private String zipNum;
-  private String address;
-  private String phone;  
-  private int pseq;
-  private String pname;
-  private int quantity;
-  private int price2;  
-  private String result;    
-  
-  public int getOdseq() {
-    return odseq;
-  }
-  public void setOdseq(int odseq) {
-    this.odseq = odseq;
-  }
-  public int getPrice2() {
-    return price2;
-  }
-  public void setPrice2(int price2) {
-    this.price2 = price2;
-  }
-  public int getOseq() {
-    return oseq;
-  }
-  public void setOseq(int oseq) {
-    this.oseq = oseq;
-  }
-  public String getId() {
-    return id;
-  }
-  public void setId(String id) {
-    this.id = id;
-  }
-  public int getPseq() {
-    return pseq;
-  }
-  public void setPseq(int pseq) {
-    this.pseq = pseq;
-  }
-  public String getMname() {
-    return mname;
-  }
-  public void setMname(String mname) {
-    this.mname = mname;
-  }
-  public String getPname() {
-    return pname;
-  }
-  public void setPname(String pname) {
-    this.pname = pname;
-  }
-  public int getQuantity() {
-    return quantity;
-  }
-  public void setQuantity(int quantity) {
-    this.quantity = quantity;
-  }
-  public String getResult() {
-    return result;
-  }
-  public void setResult(String result) {
-    this.result = result;
-  }
-  public String getZipNum() {
-    return zipNum;
-  }
-  public void setZipNum(String zipNum) {
-    this.zipNum = zipNum;
-  }
-  public String getAddress() {
-    return address;
-  }
-  public void setAddress(String address) {
-    this.address = address;
-  }
-  public String getPhone() {
-    return phone;
-  }
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-  public Timestamp getIndate() {
-    return indate;
-  }
-  public void setIndate(Timestamp indate) {
-    this.indate = indate;
-  }
-@Override
-public String toString() {
-	return "OrderVO [odseq=" + odseq + ", oseq=" + oseq + ", id=" + id
-			+ ", indate=" + indate + ", mname=" + mname + ", zipNum=" + zipNum
-			+ ", address=" + address + ", phone=" + phone + ", pseq=" + pseq
-			+ ", pname=" + pname + ", quantity=" + quantity + ", price2="
-			+ price2 + ", result=" + result + "]";
-}  
-  
+	private int order_detail_id;
+	private int order_id;
+
+	private String member_member_id;
+	private Timestamp order_register;
+	private int product_code;
+	private int product_count;
+	private String mname; // 유저 이름
+	private String zipcode;
+	private String addr;
+	private String phone;
+
+	private String pname;
+
+	private int price;
+	private String order_detail_result;
+
+	public int getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
+	}
+
+	public int getOrder_detail_id() {
+		return order_detail_id;
+	}
+
+	public void setOrder_detail_id(int order_detail_id) {
+		this.order_detail_id = order_detail_id;
+	}
+
+	public String getMname() {
+		return mname;
+	}
+
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public int getProduct_code() {
+		return product_code;
+	}
+
+	public void setProduct_code(int product_code) {
+		this.product_code = product_code;
+	}
+
+	public String getPname() {
+		return pname;
+	}
+
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+
+	public int getProduct_count() {
+		return product_count;
+	}
+
+	public void setProduct_count(int product_count) {
+		this.product_count = product_count;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getOrder_detail_result() {
+		return order_detail_result;
+	}
+
+	public void setOrder_detail_result(String order_detail_result) {
+		this.order_detail_result = order_detail_result;
+	}
+
+	public Timestamp getOrder_register() {
+		return order_register;
+	}
+
+	public void setOrder_register(Timestamp order_register) {
+		this.order_register = order_register;
+	}
+
+	public String getMember_member_id() {
+		return member_member_id;
+	}
+
+	public void setMember_member_id(String member_member_id) {
+		this.member_member_id = member_member_id;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderVO [order_id=" + order_id + ", order_register=" + order_register + ", member_member_id="
+				+ member_member_id + "]";
+	}
+
 }

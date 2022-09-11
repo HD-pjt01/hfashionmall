@@ -30,8 +30,8 @@ public class OrderInsertAction implements Action {
       
       OrderDAO orderDAO = OrderDAO.getInstance();      
       
-      int maxOseq=orderDAO.insertOrder(cartList, loginUser.getMember_id());
-      url = "hfashionmallServlet?command=order_list&oseq="+maxOseq;
+      int maxOrder_id=orderDAO.insertOrder(cartList, loginUser.getMember_id());
+      url = "hfashionmallServlet?command=order_list&order_id="+maxOrder_id;
     }
     response.sendRedirect(url);
   }

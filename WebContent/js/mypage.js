@@ -9,19 +9,20 @@ function go_cart() {
 }
 
 function go_cart_delete() {
+alert("삭제 클릭");
   var count = 0;
 
-  if (document.formm.cseq.length == undefined) {
-    if (document.formm.cseq.checked == true) {
+  if (document.formm.cart_id.length == undefined) {
+    if (document.formm.cart_id.checked == true) {
       count++;
     }
   }
 
-  for ( var i = 0; i < document.formm.cseq.length; i++) {
-    alert("" + document.formm.cseq[i].checked);
-    if (document.formm.cseq[i].checked == true) {
+  for ( var i = 0; i < document.formm.cart_id.length; i++) {
+ 
+    if (document.formm.cart_id[i].checked == true) {
       count++;
-      alert("" + count);
+ 
     }
   }
   if (count == 0) {

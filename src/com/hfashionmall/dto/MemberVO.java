@@ -84,7 +84,6 @@ public class MemberVO {
 	public void setMember_update(Timestamp member_update) {
 		this.member_update = member_update;
 	}
-  
-  
+ 
   
 }
