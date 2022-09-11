@@ -17,10 +17,12 @@ public class ProductDetailAction implements Action {
       throws ServletException, IOException {
     String url="product/productDetail.jsp";
     
-    String pseq=request.getParameter("pseq").trim();
+    String product_code=request.getParameter("product_code").trim();
+    
+    System.out.println("product_code : " + product_code);
     
     ProductDAO productDAO=ProductDAO.getInstance();
-    ProductVO productVO= productDAO.getProduct(pseq);
+    ProductVO productVO= productDAO.getProduct(product_code);
     
     request.setAttribute("productVO", productVO);
     

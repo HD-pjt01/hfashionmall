@@ -21,7 +21,8 @@ public class ProductDAO {
   // 신상품
   public ArrayList<ProductVO> listNewProduct() {
     ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-    String sql = "select *  from new_pro_view";
+    //String sql = "select *  from new_pro_view";
+    String sql = "select *  from product";
     
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -35,7 +36,10 @@ public class ProductDAO {
         ProductVO product = new ProductVO();
         product.setProduct_code(rs.getString("prodcut_code"));
         product.setProduct_name(rs.getString("product_name"));
-        product.setProduct_kind(rs.getString("product_kind"));
+        
+        product.setProduct_brand(rs.getString("product_brand"));
+        product.setProduct_category(rs.getString("product_category"));
+        
         product.setProduct_price(rs.getInt("product_price"));
         product.setProduct_color(rs.getString("product_color"));
         product.setProduct_size(rs.getString("product_size"));
@@ -55,7 +59,8 @@ public class ProductDAO {
   // 베스트 상품
   public ArrayList<ProductVO> listBestProduct() {
     ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-    String sql = "select *  from best_pro_view";
+    //String sql = "select *  from best_pro_view";
+    String sql = "select *  from product";
     
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -69,7 +74,11 @@ public class ProductDAO {
         ProductVO product = new ProductVO();
         product.setProduct_code(rs.getString("prodcut_code"));
         product.setProduct_name(rs.getString("product_name"));
-        product.setProduct_kind(rs.getString("product_kind"));
+        
+        product.setProduct_brand(rs.getString("product_brand"));
+        product.setProduct_category(rs.getString("product_category"));
+        
+        
         product.setProduct_price(rs.getInt("product_price"));
         product.setProduct_color(rs.getString("product_color"));
         product.setProduct_size(rs.getString("product_size"));
@@ -86,9 +95,9 @@ public class ProductDAO {
     return productList;
   }   
   
-  public ProductVO getProduct(String pseq) {
+  public ProductVO getProduct(String product_code) {
     ProductVO product = null;
-    String sql = "select * from product where pseq=?";
+    String sql = "select * from product where product_code=?";
     
     Connection con = null;
     PreparedStatement pstmt = null;
@@ -97,19 +106,22 @@ public class ProductDAO {
     try {
       con = DBManager.getConnection();
       pstmt = con.prepareStatement(sql);
-      pstmt.setString(1, pseq);
+      pstmt.setString(1, product_code);
       rs = pstmt.executeQuery();
       if (rs.next()) { 
         product = new ProductVO();
-        product.setProduct_code(rs.getString("prodcut_code"));
-        product.setProduct_name(rs.getString("product_name"));
-        product.setProduct_kind(rs.getString("product_kind"));
-        product.setProduct_price(rs.getInt("product_price"));
-        product.setProduct_color(rs.getString("product_color"));
-        product.setProduct_size(rs.getString("product_size"));
-        product.setProduct_best(rs.getString("product_best"));
-        product.setProduct_register(rs.getTimestamp("product_register"));
-        product.setProduct_update(rs.getTimestamp("product_update"));
+        product.setProduct_code(rs.getString(1));
+        product.setProduct_name(rs.getString(2));
+        
+        product.setProduct_brand(rs.getString(3));
+        product.setProduct_category(rs.getString(4));
+        
+        product.setProduct_price(rs.getInt(5));
+        product.setProduct_color(rs.getString(6));
+        product.setProduct_size(rs.getString(7));
+        product.setProduct_best(rs.getString(8));
+        product.setProduct_register(rs.getTimestamp(9));
+        product.setProduct_update(rs.getTimestamp(10));
       }
     } catch (Exception e) {
       e.printStackTrace();
@@ -119,31 +131,35 @@ public class ProductDAO {
     return product;
   }
 
-  public ArrayList<ProductVO> listKindProduct(String kind) {
+  public ArrayList<ProductVO> listBrandProduct(String product_brand) {
     ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-    String sql= "select * from product where kind=?";
-    
+    String sql= "select * from product where product_brand=?";
+
     Connection conn = null;
     PreparedStatement pstmt = null;
     ResultSet rs = null;
     
+    System.out.println("sql :  " + sql);
     try {
       conn = DBManager.getConnection();
       pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, kind);
+      pstmt.setString(1, product_brand);
       rs = pstmt.executeQuery();
-      
+      //System.out.println("rs.next() : " + rs.next() );
+      //System.out.println("rs.getString :" + rs.getString(1));
       while (rs.next()) {
         ProductVO product = new ProductVO();
-        product.setProduct_code(rs.getString("prodcut_code"));
-        product.setProduct_name(rs.getString("product_name"));
-        product.setProduct_kind(rs.getString("product_kind"));
-        product.setProduct_price(rs.getInt("product_price"));
-        product.setProduct_color(rs.getString("product_color"));
-        product.setProduct_size(rs.getString("product_size"));
-        product.setProduct_best(rs.getString("product_best"));
-        product.setProduct_register(rs.getTimestamp("product_register"));
-        product.setProduct_update(rs.getTimestamp("product_update"));
+        product.setProduct_code(rs.getString(1)); //product.setProduct_code(rs.getString("prodcut_code"));
+        product.setProduct_name(rs.getString(2));
+        product.setProduct_brand(rs.getString(3)); //product.setProduct_brand(rs.getString("product_brand"));
+        product.setProduct_category(rs.getString(4));
+        
+        product.setProduct_price(rs.getInt(5));
+        product.setProduct_color(rs.getString(6));
+        product.setProduct_size(rs.getString(7));
+        product.setProduct_best(rs.getString(8));
+        product.setProduct_register(rs.getTimestamp(9));
+        product.setProduct_update(rs.getTimestamp(10));
         productList.add(product);
       }
     } catch (Exception e) {
@@ -190,7 +206,7 @@ public class ProductDAO {
   }
 
   static int view_rows = 5; // 페이지의 개수
-  static int counts = 5; // 한 페이지에 나타낼 상품의 개수
+  static int counts = 8; // 한 페이지에 나타낼 상품의 개수
 
   // 페이지 이동을 위한 메소드
   public String pageNumber(int tpage, String name) {
@@ -271,13 +287,13 @@ public class ProductDAO {
 
         while (count < counts) {
           ProductVO product = new ProductVO();
-          product.setPseq(rs.getInt(1));
-          product.setIndate(rs.getTimestamp(2));
-          product.setName(rs.getString(3));
-          product.setPrice1(rs.getInt(4));
-          product.setPrice2(rs.getInt(5));
-          product.setUseyn(rs.getString(6));
-          product.setBestyn(rs.getString(7));
+          //product.setPseq(rs.getInt(1));
+          //product.setIndate(rs.getTimestamp(2));
+          //product.setName(rs.getString(3));
+          //product.setPrice1(rs.getInt(4));
+          //product.setPrice2(rs.getInt(5));
+          //product.setUseyn(rs.getString(6));
+          //product.setBestyn(rs.getString(7));
           productList.add(product);
           if (rs.isLast()){
             break;
@@ -307,13 +323,13 @@ public class ProductDAO {
     try {
       con = DBManager.getConnection();
       pstmt = con.prepareStatement(sql);
-      pstmt.setString(1, product.getKind());      
-      pstmt.setString(2, product.getName());
-      pstmt.setInt(3, product.getPrice1());
-      pstmt.setInt(4, product.getPrice2());
-      pstmt.setInt(5, product.getPrice3());
-      pstmt.setString(6, product.getContent());
-      pstmt.setString(7, product.getImage());
+      //pstmt.setString(1, product.getKind());      
+      //pstmt.setString(2, product.getName());
+      //pstmt.setInt(3, product.getPrice1());
+      //pstmt.setInt(4, product.getPrice2());
+      //pstmt.setInt(5, product.getPrice3());
+      //pstmt.setString(6, product.getContent());
+      //pstmt.setString(7, product.getImage());
       result = pstmt.executeUpdate();
     } catch (Exception e) {
       System.out.println("추가 실패");
@@ -336,16 +352,16 @@ public class ProductDAO {
     try {
       con = DBManager.getConnection();
       pstmt = con.prepareStatement(sql);
-      pstmt.setString(1, product.getKind());
-      pstmt.setString(2, product.getUseyn());
-      pstmt.setString(3, product.getName());
-      pstmt.setInt(4, product.getPrice1());
-      pstmt.setInt(5, product.getPrice2());
-      pstmt.setInt(6, product.getPrice3());
-      pstmt.setString(7, product.getContent());
-      pstmt.setString(8, product.getImage());
-      pstmt.setString(9, product.getBestyn());
-      pstmt.setInt(10, product.getPseq());
+      //pstmt.setString(1, product.getKind());
+      //pstmt.setString(2, product.getUseyn());
+      //pstmt.setString(3, product.getName());
+      //pstmt.setInt(4, product.getPrice1());
+      //pstmt.setInt(5, product.getPrice2());
+      //pstmt.setInt(6, product.getPrice3());
+      //pstmt.setString(7, product.getContent());
+      //pstmt.setString(8, product.getImage());
+      //pstmt.setString(9, product.getBestyn());
+      //pstmt.setInt(10, product.getPseq());
       result = pstmt.executeUpdate();
     } catch (Exception e) {
       e.printStackTrace();

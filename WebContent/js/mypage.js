@@ -9,10 +9,20 @@ function go_cart() {
 }
 
 function go_cart_delete() {
+alert("삭제 클릭");
   var count = 0;
-  for ( var i = 0; i < document.formm.cseq.length; i++) {
-    if (document.formm.cseq[i].checked == true) {
+
+  if (document.formm.cart_id.length == undefined) {
+    if (document.formm.cart_id.checked == true) {
       count++;
+    }
+  }
+
+  for ( var i = 0; i < document.formm.cart_id.length; i++) {
+ 
+    if (document.formm.cart_id[i].checked == true) {
+      count++;
+ 
     }
   }
   if (count == 0) {
@@ -31,6 +41,13 @@ function go_order_insert() {
 
 function go_order_delete() {
   var count = 0;
+
+  if (document.formm.oseq.length == undefined) {
+    if (document.formm.oseq.checked == true) {
+      count++;
+    }
+  }
+
   for ( var i = 0; i < document.formm.oseq.length; i++) {
     if (document.formm.oseq[i].checked == true) {
       count++;

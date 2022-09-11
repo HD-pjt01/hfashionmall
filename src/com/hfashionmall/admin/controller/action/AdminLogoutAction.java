@@ -14,7 +14,7 @@ public class AdminLogoutAction implements Action {
   @Override
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String url="NonageServlet?command=admin_login_form";
+    String url="hfashionmallServlet?command=admin_login_form";
     
     HttpSession session=request.getSession(false);
     if(session!=null){

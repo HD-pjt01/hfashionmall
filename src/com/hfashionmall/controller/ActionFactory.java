@@ -15,15 +15,20 @@ public class ActionFactory {
 
   public Action getAction(String command) {
     Action action = null;
-    System.out.println("ActionFactory  :" + command);
+    System.out.println("ActionFactory : " + command);
     /* 추가된 부분 */
     if (command.equals("index")) {
       action = new IndexAction();
     } else if (command.equals("product_detail")) {
       action = new ProductDetailAction();
+    }  
+    /* 추가된 부분 2022 09 07 수요일 정승하 */
+    else if (command.equals("brand")) {
+        action = new ProductBrandAction(); 
     } else if (command.equals("catagory")) {
-      action = new ProductKindAction();
-    } else if (command.equals("contract")) {
+      action = new ProductCategoryAction();
+    } 
+    else if (command.equals("contract")) {
       action = new ContractAction();
     } else if (command.equals("join_form")) {
       action = new JoinFormAction();

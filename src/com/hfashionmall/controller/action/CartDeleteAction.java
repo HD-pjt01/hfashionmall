@@ -15,12 +15,12 @@ public class CartDeleteAction implements Action {
       throws ServletException, IOException {
     String url = "hfashionmallServlet?command=cart_list";
     
-    String[] cseqArr = request.getParameterValues("cseq");
+    String[] cart_idArr = request.getParameterValues("cart_id");
     
-    for(String cseq:cseqArr){
-      System.out.println(cseq);
+    for(String cart_id:cart_idArr){
+      System.out.println(cart_id);
       CartDAO cartDAO = CartDAO.getInstance();
-      cartDAO.deleteCart(Integer.parseInt(cseq));
+      cartDAO.deleteCart(Integer.parseInt(cart_id));
     }
     request.getRequestDispatcher(url).forward(request, response);
   }
