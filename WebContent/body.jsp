@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div class="container" id="container">
-	<!-- 	<div class="swiper-container section1">
+		<div class="swiper-container section1">
 		<div class="swiper-wrapper">
 			<div class="box swiper-slide">
 				<a href="#"><img
@@ -136,10 +136,10 @@
 		</div>
 		페이징
 		<div class="swiper-pagination"></div>
-	</div> -->
+	</div> 
 
 
-	<div class="main-container">
+	<!-- <div class="main-container">
 		<div class="img">
 			<a href="#"><img style=" border-radius: 0 0 0 100px; " src="https://cdn.hfashionmall.com/display/plan/77/7377/7377_MAIN_PC_KOR_20220831105503.jpg" alt=""></a>
 		</div>
@@ -156,5 +156,5 @@
 	<h2 class="title" style="padding:0; margin:0"> KEYWORD </h2>
 	<h2 class="title"style="padding:0; margin:0"> RANKING </h2>
 	</div>
-	</div>
-</div>
+	</div> 
+</div>-->
