@@ -484,3 +484,6 @@ input[type=text].inp-sm, input[type=password].inp-sm, input[type=search].inp-sm 
 
 .input-box.inp-right .etc { position: static; margin: 10px 0 0; transform: none; }
 
+button span{
+	cursor: pointer;
+}

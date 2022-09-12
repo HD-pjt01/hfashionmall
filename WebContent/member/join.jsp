@@ -2,15 +2,15 @@
     pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
 <section class="content-wrap">
-	<h2 class="page-title" style="text-align : center;">회원가입</h2>
+	<h2 class="page-title" style="text-align : center; margin-bottom: 0px">회원가입</h2>
 	<form id="join" action="hfashionmallServlet?command=join" method="post" name="formm">
 		<div class="join-wrap">
 			<div class="sns-account" style="display: none;">
                 <p class="txt-sns-account">계정으로 인증하셨습니다.</p>
                 <p class="txt-sns">사용하는 SNS 계정으로 아이디 생성 없이 간편하게 회원가입 할 수 있습니다.</p>
             </div>
-			<h3 class="sec-title mt0">필수 정보</h3>
-			<div class="tb1-write">
+			<h3 class="sec-title mt0" style="margin-top: 40px">필수 정보</h3>
+			<div class="tb1-write" style="padding-top: 40px; border-top: 1px solid #000;">
 				<table>
 					<colgroup>
 					<col style="width: 160px">
@@ -51,7 +51,7 @@
 					    	<td>
 					        	<div class="form-group">
 						            <div class="input-box" id="divMobileNumber">
-						                <input type="text" title="휴대폰번호" name="member_phone" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="" class="inp-reset">
+						                <input type="text" title="휴대폰번호" name="member_phone" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="010-1234-5678" class="inp-reset">
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMobileNumber">&nbsp;</p>
 								</div>
@@ -62,7 +62,7 @@
 					    <th scope="row">아이디</th>
 						    <td>
 						        <div class="input-box" id="divMbrId">
-						            <input type="text" title="아이디" name="member_id" id="mbrId" maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset">
+						            <input type="text" title="아이디" onchange="idcheck();" name="member_id" id="mbrId" maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset">
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMbrId">6-20자의 영문, 숫자 또는 영문 + 숫자 조합으로 입력 가능</p>
 						    </td>
@@ -88,11 +88,11 @@
 						</tr>
 					</tbody>
 				</table>
-				<div id="buttons">
+				<!--<div id="buttons">
 					<input type="button"    value="가입하기"   class="submit" onclick="go_save()">
 					<input type="hidden"    name="reid">
 					<input type="button"    value="중복 체크"  class="dup" onclick="idcheck()"><br> 
-				</div>
+				</div>-->
 			</div>
 			
 			<h3 class="sec-title" style="text-align : center;">약관 동의</h3>
@@ -112,21 +112,21 @@
 			                            <input type="checkbox" id="usefStplat" onchange="agrCheckResult();" data-gtm-form-interact-field-id="1">
 			                            <span>이용약관, 멤버십 약관 동의 <em class="required">(필수)</em></span>
 			                        </label>
-			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerMemTerms');" style="cursor: pointer;"><span>내용 보기</span></button>
+			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerMemTerms');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>
 			                    </li>
 			                    <li>
 			                        <label class="check-skin">
 			                            <input type="checkbox" id="consignmentStplat" onchange="agrCheckResult();">
 			                            <span>개인정보 취급 위탁 동의 <em class="required">(필수)</em></span>
 			                        </label>
-			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy');" style="cursor: pointer;"><span>내용 보기</span></button>
+			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>
 			                    </li>
 			                    <li>
 			                        <label class="check-skin">
 			                            <input type="checkbox" id="privacyRequired" onchange="agrCheckResult();">
 			                            <span>개인정보 수집/이용 동의 <em class="required">(필수)</em></span>
 			                        </label>
-			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy2');" style="cursor: pointer;"><span>내용 보기</span></button>
+			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy2');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>
 			                    </li>
 			                </ul>
 			            </div>
@@ -138,7 +138,7 @@
 			                            <input type="checkbox" class="allChk" id="privacyChoise" name="psnlInfoColctUsefAgrChoiseYn" value="Y" onchange="agrCheckResult();">
 			                            <span>개인정보 선택 수집/이용 <em>(선택)</em></span>
 			                        </label>
-			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy3');" style="cursor: pointer;"><span>내용 보기</span></button>
+			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy3');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>
 			                    </li>
 			                    <li>
 			                        <label class="check-skin">
@@ -188,7 +188,8 @@
 			    <p>H패션몰 이용약관, 멤버십 약관 및 개인정보 수집/이용 동의 내용을 확인하였으며,<br> 위 내용에 동의합니다. 만 14세 미만 아동은 회원가입이 제한 됩니다.</p>
 			</div>
 			<div class="btn-box">
-				<button type="button" class="btn-type2-lg" onclick="go_save()"><span>가입하기</span></button>
+				<button type="button" class="btn-type2-lg" onclick="go_save();"  value="가입하기" style="border-width : 0px; margin:auto;
+        display:block;"><span>가입하기</span></button>
 			</div>
 		</div>
 	</form>
@@ -868,7 +869,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn-layer-close" onclick="layer.close('layerMemTerms');">닫기</button>
+        <button type="button" class="btn-layer-close" onclick="layer.close('layerMemTerms');" style="border-width: 0; cursor : pointer;" style="border-width: 0; cursor : pointer;">닫기</button>
     </div>
 </div>
 <!-- 팝업 : 개인정보 취급위탁 약관 -->
@@ -1010,7 +1011,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacy');">닫기</button>
+        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacy');" style="border-width: 0; cursor : pointer;">닫기</button>
     </div>
 </div>
 <!-- 팝업 : 개인정보 선택 수집/이용  동의 -->
@@ -1230,7 +1231,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacy2');">닫기</button>
+        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacy2');" style="border-width: 0; cursor : pointer;">닫기</button>
     </div>
 </div>
 <!-- 팝업 : 개인정보 선택 수집/이용  동의 -->
@@ -1382,7 +1383,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacy3');">닫기</button>
+        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacy3');" style="border-width: 0; cursor : pointer;">닫기</button>
     </div>
 </div>
 

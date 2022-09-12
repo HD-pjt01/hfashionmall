@@ -8,8 +8,7 @@
 <title>아이디 중복 체크</title>
 <link href="CSS/subpage.css" rel="stylesheet">
 <style type="text/css">
-body{   
-  background-color:#B96DB5;
+body{
   font-family: Verdana;
 }
 #wrap{     
@@ -35,9 +34,7 @@ function idok(){
 </head>
 <body>
 <div id="wrap">
-  <h1>ID 중복확인</h1>
-  <form method=post name=formm style="margin-right:0 "
-action="hfashionmallServlet?command=id_check_form" >
+  <form method=post name=formm style="margin-right:0 " action="hfashionmallServlet?command=id_check_form" >
     User ID <input type=text name="id" value=""> 
             <input type=submit value="검색" class="submit"><br>     
     <div style="margin-top: 20px">   
@@ -46,10 +43,11 @@ action="hfashionmallServlet?command=id_check_form" >
           opener.document.formm.id.value="";
         </script>
         ${id}는 이미 사용중인 아이디입니다.
+        <input type="button" value="닫기" class="cancel" onclick="self.close();">
       </c:if>
       <c:if test="${message==-1}">
         ${id}는 사용 가능한 ID입니다.
-        <input type="button" value="사용" class="cancel" onclick="idok()">
+        <input type="button" value="사용" class="cancel" onclick="self.close();">
       </c:if>
     </div>
   </form>
