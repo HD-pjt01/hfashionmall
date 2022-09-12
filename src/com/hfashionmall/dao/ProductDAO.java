@@ -170,6 +170,45 @@ public class ProductDAO {
     return productList;
   }
   
+  public ArrayList<ProductVO> listCategoryProduct(String product_category) {
+	    ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+	    String sql= "select * from product where product_category=?";
+
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    
+	    System.out.println("sql :  " + sql);
+	    try {
+	      conn = DBManager.getConnection();
+	      pstmt = conn.prepareStatement(sql);
+	      pstmt.setString(1, product_category);
+	      rs = pstmt.executeQuery();
+	      //System.out.println("rs.next() : " + rs.next() );
+	      //System.out.println("rs.getString :" + rs.getString(1));
+	      while (rs.next()) {
+	        ProductVO product = new ProductVO();
+	        product.setProduct_code(rs.getString(1)); //product.setProduct_code(rs.getString("prodcut_code"));
+	        product.setProduct_name(rs.getString(2));
+	        product.setProduct_brand(rs.getString(3)); //product.setProduct_brand(rs.getString("product_brand"));
+	        product.setProduct_category(rs.getString(4));
+	        
+	        product.setProduct_price(rs.getInt(5));
+	        product.setProduct_color(rs.getString(6));
+	        product.setProduct_size(rs.getString(7));
+	        product.setProduct_best(rs.getString(8));
+	        product.setProduct_register(rs.getTimestamp(9));
+	        product.setProduct_update(rs.getTimestamp(10));
+	        productList.add(product);
+	      }
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    } finally {
+	      DBManager.close(conn, pstmt, rs);
+	    }
+	    return productList;
+	  }
+  
   /*                           *
    * 관리자 모드에서 사용되는 메소드   * 
    */            

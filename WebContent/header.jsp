@@ -11,6 +11,8 @@
 <script src="javascript/index.js"></script>
 <script type="text/javascript" src="member/member.js"></script>
 <script type="text/javascript" src="mypage/mypage.js"></script>
+<script type="text/javascript" src="javascript/join.js"></script>
+
 
 <title>H Fashion Mall</title>
 
@@ -20,8 +22,10 @@
 <script type="text/javascript" src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <link href="css/style.css" rel="stylesheet">
-<!-- <link href="css/ui.css" rel="stylesheet">
- -->
+<link href="css/join.css" rel="stylesheet">
+<link href="css/login.css" rel="stylesheet">
+ 
+
 </head>
 
 <body>
@@ -44,8 +48,8 @@
 					<li><a href="#">베스트</a></li>
 					<li><a href="#">브랜드</a>
 						<ul>
-							<li><a href="hfashionmallServlet?command=brand&case=th">TOMMY HILFIGER</a></li>
-							<li><a href="hfashionmallServlet?command=brand&case=decke">DECKE</a></li>
+							<li><a href="hfashionmallServlet?command=brand&case=tommy">TOMMY HILFIGER</a></li>
+							<li><a href="hfashionmallServlet?command=brand&case=dkny">DKNY</a></li>
 							<li><a href="hfashionmallServlet?command=brand&case=ck">Calvin Klein</a></li>
 							<li><a href="hfashionmallServlet?command=brand&case=fila">FILA</a></li>
 							<li><a href="hfashionmallServlet?command=brand&case=sjyp">SJYP</a></li>
@@ -54,14 +58,14 @@
 
 					<li><a href="#">카테고리</a>
 					<ul>
-						<li><a href="hfashionmallServlet?command=catagory&mtm">맨투맨</a></li>
-						<li><a href="#">가디건</a></li>
-						<li><a href="#">니트</a></li>
-						<li><a href="#">자켓</a></li>
-						<li><a href="#">팬츠</a></li>
+						<li><a href="hfashionmallServlet?command=catagory&case=outer">아우터</a></li>
+						<li><a href="hfashionmallServlet?command=catagory&case=pants">팬츠</a></li>
+						<li><a href="hfashionmallServlet?command=catagory&case=mtm">맨투맨</a></li>
+						<li><a href="hfashionmallServlet?command=catagory&case=hat">모자</a></li>
+						<li><a href="hfashionmallServlet?command=catagory&case=bag">가방</a></li>
 					</ul>
 					</li>
-					<li><a href="#">이벤트</a></li>
+					<li><a href="hfashionmallServlet?command=event">이벤트</a></li>
 				</ul>
 			</nav>
 

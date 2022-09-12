@@ -1,3 +1,30 @@
+.page-title { margin: 40px 0 40px; color: #000; font-size: 34px; font-weight: 500; text-align: center; }
+
+.snb-content-wrap .page-title { text-align: left; }
+
+.page-title.type2 { margin-bottom: 40px; font-size: 0px; font-weight: 500; font-family: "ct", "Noto", "돋움", Dotum, arial, sans-serif; }
+
+.page-title.type2 a { cursor: pointer; }
+
+.page-title.type2 span, .page-title.type2 a { font-size: 40px; }
+
+.page-title.type2 + .wrap-product-list { margin-top: 0; }
+
+.page-title.type2.eng { font-weight: 400; }
+
+.page-title.type3 { margin: 40px 0; font-weight: 500; font-size: 40px; }
+
+.page-title.type4 { margin: 40px 0 40px; font-size: 40px; font-weight: 500; }
+
+.page-title.type5 { margin: 40px 0 33px; font-weight: 500; font-size: 40px; }
+
+.page-title .sub { display: block; margin: 0 0 10px; font-size: 18px; font-weight: 400; }
+
+.page-title .btn-link { margin-left: 10px; vertical-align: bottom; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: 700; }
+
+/* 2022-09-11 일요일  */
 header {
 	background-color: black;
 	height: 400px;
@@ -148,58 +175,10 @@ body {
 	border: 4px solid pink;
 	overflow:hidden;
 }
-input:focus {
-	outline: none;
-}
-input{
-	width: 100%;
-	border-left-width : 0;
-	border-right-width : 0;
-	border-top-width : 0;
-	border-bottom: 1px solid #ddd;
-}
-table{
-	margin-left: auto; margin-right: auto;
-	text-align: left;
-	border-spacing : 0px;
-}
-table tbody tr p{
-	margin : 0;
-	font-size: 14px;
-	color: #c2935f;
-	font-weight: bold;
-	margin-top: 5px;
-}
-table tbody tr th{
-	text-align: left;
-	height : 80px;
-	font-size: 24px;
-	vertical-align: initial;
-	padding : 0px;
-}
-table tbody tr th h3 {
-    color: #000;
-    font-size: 25px;
-    border-bottom : solid;
-    padding-bottom: 15px;
-    padding-right: 0px;
-}
-table tbody tr td{
-	padding : 0px;
-}
-table tbody tr td input{
-	margin-bottom: 15px;
-	font-size : 16px;
-	font-weight: bold;
-}
-table tbody tr td h3 {
-    color: #000;
-    font-size: 25px;
-    border-bottom : solid;
-    padding-bottom: 15px;
-}
 
 
-h2.page-title{
-	text-align: center;
+
+
+ul, li{
+	list-style-type : none;
 }

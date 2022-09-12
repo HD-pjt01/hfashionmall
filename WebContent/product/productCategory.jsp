@@ -4,17 +4,17 @@
 <div class="favor-item-box" id="favor-item-box">
 	<div class="favor-prd-list" id="favor-prd-list">
 
-		<c:forEach items="${productBrandList}"  var="productVO">
+		<c:forEach items="${productCategoryList}"  var="productVO">
 
-		<div class="favor-prd-box" id="item">
+		<div class="favor-prd-box" id="item" style="float : left; width: 400px; margin :0;">
 
 			<a href="hfashionmallServlet?command=product_detail&product_code=${productVO.product_code}"><img src="product_images/BRAND/
-			${productVO.product_brand}/${productVO.product_code}/${productVO.product_code}_01.jpg" 
+			${productVO.product_category}/${productVO.product_code}/${productVO.product_code}_01.jpg" 
 			style="width:200px; height:200px;" /></a>
 
 			<ul class="favor-prd-item">
 				<!-- 상품이미지 -->
-				<li class="prd-item-brand">${productVO.product_brand}</li>
+				<li class="prd-item-brand">${productVO.product_category}</li>
 				<!-- 제조사 -->
 				<li class="prd-item-name">${productVO.product_name}</li>
 				<!-- 상품명 -->

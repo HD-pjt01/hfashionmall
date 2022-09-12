@@ -16,14 +16,14 @@ public class ProductCategoryAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url="product/productBrand.jsp";
+		String url="product/productCategory.jsp";
 		System.out.println("request : " + request);
 		String category=request.getParameter("case").trim();
 		
-		System.out.println("!!!" + category);
+		System.out.println("category : " + category);
 		
 		ProductDAO productDAO=ProductDAO.getInstance();
-		ArrayList<ProductVO>productBrandList= productDAO.listBrandProduct(category);
+		ArrayList<ProductVO>productCategoryList= productDAO.listBrandProduct(category);
 		
 		request.setAttribute("productCategoryList", productCategoryList);
 		RequestDispatcher dispatcher = request
