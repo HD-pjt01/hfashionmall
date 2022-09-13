@@ -29,15 +29,14 @@ public class CartListAction implements Action {
 
       int totalPrice = 10;
       
-//      왜 안되는 거임??????????????????????????????????
-		/*
-		 * for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price() *
-		 * cartVO.getProduct_count(); }
-		 */
+	
+		  for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price() *
+		  cartVO.getProduct_count(); }
+		 
       
-      for (CartVO cartVO : cartList) {
-          totalPrice += cartVO.getProduct_price();
-        }
+		/*
+		 * for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price(); }
+		 */
 
       request.setAttribute("cartList", cartList);
       request.setAttribute("totalPrice", totalPrice);

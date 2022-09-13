@@ -92,24 +92,24 @@ public class ReviewDAO {
 			conn = DBManager.getConnection();
 
 			String insertReview = "insert into review(review_content, "
-					+ "review_subject, review_ofile, review_sfile, order_detail_order_detail_id,visitcount) values(?, ?, ?, ?)";
+					+ "review_subject, review_ofile, review_sfile, order_detail_order_detail_id) values(?, ?, ?, ?,?)";
 			pstmt = conn.prepareStatement(insertReview);
-			pstmt.setString(2, reviewVO);
-			pstmt.setInt(1, reviewvo);
-			pstmt.setTimestamp();
-			pstmt.setString(2, reviewVO);
-			pstmt.setInt(3, cartVO.getProduct_count());
+			pstmt.setString(1, reviewvo.getReview_content());
+			pstmt.setString(2, reviewvo.getReview_subject());
+			pstmt.setString(3, reviewvo.getReview_ofile());
+			pstmt.setString(4, reviewvo.getReview_sfile());
+			pstmt.setInt(5, reviewvo.getOrder_detail_id());
+			
 			pstmt.executeUpdate();
-			pstmt.close();
-
-			String updateCartResult = "update cart set cart_result=2 where cart_id=?";
-			pstmt = conn.prepareStatement(updateCartResult);
-			pstmt.setInt(1, cartVO.getCart_id());
-			pstmt.executeUpdate();
+	
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("게시판 입력 중 오류");
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
 	}
+	
+	// 사용자 id와 product코드로 리뷰 작성가능 한지 check
+	
 }

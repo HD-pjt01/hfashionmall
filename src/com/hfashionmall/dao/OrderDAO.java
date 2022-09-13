@@ -32,14 +32,11 @@ public class OrderDAO {
 		try {
 			conn = DBManager.getConnection();
 
-
-			String insertOrder = "insert into orders(order_id, member_member_id) values(" 
-			+ "orders_seq.nextval, ?)";
+			String insertOrder = "insert into orders(order_id, member_member_id) values(" + "orders_seq.nextval, ?)";
 			pstmt = conn.prepareStatement(insertOrder);
 			pstmt.setString(1, member_member_id);
 			pstmt.executeUpdate();
 			pstmt.close();
-			
 
 			// order 에서 가장 최근에 들어간 값을 order_detail에 넣어줌
 			String selectMaxOseq = "select max(order_id) from orders";
@@ -76,6 +73,7 @@ public class OrderDAO {
 			pstmt.executeUpdate();
 			pstmt.close();
 
+			// 주문 버튼 입력하면 cart_result를 2로 변경
 			String updateCartResult = "update cart set cart_result=2 where cart_id=?";
 			pstmt = conn.prepareStatement(updateCartResult);
 			pstmt.setInt(1, cartVO.getCart_id());
@@ -99,28 +97,31 @@ public class OrderDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, result);
-			pstmt.setInt(3,order_id);
+			pstmt.setInt(3, order_id);
+
 			rs = pstmt.executeQuery();
+
 			
-			while (rs.next()) {
-				
-// 이 부분 오류 잡아야 함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				OrderVO orderVO = new OrderVO();
-				orderVO.setOrder_detail_id(rs.getInt(1));
-				orderVO.setOrder_id(rs.getInt(2));
-				orderVO.setMember_member_id(rs.getString(3));
-				orderVO.setOrder_register(rs.getTimestamp(4));
-				orderVO.setProduct_code(rs.getInt(5));
-				orderVO.setProduct_count(rs.getInt(6));
-				orderVO.setMname(rs.getString(7));
-				orderVO.setZipcode(rs.getString(8));
-				orderVO.setAddr(rs.getString(9));
-				orderVO.setPhone(rs.getString(10));
-				orderVO.setPname(rs.getString(11));
-				orderVO.setPrice(rs.getInt(12));
-				orderVO.setOrder_detail_result(rs.getString(13));
-				orderList.add(orderVO);
-			}
+			  while (rs.next()) {
+			  
+			  OrderVO orderVO = new OrderVO(); 
+			  
+			  orderVO.setOrder_detail_id(rs.getInt(1));
+			  orderVO.setOrder_id(rs.getInt(2));
+			  orderVO.setMember_member_id(rs.getString(3));
+			  orderVO.setOrder_register(rs.getTimestamp(4));
+			  orderVO.setProduct_code(rs.getString(5));
+			  orderVO.setProduct_count(rs.getInt(6)); 
+			  orderVO.setMname(rs.getString(7));
+			  orderVO.setZipcode(rs.getString(8)); 
+			  orderVO.setAddr(rs.getString(9));
+			  orderVO.setPhone(rs.getString(10)); 
+			  orderVO.setPname(rs.getString(11));
+			  orderVO.setPrice(rs.getInt(12));
+			  orderVO.setOrder_detail_result(rs.getString(13)); 
+			  orderList.add(orderVO); }
+			 
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("ordervo받아와서 출력 오류");
@@ -131,9 +132,12 @@ public class OrderDAO {
 	}
 
 	// 현재 진행 중인 주문 내역만 조회
+	// member_id로 진행중인 주문 내역 가져오기
 	public ArrayList<Integer> selectSeqOrderIng(String id) {
 		ArrayList<Integer> oseqList = new ArrayList<Integer>();
-		String sql = "select distinct order_id from order_view " + "where member_member_id=? and order_detail_result ='1' order by order_id desc";
+//		최신 주문을 위로 띄움
+		String sql = "select distinct order_id from order_view "
+				+ "where member_member_id=? and order_detail_result ='1' order by order_id desc";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

@@ -17,6 +17,7 @@ public class ProductDetailAction implements Action {
       throws ServletException, IOException {
     String url="product/productDetail.jsp";
     
+    // product code 받아옴
     String product_code=request.getParameter("product_code").trim();
     
     System.out.println("product_code : " + product_code);
@@ -24,7 +25,10 @@ public class ProductDetailAction implements Action {
     ProductDAO productDAO=ProductDAO.getInstance();
     ProductVO productVO= productDAO.getProduct(product_code);
     
+    // product_code로 리뷰 vo 생성
+    
     request.setAttribute("productVO", productVO);
+    // request.setAttribute("reviewVO", reviewVO);
     
     RequestDispatcher dispatcher = request
         .getRequestDispatcher(url);

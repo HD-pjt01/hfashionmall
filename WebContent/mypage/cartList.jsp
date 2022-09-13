@@ -22,7 +22,7 @@ function click() {
 						<th width=200>수 량</th>
 						<th width=200>가 격</th>
 						<th width=200>주문일</th>
-						<th width=100><input type="checkbox" name="allCheck" onclick="allChk();"></th>
+						<th width=100><input type="checkbox" name="allCheck" onclick="allChk()"></th>
 					</tr>
 
 					<c:forEach items="${cartList}" var="cartVO">

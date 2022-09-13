@@ -35,15 +35,17 @@ public class MyPageAction implements Action {
         ArrayList<OrderVO> orderListIng = orderDAO.listOrderById(
             loginUser.getMember_id(), "1", oseq);
 
+        //주문에서 제일 처음 주문 가져오기
         OrderVO orderVO = orderListIng.get(0);
+        int count = orderListIng.size()-1;
         orderVO.setPname(orderVO.getPname() + " 외 "
-            + orderListIng.size() + "건");
+            + count + "건");
         
         int totalPrice = 0;
         for (OrderVO ovo : orderListIng) {
-          totalPrice += ovo.getPrice2() * ovo.getQuantity();
+          totalPrice += ovo.getPrice() * ovo.getProduct_count();
         }
-        orderVO.setPrice2(totalPrice);
+        orderVO.setPrice(totalPrice);
         orderList.add(orderVO);
       }
       request.setAttribute("title", "진행 중인 주문 내역");

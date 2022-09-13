@@ -70,6 +70,13 @@ public class ActionFactory {
       action = new QnaViewAction();
     } 
     
+//    리뷰 액션 추가
+    else if (command.equals("review_detail")) {
+        action = new ReviewDetailAction();
+      } else if (command.equals("review_insert")) {
+          action = new ReviewWriteAction();
+      } 
+    
     //admin
     if (command.equals("admin_login_form")) {
       action = new AdminIndexAction();

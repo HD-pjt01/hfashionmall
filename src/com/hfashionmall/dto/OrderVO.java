@@ -8,7 +8,7 @@ public class OrderVO {
 
 	private String member_member_id;
 	private Timestamp order_register;
-	private int product_code;
+	private String product_code;
 	private int product_count;
 	private String mname; // 유저 이름
 	private String zipcode;
@@ -68,13 +68,6 @@ public class OrderVO {
 		this.phone = phone;
 	}
 
-	public int getProduct_code() {
-		return product_code;
-	}
-
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
-	}
 
 	public String getPname() {
 		return pname;
@@ -128,6 +121,14 @@ public class OrderVO {
 	public String toString() {
 		return "OrderVO [order_id=" + order_id + ", order_register=" + order_register + ", member_member_id="
 				+ member_member_id + "]";
+	}
+
+	public String getProduct_code() {
+		return product_code;
+	}
+
+	public void setProduct_code(String product_code) {
+		this.product_code = product_code;
 	}
 
 }

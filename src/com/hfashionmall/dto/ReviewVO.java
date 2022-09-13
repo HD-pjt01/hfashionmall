@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class ReviewVO {
 
-	private int order_detail_id; //PRIMARY
+	private int order_id; //PRIMARY
 	private String review_content;
 	private Timestamp review_register;
 	private String review_subject;
@@ -16,12 +16,7 @@ public class ReviewVO {
 	private String mname;
 	private String product_code;
 	
-	public int getOrder_detail_id() {
-		return order_detail_id;
-	}
-	public void setOrder_detail_id(int order_detail_id) {
-		this.order_detail_id = order_detail_id;
-	}
+
 	public String getReview_content() {
 		return review_content;
 	}

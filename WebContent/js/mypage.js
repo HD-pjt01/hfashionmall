@@ -8,8 +8,18 @@ function go_cart() {
   }
 }
 
+/*전체 체크*/
+/*외안됨!!!!!!!!!!!!!!!!!!!!!!*/
+/*function allChk() {
+alert("전체 클릭");
+	  for ( var i = 0; i < document.formm.cart_id.length; i++) {
+   document.formm.cart_id[i].checked = true ;
+}
+*/
+
+
 function go_cart_delete() {
-alert("삭제 클릭");
+/*alert("삭제 클릭");*/
   var count = 0;
 
   if (document.formm.cart_id.length == undefined) {

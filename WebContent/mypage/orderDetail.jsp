@@ -14,8 +14,8 @@
 				<th>주문 총액</th>
 			</tr>
 			<tr>
-				<td><fmt:formatDate value="${orderDetail.indate}" type="date" /></td>
-				<td>${orderDetail.oseq}</td>
+				<td><fmt:formatDate value="${orderDetail.order_register}" type="date" /></td>
+				<td>${orderDetail.order_id}</td>
 				<td>${orderDetail.mname}</td>
 				<td><fmt:formatNumber type="currency" value="${totalPrice}" /></td>
 			</tr>

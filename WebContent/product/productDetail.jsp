@@ -31,6 +31,8 @@
   
   <!-- 상단 박스 끝 -->
 <!-- 아래 박스 전체 시작-->
+
+<!-- reviewvo 받아왔음 -> 그거 띄우기 + review_detail에 roductcode 보내기 -->
 <div class="wrap-detail-info">
 	<!-- 상품정보/리뷰/Q&A/주문정보 시작 -->
 	<div class="tab-detail-info">
@@ -64,6 +66,7 @@
 			<a class="detail-qna-header-a" href="<%=request.getContextPath()%>/review?cmd=reviewAll&prodNo=${prodDto.prodId}">전체보기</a> --%>
 		</div>
 		<div class="detail-qna-body">
+		<!-- <a href = "hfashionmallServlet?command=review_detail&product_code=${productVO.product_code}"> -->
 		리뷰 내용들어가기
 <%-- 			<c:if test="${reviewList != null}">
 				<c:forEach var="review" items="${reviewList}">
