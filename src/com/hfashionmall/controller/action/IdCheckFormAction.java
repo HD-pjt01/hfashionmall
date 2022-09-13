@@ -19,7 +19,7 @@ public class IdCheckFormAction implements Action {
     String id = request.getParameter("id").trim();
     
     MemberDAO memberDAO=MemberDAO.getInstance();
-    int message = memberDAO.confirmID(id);
+    int message = memberDAO.confirmMemberID(id);
         
     request.setAttribute("message", message);
     request.setAttribute("id", id);

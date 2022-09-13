@@ -20,7 +20,7 @@
 							<th scope="row">이름</th>
 							<td>
 						    	<div class="input-box" id="divMbrNm"> <!-- [D]정상일 경우 class(valid) 추가 -->
-									<input type="text" title="이름" name="member_name" id="mbrNm" maxlength="30" onblur="mbrNameCheckResult();" placeholder="" class="inp-reset">
+									<input type="text" title="이름" name="member_name" id="mbrNm" maxlength="30" placeholder="" class="inp-reset">
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMbrNm">이름을 입력해주세요.</p>
 							</td>
@@ -30,7 +30,7 @@
 					    	<th scope="row">생년월일</th>
 					    	<td>
 						        <div class="input-box" id="divMbrBrthdy"> <!-- [D]오류일 경우 class(invalid) 추가 -->
-									<input type="text" title="생년월일" name="member_birth" id="mbrBrthdy" maxlength="8" onblur="checkBirthDay();" placeholder="YYYYMMDD, 만 14세 이상 가입" class="inp-reset">
+									<input type="text" title="생년월일" name="member_birth" id="mbrBrthdy" maxlength="8" placeholder="YYYYMMDD, 만 14세 이상 가입" class="inp-reset">
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMbrBrthdy">생년월일을 숫자 8자리로 입력해주세요.</p>
 					    	</td>
@@ -51,7 +51,7 @@
 					    	<td>
 					        	<div class="form-group">
 						            <div class="input-box" id="divMobileNumber">
-						                <input type="text" title="휴대폰번호" name="member_phone" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="010-1234-5678" class="inp-reset">
+						                <input type="text" title="휴대폰번호" name="member_phone" id="mobileNumber" maxlength="11" placeholder="01012345678" class="inp-reset">
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMobileNumber">&nbsp;</p>
 								</div>
@@ -62,7 +62,7 @@
 					    <th scope="row">아이디</th>
 						    <td>
 						        <div class="input-box" id="divMbrId">
-						            <input type="text" title="아이디" onchange="idcheck();" name="member_id" id="mbrId" maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset">
+						            <input type="text" title="아이디" name="member_id" id="mbrId" maxlength="20" placeholder="" onblur="idcheck();" class="inp-reset">
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMbrId">6-20자의 영문, 숫자 또는 영문 + 숫자 조합으로 입력 가능</p>
 						    </td>
@@ -72,7 +72,7 @@
 					    <th scope="row">비밀번호</th>
 						    <td>
 						        <div class="input-box" id="divMbrPw">
-						            <input type="password" title="비밀번호" name="member_pw" id="mbrPw" maxlength="15" onblur="passwordResult();" placeholder="" class="inp-reset">
+						            <input type="password" title="비밀번호" name="member_pw" id="mbrPw" maxlength="15" placeholder="" onchange="pwcheck();" class="inp-reset">
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMbrPw">영문, 숫자, 특수문자 3가지 종류 8-15자 또는 2종류 이상 조합 10-15자로 사용 가능</p>
 							</td>
@@ -81,7 +81,7 @@
 						<th scope="row">&nbsp;</th>
 							<td>
 						        <div class="input-box" id="divMbrCheckPw">
-						    		<input type="password" title="비밀번호 확인" name="pwdCheck" id="mbrCheckPw" maxlength="15" onblur="passwordCheckResult();" placeholder="비밀번호 확인" class="inp-reset">
+						    		<input type="password" title="비밀번호 확인" name="pwdCheck" id="mbrCheckPw" maxlength="15" placeholder="비밀번호 확인" onchange="repwcheck();" class="inp-reset">
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMbrCheckPw">&nbsp;</p>
 							</td>
@@ -109,21 +109,21 @@
 			                <ul class="agree-list">
 			                    <li>
 			                        <label class="check-skin">
-			                            <input type="checkbox" id="usefStplat" onchange="agrCheckResult();" data-gtm-form-interact-field-id="1">
+			                            <input type="checkbox" name="usefStplat" id="usefStplat" onchange="agrCheckResult();" data-gtm-form-interact-field-id="1">
 			                            <span>이용약관, 멤버십 약관 동의 <em class="required">(필수)</em></span>
 			                        </label>
 			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerMemTerms');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>
 			                    </li>
 			                    <li>
 			                        <label class="check-skin">
-			                            <input type="checkbox" id="consignmentStplat" onchange="agrCheckResult();">
+			                            <input type="checkbox" name="consignmentStplat" id="consignmentStplat" onchange="agrCheckResult();">
 			                            <span>개인정보 취급 위탁 동의 <em class="required">(필수)</em></span>
 			                        </label>
 			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>
 			                    </li>
 			                    <li>
 			                        <label class="check-skin">
-			                            <input type="checkbox" id="privacyRequired" onchange="agrCheckResult();">
+			                            <input type="checkbox" name="privacyRequired" id="privacyRequired" onchange="agrCheckResult();">
 			                            <span>개인정보 수집/이용 동의 <em class="required">(필수)</em></span>
 			                        </label>
 			                        <button type="button" class="btn-type1-sm" onclick="layer.open('layerPrivacy2');" style="cursor: pointer; border-width: 0;"><span>내용 보기</span></button>

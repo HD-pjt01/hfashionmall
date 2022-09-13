@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
@@ -24,7 +25,7 @@ public class MemberDAO {
     return instance;
   }
 
-  public int confirmID(String member_id) {
+  public int confirmMemberID(String member_id) {
 	int result = -1;
     String sql = "select * from member where member_id=?";
        
@@ -49,6 +50,64 @@ public class MemberDAO {
     }
     return result;
   }
+  
+  public int confirmID(MemberVO memberVO) {
+      int result = -1;
+      // String sql = "select * from member where member_id=?";
+
+      Connection connn = null;
+      // PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      CallableStatement cstmt = null;
+
+      String id = memberVO.getMember_id();
+      String pwd = memberVO.getMember_pw();
+      String sql = "{? = call sf_member_confirm(?, ?)}";
+
+      try {
+         connn = DBManager.getConnection();
+         cstmt = connn.prepareCall(sql);
+         cstmt.registerOutParameter(1, Types.VARCHAR); // 아이디와 비밀번호 일치 여부 반환
+         cstmt.setString(2, id); // 클라이언트로부터 입력 받은 아이디
+         cstmt.setString(3, pwd); // 클라이언트로부터 입력 받은 비밀번호
+         try {
+            cstmt.executeQuery(); // 쿼리 실행
+            String flag = cstmt.getString(1); // 쿼리 실행 결과 GET
+
+            // 로그인을 성공할 경우
+            if (flag.equals("1"))
+               result = 1;
+
+            // 로그인을 실패할 경우
+            else
+               result = -1;
+
+         } catch (SQLException e) {
+            System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         if (rs != null)
+            try {
+               rs.close();
+            } catch (SQLException e) {
+            }
+         if (cstmt != null)
+            try {
+               cstmt.close();
+            } catch (SQLException e) {
+            }
+         if (connn != null)
+            try {
+               connn.close();
+            } catch (SQLException e) {
+            }
+      }
+      return result; // 로그인 성공 여부를 반환
+   }
 
   public MemberVO getMember(String member_id) {       
     MemberVO memberVO= null;
