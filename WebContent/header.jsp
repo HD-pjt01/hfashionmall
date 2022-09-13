@@ -36,7 +36,7 @@
 
 	<!-- 헤더 시작하는 곳 -->
 	<div class="wrap">
-		<header id="header" style="color:black">
+		<header id="header">
 			<!--로고 들어가는 곳 시작--->
 			<h1 class="header-logo">
 				<a href="hfashionmallServlet?command=index"> H FASHION MALL</a>
