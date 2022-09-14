@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ui.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="layer-wrap" tabindex="0">
+		<div class="layer-header">
+			<h2 class="layer-title">상품 리뷰 등록</h2>
+		</div>
+		<div class="layer-container">
+			<div class="layer-content" id="divAjax">
+			<div class="write-wrap">
+					<div class="tbl-write no-line">
+						<form name="gForm" id="gForm" method="post" enctype="multipart/form-data">
+							<input type="hidden" name="type" value="insert">
+							<input type="hidden" name="csoGodInq.godInqSn" value="">
+							<input type="hidden" name="csoGodInq.godNo" value="GM0121122408272">
+							<input type="hidden" name="csoGodInq.dsgnGrpNo" value="DE2C3ABG020W">
+
+							<input type="hidden" id="statusCd" value="">
+							<input type="hidden" id="fileCnt" value="">
+							<table>
+								<caption>상품 Q&amp;A</caption>
+								<colgroup>
+									<col style="width: 150px">
+									<col>
+								</colgroup>
+								<tbody>
+								<tr>
+									<th scope="row">리뷰 제목 <span class="required">(필수)</span></th>
+									<td>
+										<div class="input-box">
+											<input type="text" maxlength="50" id="inqSj" name="csoGodInq.inqSj" title="제목을 입력해 주세요." placeholder="제목을 입력해 주세요." class="inp-reset" onpaste="checkCnt(this)" onchange="checkCnt(this)" onkeydown="checkCnt(this)" onkeyup="checkCnt(this)" value="">
+											<div class="etc">
+												<button type="button" class="btn-clear"><span>지우기</span></button>
+											</div>
+										</div>
+										<div class="byte-info">
+											<p class="txt-byte"><span class="num">0</span>/50</p>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">리뷰 내용 <span class="required">(필수)</span></th>
+									<td>
+										<div class="txtarea-box">
+											<textarea cols="30" rows="10" maxlength="1000" id="inqCont" name="csoGodInq.inqCont" placeholder="상품 문의는 상품 정보 우측 하단의 [ 상품문의 ] 버튼을 누르시거나, 또는 [ MY PAGE > 리뷰 및 문의 > 1 : 1 문의 ] 메뉴를 이용해 주시기 바랍니다." onpaste="checkCnt(this)" onkeydown="checkCnt(this)" onkeyup="checkCnt(this)"></textarea>
+										</div>
+										<div class="byte-info">
+											<p class="txt-byte"><span class="num">0</span>/1,000</p>
+										</div>
+									</td>
+								</tr>
+								
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+				<div class="btn-box">
+					<a href="javascript:;" onclick="insertQna()" class="btn-type2-lg">등록</a>
+					</div>
+			</div>
+		</div>
+		<button type="button" class="btn-layer-close" onclick="layer.close('layerProductQnA');">닫기</button>
+	</div>
+</body>
+</html>

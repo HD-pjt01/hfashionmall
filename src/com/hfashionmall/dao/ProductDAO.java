@@ -1,5 +1,6 @@
 package com.hfashionmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,6 +47,7 @@ public class ProductDAO {
         product.setProduct_best(rs.getString("product_best"));
         product.setProduct_register(rs.getTimestamp("product_register"));
         product.setProduct_update(rs.getTimestamp("product_update"));
+        product.setProduct_price(rs.getInt("product_quantity"));
         productList.add(product);
       }
     } catch (Exception e) {
@@ -132,82 +134,80 @@ public class ProductDAO {
   }
 
   public ArrayList<ProductVO> listBrandProduct(String product_brand) {
-    ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-    String sql= "select * from product where product_brand=?";
+      ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+      ProductVO product = null;
+      String sql = "select * from table(listBrandProduct_pipe_table_func(?))";
+      ResultSet rs = null;
+      Connection conn = null;
+      CallableStatement cstmt = null;
 
-    Connection conn = null;
-    PreparedStatement pstmt = null;
-    ResultSet rs = null;
-    
-    System.out.println("sql :  " + sql);
-    try {
-      conn = DBManager.getConnection();
-      pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, product_brand);
-      rs = pstmt.executeQuery();
-      //System.out.println("rs.next() : " + rs.next() );
-      //System.out.println("rs.getString :" + rs.getString(1));
-      while (rs.next()) {
-        ProductVO product = new ProductVO();
-        product.setProduct_code(rs.getString(1)); //product.setProduct_code(rs.getString("prodcut_code"));
-        product.setProduct_name(rs.getString(2));
-        product.setProduct_brand(rs.getString(3)); //product.setProduct_brand(rs.getString("product_brand"));
-        product.setProduct_category(rs.getString(4));
-        
-        product.setProduct_price(rs.getInt(5));
-        product.setProduct_color(rs.getString(6));
-        product.setProduct_size(rs.getString(7));
-        product.setProduct_best(rs.getString(8));
-        product.setProduct_register(rs.getTimestamp(9));
-        product.setProduct_update(rs.getTimestamp(10));
-        productList.add(product);
+      try {
+         conn = DBManager.getConnection();
+         cstmt = conn.prepareCall(sql);
+         cstmt.setString(1, product_brand);
+         rs = cstmt.executeQuery();
+         while (rs.next()) {
+            product = new ProductVO();
+            product.setProduct_code(rs.getString(1));
+            product.setProduct_name(rs.getString(2));
+            product.setProduct_brand(rs.getString(3));
+            product.setProduct_category(rs.getString(4));
+            product.setProduct_price(rs.getInt(5));
+            product.setProduct_color(rs.getString(6));
+            product.setProduct_size(rs.getString(7));
+            product.setProduct_best(rs.getString(8));
+            product.setProduct_register(rs.getTimestamp(9));
+            product.setProduct_update(rs.getTimestamp(10));
+            product.setProduct_quantity(rs.getInt(11));
+            productList.add(product);
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         DBManager.close(conn, cstmt, rs);
       }
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      DBManager.close(conn, pstmt, rs);
-    }
-    return productList;
-  }
+      return productList;
+   }
   
   public ArrayList<ProductVO> listCategoryProduct(String product_category) {
-	    ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-	    String sql= "select * from product where product_category=?";
+      ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+      String sql = "select * from table(listCategoryProduct_pipe_table_func(?))";
 
-	    Connection conn = null;
-	    PreparedStatement pstmt = null;
-	    ResultSet rs = null;
-	    
-	    System.out.println("sql :  " + sql);
-	    try {
-	      conn = DBManager.getConnection();
-	      pstmt = conn.prepareStatement(sql);
-	      pstmt.setString(1, product_category);
-	      rs = pstmt.executeQuery();
-	      //System.out.println("rs.next() : " + rs.next() );
-	      //System.out.println("rs.getString :" + rs.getString(1));
-	      while (rs.next()) {
-	        ProductVO product = new ProductVO();
-	        product.setProduct_code(rs.getString(1)); //product.setProduct_code(rs.getString("prodcut_code"));
-	        product.setProduct_name(rs.getString(2));
-	        product.setProduct_brand(rs.getString(3)); //product.setProduct_brand(rs.getString("product_brand"));
-	        product.setProduct_category(rs.getString(4));
-	        
-	        product.setProduct_price(rs.getInt(5));
-	        product.setProduct_color(rs.getString(6));
-	        product.setProduct_size(rs.getString(7));
-	        product.setProduct_best(rs.getString(8));
-	        product.setProduct_register(rs.getTimestamp(9));
-	        product.setProduct_update(rs.getTimestamp(10));
-	        productList.add(product);
-	      }
-	    } catch (Exception e) {
-	      e.printStackTrace();
-	    } finally {
-	      DBManager.close(conn, pstmt, rs);
-	    }
-	    return productList;
-	  }
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      CallableStatement cstmt = null;
+
+      System.out.println("sql :  " + sql);
+      try {
+         conn = DBManager.getConnection();
+         cstmt = conn.prepareCall(sql);
+         cstmt.setString(1, product_category);
+         rs = cstmt.executeQuery();
+         // System.out.println("rs.next() : " + rs.next() );
+         // System.out.println("rs.getString :" + rs.getString(1));
+         while (rs.next()) {
+            ProductVO product = new ProductVO();
+            product.setProduct_code(rs.getString(1)); // product.setProduct_code(rs.getString("prodcut_code"));
+            product.setProduct_name(rs.getString(2));
+            product.setProduct_brand(rs.getString(3)); // product.setProduct_brand(rs.getString("product_brand"));
+            product.setProduct_category(rs.getString(4));
+
+            product.setProduct_price(rs.getInt(5));
+            product.setProduct_color(rs.getString(6));
+            product.setProduct_size(rs.getString(7));
+            product.setProduct_best(rs.getString(8));
+            product.setProduct_register(rs.getTimestamp(9));
+            product.setProduct_update(rs.getTimestamp(10));
+            productList.add(product);
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         DBManager.close(conn, pstmt, rs);
+      }
+      return productList;
+   }
   
   /*                           *
    * 관리자 모드에서 사용되는 메소드   * 

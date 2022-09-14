@@ -17,7 +17,9 @@ public class QnaListAction implements Action {
   @Override
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String url = "qna/qnaList.jsp";
+    String url = "member/qnaList.jsp";
+    
+    System.out.println("member/qnaList.jsp");
     
     HttpSession session = request.getSession();
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");    

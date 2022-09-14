@@ -23,7 +23,7 @@ public class ProductCategoryAction implements Action {
 		System.out.println("category : " + category);
 		
 		ProductDAO productDAO=ProductDAO.getInstance();
-		ArrayList<ProductVO>productCategoryList= productDAO.listBrandProduct(category);
+		ArrayList<ProductVO>productCategoryList= productDAO.listCategoryProduct(category);
 		
 		request.setAttribute("productCategoryList", productCategoryList);
 		RequestDispatcher dispatcher = request

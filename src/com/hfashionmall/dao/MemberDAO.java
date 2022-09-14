@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 import util.DBManager;
@@ -109,43 +110,38 @@ public class MemberDAO {
       return result; // 로그인 성공 여부를 반환
    }
 
-  public MemberVO getMember(String member_id) {       
-    MemberVO memberVO= null;
-    String sql = "select * from member where member_id=?";
-     
-    Connection connn = null;
-    PreparedStatement pstmt = null;
-    ResultSet rs = null;
+  public MemberVO getMember(String member_id) {
+      MemberVO memberVO = null;
+       String sql = "select * from table(getMember_pipe_table_func(?))";
+       ResultSet rs = null;
+       Connection conn = null;
+       CallableStatement cstmt;
 
-    try {
-      connn = DBManager.getConnection();
-      pstmt = connn.prepareStatement(sql);
-      pstmt.setString(1, member_id);
-      rs = pstmt.executeQuery();
-      if(rs.next()){
-        memberVO = new MemberVO();
-        memberVO.setMember_id(rs.getString("member_id"));
-        memberVO.setMember_pw(rs.getString("member_pw"));
-        memberVO.setMember_name(rs.getString("member_name"));
-        memberVO.setMember_addr(rs.getString("member_addr"));
-        memberVO.setMember_phone(rs.getString("member_phone"));
-        memberVO.setMember_email(rs.getString("member_email"));
-        memberVO.setMember_zipcode(rs.getString("member_zipcode"));
-        
-        memberVO.setMember_register(rs.getTimestamp("member_register"));
-        memberVO.setMember_useYN(rs.getString("member_useYN"));
-        
-        memberVO.setMember_birth(rs.getString("member_birth"));
-        memberVO.setMember_update(rs.getTimestamp("member_update"));
-        System.out.println(memberVO.getMember_name());
-      } 
-    } catch (Exception e) {
-      e.printStackTrace();
-    } finally {
-      DBManager.close(connn, pstmt, rs);
+       try {
+          conn = DBManager.getConnection();
+        cstmt = conn.prepareCall(sql);
+          cstmt.setString(1, member_id);
+          rs = cstmt.executeQuery();
+          if (rs.next()) {
+             memberVO = new MemberVO();
+             memberVO.setMember_id(rs.getString("member_id"));
+             memberVO.setMember_pw(rs.getString("member_pw"));
+             memberVO.setMember_name(rs.getString("member_name"));
+             memberVO.setMember_addr(rs.getString("member_addr"));
+             memberVO.setMember_phone(rs.getString("member_phone"));
+             memberVO.setMember_email(rs.getString("member_email"));            
+             memberVO.setMember_zipcode(rs.getString("member_zipcode"));
+             memberVO.setMember_register(rs.getTimestamp("member_register"));
+             memberVO.setMember_useYN(rs.getString("member_useYN"));
+             memberVO.setMember_birth(rs.getString("member_birth"));
+             memberVO.setMember_update(rs.getTimestamp("member_update"));
+          }
+       } catch (Exception e) {
+          e.printStackTrace();
+       } 
+
+       return memberVO;
     }
-    return memberVO;
-  }
 
   public int insertMember(MemberVO memberVO) {
       //String sql = "insert into member(member_id, member_pw, member_name, member_addr,  member_phone,";

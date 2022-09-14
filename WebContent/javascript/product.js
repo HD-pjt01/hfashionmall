@@ -188,10 +188,10 @@ function needLogin() {
 	})
 };
 
-var tab1 = $("#detail-img-text-box").offset().top - 100;
-var tab2 = $("#detail-review-box").offset().top - 100;
-var tab3 = $("#detail-qna-box").offset().top - 100;
-var tab4 = $("#detail-purchaseInfo-box").offset().top - 100;
+//var tab1 = $("#detail-img-text-box").offset().top - 100;
+//var tab2 = $("#detail-review-box").offset().top - 100;
+//var tab3 = $("#detail-qna-box").offset().top - 100;
+//var tab4 = $("#detail-purchaseInfo-box").offset().top - 100;
 
 
 $(window).on("scroll", function() {
