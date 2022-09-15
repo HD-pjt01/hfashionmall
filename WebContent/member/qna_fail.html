@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../ui.min.css"> 
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="layer-wrap" tabindex="0">
+        <div class="layer-header">
+            <h2 class="layer-title"></h2>
+        </div>
+        <div class="layer-container">
+            <div class="layer-content">
+                <div class="page-info">
+                    <p class="txt-type2">개인정보관련 동의 필요사항에 동의를 하신 고객님만 본 화면에서 고객의 소리를 작성하실 수 있습니다.</p>
+                </div>
+
+                <ul class="txt-list">
+                    <li>본 화면에서 입력을 원하지 않으신다면 E-mail(voc@hyundaihmall.com)통해서도 접수하실 수 있습니다. 감사합니다.</li>
+                </ul>
+
+                <div class="btn-box">
+                    <button type="button" class="btn-type2-lg" onclick="layer.close('layerPrivacyDisagree');"><span>확인</span></button>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn-layer-close" onclick="layer.close('layerPrivacyDisagree');">닫기</button>
+    </div>
+</body>
+</html>
