@@ -200,6 +200,7 @@
 					document.querySelector('.layer-pop').style.display='none';
 					document.querySelector('.layer-pop success').style.display='block';
 				}
+				//
 			}
 		</script>
 	</section>
