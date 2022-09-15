@@ -56,7 +56,6 @@
 							function() {
 								document.querySelector('.layer-pop').style.display = 'none';
 							});
-			
 		</script>
 		<!-- snb end -->
 
@@ -184,23 +183,35 @@
 			}
 
 			function checkCustData() {
-
 				if (document.moveVocPage.userNm.value == "") {
 					alert("고객명를 입력하여 주세요.");
-					//document.moveVocPage.userNm.focus();
+
 				} else if (document.moveVocPage.userPhone.value == "") {
 					alert("연락처을 입력하여 주세요.");
-					//document.moveVocPage.userPhone.focus();
-				} 
-				if ($("input[type=radio][name=privacyAgree]:checked").val() == 'N'){
-					document.querySelector('.layer-pop').style.display='none';
-					document.querySelector('.layer-pop fail" ').style.display='block';
+				} else {
+					if ($("input[type=radio][name=privacyAgree]:checked").val() == 'N') {
+						layer.open('layerPrivacyDisagree');
+						layer.close('layerPrivacyAgree');
+					} else if ($("input[type=radio][name=privacyAgree]:checked")
+							.val() == 'Y') {
+						layer.close('layerPrivacyAgree');
+						layer.open('layerCustomerVoice');
+
+					}
 				}
-				else if ($("input[type=radio][name=privacyAgree]:checked").val() == 'Y'){
-					document.querySelector('.layer-pop').style.display='none';
-					document.querySelector('.layer-pop success').style.display='block';
+			}
+
+			function qnaCheck() {
+				if ($('input:radio[name=qna_classification]:checked').val() == ""){
+					alert("접수분류를 선택해주세요.");
+				} else if(vocFrm.qna_subject.value == ""){
+					alert("제목을 입력해주세요.");
+				} else if(vocFrm.qna_content.value == ""){
+					alert("고객의견을 입력해주세요.");
+				} else{
+					alert("QnA가 등록되었습니다.");
+					document.vocFrm.submit();
 				}
-				//
 			}
 		</script>
 	</section>
@@ -300,266 +311,141 @@
 			<button type="button" class="btn-layer-close"
 				onclick="layer.close('layerPrivacyAgree');">닫기</button>
 		</div>
+
+
+
+
 	</div>
+
 	<!--  만약에 동의를 한 후 확인 버튼을 눌렀을 때 -->
-	<div class="layer-wrap" class="layer-pop success" tabindex="0">
-		<div class="layer-header">
-			<h2 class="layer-title">고객의 소리</h2>
-		</div>
-		<div class="layer-container">
-			<div class="layer-content">
-				<div class="customer-voice">
-					<div class="page-info">
-						<p class="txt-customer-guide">고객님의 소중한 의견은 겸손한 마음으로 접수 하겠으며
-							최대한 신속히 조치 하겠습니다. 답변은 연락처 또는 이메일로 안내드립니다.</p>
-					</div>
-					<form id="vocFrm" name="vocFrm" method="post"
-						enctype="multipart/form-data" action="/public/voc/vocInsert">
-						<ul class="input-info-group">
-							<li>
-								<div class="input-box">
-									<input type="text" title="고객명(필수)" id="custNm" name="custNm"
-										placeholder="고객명(필수)" value="asdasda" class="inp-reset"
-										readonly="">
-									<div class="etc">
-										<button type="button" class="btn-clear">
-											<span>지우기</span>
-										</button>
-									</div>
-								</div>
-								<p id="custNmVali" class="txt-invalid" style="display: none;"></p>
-							</li>
-							<li>
-								<div class="input-box">
-									<input type="text" title="연락처(필수)" id="custMpNo"
-										name="custMpNo" placeholder="연락처(필수)" value="01053865851"
-										class="inp-reset"
-										validate="required;xss;minlength:10;maxlength:11" readonly="">
-									<div class="etc">
-										<button type="button" class="btn-clear">
-											<span>지우기</span>
-										</button>
-									</div>
-								</div>
-								<p id="custMpNoVali" class="txt-invalid" style="display: none;"></p>
-							</li>
-							<li>
-								<div class="input-box">
-									<input type="text" title="이메일(선택)" id="custEmlAddr"
-										name="custEmlAddr" placeholder="이메일(선택)" class="inp-reset">
-									<div class="etc">
-										<button type="button" class="btn-clear">
-											<span>지우기</span>
-										</button>
-									</div>
-								</div>
-								<p id="custEmlAddrVali" class="txt-invalid"></p>
-							</li>
-						</ul>
-						<div class="tbl-write">
-							<table>
-								<colgroup>
-									<col style="width: 144px">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr class="tr-txt">
-										<th scope="row">
-											<p class="pt-10">답변 알림 수신 여부</p>
-										</th>
-										<td>
-											<ul class="check-list column">
-												<li>
-													<div class="tblw-identify">
-														<label class="check-skin"> <input type="checkbox"
-															name="smsRcvg" checked=""> <span>SMS</span>
-														</label>
-														<button id="certDiv" type="button"
-															class="btn-type1-m btn-srch-order"
-															onclick="javascript:cert.popup('pcc','voc');">
-															<span>본인인증하기</span>
-														</button>
-														<!-- 본인인증완료 -->
+	<div id="layerCustomerVoice" class="layer-pop" tabindex="0">
+		<div class="layer-wrap" tabindex="0">
+			<div class="layer-header">
+				<h2 class="layer-title">고객의 소리</h2>
+			</div>
+			<div class="layer-container">
+				<div class="layer-content">
+					<div class="customer-voice">
+						<div class="page-info">
+							<p class="txt-customer-guide">고객님의 소중한 의견은 겸손한 마음으로 접수 하겠으며
+								최대한 신속히 조치 하겠습니다. 답변은 연락처 또는 이메일로 안내드립니다.</p>
+						</div>
+						<form id="vocFrm" name="vocFrm" method="post"
+							action="hfashionmallServlet?command=qna_write">
+							<div class="tbl-write">
+								<table>
+									<colgroup>
+										<col style="width: 120px">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row">접수분류</th>
+											<td>
+												<div class="select" style="width: 100%;">
+													<button type="button" class="sel-btn"
+														onclick="select.trigger();">접수분류를 선택하세요.</button>
+													<div class="sel-list">
+														<ul>
+															<li><label><input type="radio"
+																	name="qna_classification" value="" checked="">
+																	<span>접수분류를 선택하세요.</span></label></li>
+															<li><label><input type="radio"
+																	name="qna_classification" value="불만"> <span>불만</span></label></li>
+															<li><label><input type="radio"
+																	name="qna_classification" value="제안"> <span>제안</span></label></li>
+															<li><label><input type="radio"
+																	name="qna_classification" value="문의"> <span>문의</span></label></li>
+														</ul>
 													</div>
-												</li>
-												<li><label class="check-skin"> <input
-														type="checkbox" id="custEmlAddr2" name="emailRcvg"
-														checked=""> <span>E-mail</span>
-												</label></li>
-											</ul>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-
-							<table>
-								<colgroup>
-									<col style="width: 120px">
-									<col>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">브랜드</th>
-										<td>
-											<div class="select" style="width: 100%;">
-												<button type="button" class="sel-btn"
-													onclick="select.trigger();">브랜드를 선택하세요.</button>
-												<div class="sel-list">
-													<ul>
-														<li><label><input type="radio" name="brndCd"
-																value="" checked=""> <span>브랜드를 선택하세요.</span></label></li>
-														<li><label><input type="radio" name="brndCd"
-																value="T1"> <span>TOMMY HILFIGER</span></label></li>
-														<li><label><input type="radio" name="brndCd"
-																value="DM"> <span>DKNY</span></label></li>
-														<li><label><input type="radio" name="brndCd"
-																value="VM"> <span>CK CALVIN KLEIN</span></label></li>
-														<li><label><input type="radio" name="brndCd"
-																value="RA"> <span>FILA</span></label></li>
-														<li><label><input type="radio" name="brndCd"
-																value="PW"> <span>SJYP</span></label></li>
-													</ul>
 												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">접수분류</th>
-										<td>
-											<div class="select" style="width: 100%;">
-												<button type="button" class="sel-btn"
-													onclick="select.trigger();">접수분류를 선택하세요.</button>
-												<div class="sel-list">
-													<ul>
-														<li><label><input type="radio"
-																name="vcAccpClssCd" value="" checked=""> <span>접수분류를
-																	선택하세요.</span></label></li>
-														<li><label><input type="radio"
-																name="vcAccpClssCd" value="CCP"> <span>불만</span></label></li>
-														<li><label><input type="radio"
-																name="vcAccpClssCd" value="CQE"> <span>제안</span></label></li>
-														<li><label><input type="radio"
-																name="vcAccpClssCd" value="CSG"> <span>문의</span></label></li>
-													</ul>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row">접수유형</th>
-										<td>
-											<div class="select" style="width: 100%;">
-												<button type="button" class="sel-btn"
-													id="sel-btn-vcAccpTypCd" onclick="select.trigger();">접수유형을
-													선택하세요.</button>
-												<div class="sel-list">
-													<ul id="vcAccpTypCdList">
-														<li><label><input type="radio"
-																name="vcAccpTypCd" value="" checked=""> <span>접수유형을
-																	선택하세요.</span></label></li>
-													</ul>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+											</td>
+										</tr>
 
-						<div class="select-detail" style="display: none;">
-							<h3 class="layer-sec-title3">[필수] 세부사항을 선택해주세요 *</h3>
-							<ul id="vcAccpTypCcpCdList" class="check-list">
+									</tbody>
+								</table>
+							</div>
 
-							</ul>
-						</div>
+							<div class="select-detail" style="display: none;">
+								<h3 class="layer-sec-title3">[필수] 세부사항을 선택해주세요 *</h3>
+								<ul id="vcAccpTypCcpCdList" class="check-list">
 
-						<ul class="input-info-group">
-							<li>
-								<div class="input-box">
-									<input type="text" id="accpTtl" name="accpTtl" title="제목(필수)"
-										placeholder="제목(필수)" class="inp-reset">
-									<div class="etc">
-										<button type="button" class="btn-clear">
-											<span>지우기</span>
-										</button>
+								</ul>
+							</div>
+
+							<ul class="input-info-group">
+								<li>
+									<div class="input-box">
+										<input type="text" id="accpTtl" name="qna_subject"
+											title="제목(필수)" placeholder="제목(필수)" class="inp-reset">
+										<div class="etc">
+											<button type="button" class="btn-clear">
+												<span>지우기</span>
+											</button>
+										</div>
 									</div>
+									<p id="accpTtlVali" class="txt-invalid" style="display: none;"></p>
+								</li>
+							</ul>
+
+							<h3 class="layer-sec-title3">
+								고객의견<span class="required">(필수)</span>
+							</h3>
+							<div class="textarea-group">
+								<div class="txtarea-box">
+									<textarea cols="30" rows="10" id="accpCntn" name="qna_content"></textarea>
 								</div>
-								<p id="accpTtlVali" class="txt-invalid" style="display: none;"></p>
-							</li>
-						</ul>
-
-						<h3 class="layer-sec-title3">
-							고객의견<span class="required">(필수)</span>
-						</h3>
-						<div class="textarea-group">
-							<div class="txtarea-box">
-								<textarea cols="30" rows="10" id="accpCntn" name="accpCntn"></textarea>
+								<p class="txt-customer-write">
+									질문하시는 매장/제품번호(상품코드)를 정확히 입력해 주시고, 질문하시는<br> 내용을 구체적으로 작성해
+									주시면 정확하고 빠른 답변에 도움이 됩니다.
+								</p>
 							</div>
-							<p class="txt-customer-write">
-								질문하시는 매장/제품번호(상품코드)를 정확히 입력해 주시고, 질문하시는<br> 내용을 구체적으로 작성해
-								주시면 정확하고 빠른 답변에 도움이 됩니다.
-							</p>
+						</form>
+						<div class="btn-box">
+							<button type="submit" class="btn-type2-lg"
+								onclick="qnaCheck();">
+								<span>접수하기</span>
+							</button>
 						</div>
+					</div>
+				</div>
+			</div>
+			<button type="button" class="btn-layer-close"
+				onclick="layer.close('layerCustomerVoice');">닫기</button>
+		</div>
 
+	</div>
 
-						<h3 class="layer-sec-title3">비밀번호</h3>
-						<p class="txt-form-cmb">문의 내역 및 답변을 확인하기 위한 비밀번호를 입력해주세요
-							(숫자4자리)</p>
+	<!-- 만약에 동의를 안한 후 확인 버튼을 눌렀을 때 -->
+	<div id="layerPrivacyDisagree" class="layer-pop" tabindex="0">
+		<div class="layer-wrap" tabindex="0">
+			<div class="layer-header">
+				<h2 class="layer-title"></h2>
+			</div>
+			<div class="layer-container">
+				<div class="layer-content">
+					<div class="page-info">
+						<p class="txt-type2">개인정보관련 동의 필요사항에 동의를 하신 고객님만 본 화면에서 고객의
+							소리를 작성하실 수 있습니다.</p>
+					</div>
 
-						<div class="input-box">
-							<input type="password" title="비밀번호 (숫자 4자리)" maxlength="4"
-								placeholder="비밀번호 (숫자 4자리)" class="inp-reset" name="vcPass"
-								id="vcPass" autocomplete="off">
-							<div class="etc">
-								<!-- [D]비밀번호 안전도 : 안전 -->
-								<span class="txt-pw-level">안전</span>
+					<ul class="txt-list">
+						<li>본 화면에서 입력을 원하지 않으신다면 E-mail(voc@hyundaihmall.com)통해서도
+							접수하실 수 있습니다. 감사합니다.</li>
+					</ul>
 
-								<button type="button" class="btn-masking">
-									<span>마스킹</span>
-								</button>
-								<button type="button" class="btn-clear">
-									<span>지우기</span>
-								</button>
-							</div>
-						</div>
-					</form>
 					<div class="btn-box">
-						<button type="button" class="btn-type2-lg" onclick="vocInsert();">
-							<span>접수하기</span>
+						<button type="button" class="btn-type2-lg"
+							onclick="layer.close('layerPrivacyDisagree');">
+							<span>확인</span>
 						</button>
 					</div>
 				</div>
 			</div>
+			<button type="button" class="btn-layer-close"
+				onclick="layer.close('layerPrivacyDisagree');">닫기</button>
 		</div>
-		<button type="button" class="btn-layer-close" onclick="deleteForm();">닫기</button>
-	</div>
-	<!-- 만약에 동의를 안한 후 확인 버튼을 눌렀을 때 -->
-	<div class="layer-wrap" class="layer-pop fail" tabindex="0">
-		<div class="layer-header">
-			<h2 class="layer-title"></h2>
-		</div>
-		<div class="layer-container">
-			<div class="layer-content">
-				<div class="page-info">
-					<p class="txt-type2">개인정보관련 동의 필요사항에 동의를 하신 고객님만 본 화면에서 고객의 소리를
-						작성하실 수 있습니다.</p>
-				</div>
 
-				<ul class="txt-list">
-					<li>본 화면에서 입력을 원하지 않으신다면 E-mail(voc@hyundaihmall.com)통해서도 접수하실
-						수 있습니다. 감사합니다.</li>
-				</ul>
-
-				<div class="btn-box">
-					<button type="button" class="btn-type2-lg"
-						onclick="layer.close('layerPrivacyDisagree');">
-						<span>확인</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<button type="button" class="btn-layer-close"
-			onclick="layer.close('layerPrivacyDisagree');">닫기</button>
 	</div>
 </div>
 

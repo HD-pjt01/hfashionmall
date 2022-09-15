@@ -97,10 +97,10 @@
 								<c:otherwise>
 									<span style="color: white">${sessionScope.loginUser.member_name}(${sessionScope.loginUser.member_id})</span>
 									<span><a href="hfashionmallServlet?command=logout">로그아웃</a></span>
-									<span><a href="hfashionmallServlet?command=qna_list">QnA</a></span>
+									<!-- <span><a href="hfashionmallServlet?command=qna_list">QnA</a></span> -->
+									<span><a href="hfashionmallServlet?command=qna">QNA</a></span>
 								</c:otherwise>
 							</c:choose>
-						<span><a href="hfashionmallServlet?command=qna">QNA test</a></span>
 						<span><a href="hfashionmallServlet?command=mypage">마이페이지</a></span>
 						<span><a href="hfashionmallServlet?command=cart_list">장바구니</a></span>
 					</nav>
@@ -950,14 +950,13 @@
 							</div>
 						</div>
 
-						<ul class="gnb-etc">
+						<!--  <ul class="gnb-etc">
 							<li><a href="/display/thema?thmCtgryNo=THMA06A13"> TJX나연</a>
 							</li>
 							<li><a href="/display/thema?thmCtgryNo=THMA06A04"> H
 									SHOP</a></li>
-						</ul>
+						</ul>-->
 					</div>
-
 				</nav>
 			</div>
 		</header>

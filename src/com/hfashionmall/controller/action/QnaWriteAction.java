@@ -25,11 +25,12 @@ public class QnaWriteAction implements Action {
       url = "hfashionmallServlet?command=login_form";
     }else{      
       QnaVO qnaVO = new QnaVO();
-      MemberVO memberVO = new MemberVO();
       qnaVO.setQna_subject(request.getParameter("qna_subject"));
-      qnaVO.setQna_content(request.getParameter("qna_content"));      
+      qnaVO.setQna_content(request.getParameter("qna_content"));
+      qnaVO.setQna_classification(request.getParameter("qna_classification"));  
+      qnaVO.setMember_member_id(request.getParameter("member_member_id"));  
       QnaDAO qnaDAO = QnaDAO.getInstance();
-      qnaDAO.insertqna(qnaVO, memberVO.getMember_id());      
+      qnaDAO.insertqna(qnaVO, loginUser.getMember_id());      
     }    
     response.sendRedirect(url);
   }
