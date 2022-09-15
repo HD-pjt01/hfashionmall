@@ -60,7 +60,10 @@ public class ActionFactory {
       action = new OrderDetailAction();
     } else if (command.equals("order_all")) {
       action = new OrderAllAction();
-    } else if (command.equals("qna_list")) {
+    } else if (command.equals("qna")) {
+    	action = new QnaAction();
+    }
+    else if (command.equals("qna_list")) {
       action = new QnaListAction();
     } else if (command.equals("qna_write_form")) {
       action = new QnaWriteFormAction();

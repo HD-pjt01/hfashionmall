@@ -100,6 +100,7 @@
 									<span><a href="hfashionmallServlet?command=qna_list">QnA</a></span>
 								</c:otherwise>
 							</c:choose>
+						<span><a href="hfashionmallServlet?command=qna">QNA test</a></span>
 						<span><a href="hfashionmallServlet?command=mypage">마이페이지</a></span>
 						<span><a href="hfashionmallServlet?command=cart_list">장바구니</a></span>
 					</nav>
