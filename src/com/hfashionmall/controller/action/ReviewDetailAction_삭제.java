@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.ReviewVO;
 
-public class ReviewDetailAction implements Action {
+public class ReviewDetailAction_삭제 implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

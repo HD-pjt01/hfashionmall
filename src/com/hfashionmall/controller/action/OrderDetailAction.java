@@ -26,18 +26,19 @@ public class OrderDetailAction implements Action {
     } else {
       int order_id=Integer.parseInt(request.getParameter("order_id"));
       OrderDAO orderDAO = OrderDAO.getInstance();
-      ArrayList<OrderVO> orderList = orderDAO.listOrderById(loginUser.getMember_id(), "%", order_id);
+      // 진행중인 상품이므로 상태가 1인 리스트만 가져온다
+      ArrayList<OrderVO> orderList = orderDAO.listOrderById(loginUser.getMember_id(), "1", order_id);
       
       int totalPrice=0;
       for(OrderVO ovo :orderList){
         totalPrice+=ovo.getPrice()*ovo.getProduct_count();
       }
-		/*
-		 * request.setAttribute("orderDetail", orderList.get(0));
-		 * request.setAttribute("orderList", orderList);
-		 * request.setAttribute("totalPrice", totalPrice);
-		 */
-		/* System.out.println(orderList.get(0).getMname()); */
+		
+		  request.setAttribute("orderDetail", orderList.get(0));
+		  request.setAttribute("orderList", orderList);
+		  request.setAttribute("totalPrice", totalPrice);
+		 
+		 System.out.println(orderList.get(0).getMname()); 
     }
     request.getRequestDispatcher(url).forward(request, response);
   }    

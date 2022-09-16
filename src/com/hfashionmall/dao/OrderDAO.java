@@ -85,6 +85,63 @@ public class OrderDAO {
 		}
 	}
 
+	// 상품상세에서 바로 주문 창으로 넘어가기
+	// 수정 필요
+	public int insertDirectOrder(String member_member_id, String product_code, int product_count) {
+		int maxOrder_id = 0;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs;
+
+		try {
+			conn = DBManager.getConnection();
+
+			String insertOrder = "insert into orders(order_id, member_member_id) values(" + "orders_seq.nextval, ?)";
+			pstmt = conn.prepareStatement(insertOrder);
+			pstmt.setString(1, member_member_id);
+			pstmt.executeUpdate();
+			pstmt.close();
+
+			// order 에서 가장 최근에 들어간 값을 order_detail에 넣어줌
+			String selectMaxOseq = "select max(order_id) from orders";
+			pstmt = conn.prepareStatement(selectMaxOseq);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				maxOrder_id = rs.getInt(1);
+			}
+				insertDirectOrderDetail(product_code, product_count, maxOrder_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return maxOrder_id;
+	}
+
+	// 상세제품에서 바로 order_detail로 들어가기
+	public void insertDirectOrderDetail(String product_code, int product_count, int maxOrder_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+
+			String insertOrderDetail = "insert into order_detail(order_detail_id,  order_order_id, product_product_code,  order_detail_product_count) values(order_detail_seq.nextval, ?, ?, ?)";
+			pstmt = conn.prepareStatement(insertOrderDetail);
+			pstmt.setInt(1, maxOrder_id);
+			pstmt.setString(2, product_code);
+			pstmt.setInt(3, product_count);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
 	// 사용자가 주문 내역 검색
 	public ArrayList<OrderVO> listOrderById(String id, String result, int order_id) {
 		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
@@ -101,26 +158,25 @@ public class OrderDAO {
 
 			rs = pstmt.executeQuery();
 
-			
-			  while (rs.next()) {
-			  
-			  OrderVO orderVO = new OrderVO(); 
-			  
-			  orderVO.setOrder_detail_id(rs.getInt(1));
-			  orderVO.setOrder_id(rs.getInt(2));
-			  orderVO.setMember_member_id(rs.getString(3));
-			  orderVO.setOrder_register(rs.getTimestamp(4));
-			  orderVO.setProduct_code(rs.getString(5));
-			  orderVO.setProduct_count(rs.getInt(6)); 
-			  orderVO.setMname(rs.getString(7));
-			  orderVO.setZipcode(rs.getString(8)); 
-			  orderVO.setAddr(rs.getString(9));
-			  orderVO.setPhone(rs.getString(10)); 
-			  orderVO.setPname(rs.getString(11));
-			  orderVO.setPrice(rs.getInt(12));
-			  orderVO.setOrder_detail_result(rs.getString(13)); 
-			  orderList.add(orderVO); }
-			 
+			while (rs.next()) {
+
+				OrderVO orderVO = new OrderVO();
+
+				orderVO.setOrder_detail_id(rs.getInt(1));
+				orderVO.setOrder_id(rs.getInt(2));
+				orderVO.setMember_member_id(rs.getString(3));
+				orderVO.setOrder_register(rs.getTimestamp(4));
+				orderVO.setProduct_code(rs.getString(5));
+				orderVO.setProduct_count(rs.getInt(6));
+				orderVO.setMname(rs.getString(7));
+				orderVO.setZipcode(rs.getString(8));
+				orderVO.setAddr(rs.getString(9));
+				orderVO.setPhone(rs.getString(10));
+				orderVO.setPname(rs.getString(11));
+				orderVO.setPrice(rs.getInt(12));
+				orderVO.setOrder_detail_result(rs.getString(13));
+				orderList.add(orderVO);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -158,6 +214,106 @@ public class OrderDAO {
 		return oseqList;
 	}
 
+	// 현재 배송완료 주문 내역만 조회
+	// member_id로 진행중인 주문 내역 가져오기
+	public ArrayList<Integer> selectSeqOrdered(String id) {
+		ArrayList<Integer> oseqList = new ArrayList<Integer>();
+//		최신 주문을 위로 띄움
+		String sql = "select distinct order_id from order_view "
+				+ "where member_member_id=? and order_detail_result ='2' order by order_id desc";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBManager.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				oseqList.add(rs.getInt(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		return oseqList;
+	}
+	
+	// 리뷰 가능 주문 불러오기
+	// order_detail_result = 2, review_result = 1
+	// 사용자가 주문 내역 검색
+		public ArrayList<OrderVO> listOrderRivewable(String id, String o_result, String r_result) {
+			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+			String sql = "select * from order_view where member_member_id=? " + "and order_detail_result=? and review_result=?";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, o_result);
+				pstmt.setString(3, r_result);
+
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+
+					OrderVO orderVO = new OrderVO();
+
+					orderVO.setOrder_detail_id(rs.getInt(1));
+					orderVO.setOrder_id(rs.getInt(2));
+					orderVO.setMember_member_id(rs.getString(3));
+					orderVO.setOrder_register(rs.getTimestamp(4));
+					orderVO.setProduct_code(rs.getString(5));
+					orderVO.setProduct_count(rs.getInt(6));
+					orderVO.setMname(rs.getString(7));
+					orderVO.setZipcode(rs.getString(8));
+					orderVO.setAddr(rs.getString(9));
+					orderVO.setPhone(rs.getString(10));
+					orderVO.setPname(rs.getString(11));
+					orderVO.setPrice(rs.getInt(12));
+					orderVO.setOrder_detail_result(rs.getString(13));
+					orderList.add(orderVO);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(" 리뷰 가능한 order 받아와서 출력 오류");
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return orderList;
+		}
+
+	/*
+	 * // ReviewDao 에서 받아온 order_detail_id 만 가져오기 // id : member_id, public
+	 * ArrayList<OrderVO> OrderByReviewable() { OrderVO orderVO = new OrderVO();
+	 * String sql = "select * from order_view where order_detail_id=? "; Connection
+	 * conn = null; PreparedStatement pstmt = null; ResultSet rs = null; try { conn
+	 * = DBManager.getConnection(); pstmt = conn.prepareStatement(sql);
+	 * pstmt.setInt(1, od_id);
+	 * 
+	 * rs = pstmt.executeQuery();
+	 * 
+	 * while (rs.next()) {
+	 * 
+	 * orderVO.setOrder_detail_id(rs.getInt(1)); orderVO.setOrder_id(rs.getInt(2));
+	 * orderVO.setMember_member_id(rs.getString(3));
+	 * orderVO.setOrder_register(rs.getTimestamp(4));
+	 * orderVO.setProduct_code(rs.getString(5));
+	 * orderVO.setProduct_count(rs.getInt(6)); orderVO.setMname(rs.getString(7));
+	 * orderVO.setZipcode(rs.getString(8)); orderVO.setAddr(rs.getString(9));
+	 * orderVO.setPhone(rs.getString(10)); orderVO.setPname(rs.getString(11));
+	 * orderVO.setPrice(rs.getInt(12));
+	 * orderVO.setOrder_detail_result(rs.getString(13)); }
+	 * 
+	 * } catch (Exception e) { e.printStackTrace();
+	 * System.out.println("review 가능한 ordervo받아오기 출력 오류"); } finally {
+	 * DBManager.close(conn, pstmt, rs); } return orderVO; }
+	 */
 	/*
 	 * * 관리자 모드에서 사용되는 메소드 * *
 	 */

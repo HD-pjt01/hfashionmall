@@ -4,10 +4,9 @@ import java.sql.Timestamp;
 
 public class ReviewVO {
 
-	private int order_id; //PRIMARY
+	private int od_id; //PRIMARY
 	private String review_content;
 	private Timestamp review_register;
-	private String review_subject;
 
 	private String review_ofile;
 	private String review_sfile;
@@ -15,6 +14,9 @@ public class ReviewVO {
 	private String member_id;
 	private String mname;
 	private String product_code;
+	private String pname;
+	private String od_result;
+	private String review_result;
 	
 
 	public String getReview_content() {
@@ -23,12 +25,7 @@ public class ReviewVO {
 	public void setReview_content(String review_content) {
 		this.review_content = review_content;
 	}
-	public String getReview_subject() {
-		return review_subject;
-	}
-	public void setReview_subject(String review_subject) {
-		this.review_subject = review_subject;
-	}
+	
 	public Timestamp getReview_register() {
 		return review_register;
 	}
@@ -72,5 +69,32 @@ public class ReviewVO {
 	public void setVisitcount(int visitcount) {
 		this.visitcount = visitcount;
 	}
+	public int getOd_id() {
+		return od_id;
+	}
+	public void setOd_id(int od_id) {
+		this.od_id = od_id;
+	}
+	public String getPname() {
+		return pname;
+	}
+	public void setPname(String pname) {
+		this.pname = pname;
+	}
+	public String getOd_result() {
+		return od_result;
+	}
+	public void setOd_result(String od_result) {
+		this.od_result = od_result;
+	}
+	public String getReview_result() {
+		return review_result;
+	}
+	public void setReview_result(String review_result) {
+		this.review_result = review_result;
+	}
+	
+
+
 	
 }

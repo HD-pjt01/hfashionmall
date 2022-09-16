@@ -65,3 +65,9 @@
 #mypage_summ #mypage_summ_ul li:first-of-type {
   border-left: none;
 }
+
+#reviewWrite {
+	padding:20px;
+	margin:50px;
+	color:red;
+}

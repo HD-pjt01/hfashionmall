@@ -17,18 +17,38 @@
 
 <link href="css/style.css" rel="stylesheet">
 <link href="css/product.css" rel="stylesheet">
+<link href="css/mypage.css" rel="stylesheet">
+<link href="css/sub_menu.css" rel="stylesheet">
 
 
 <!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+
 <!-- bootstrap -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
 <!-- swiper-wrapper script -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+<!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+
+<!-- 현대 css, javascript -->
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="css/ui.min.css">
+<script type="text/javascript" src="javascript/libs/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="javascript/libs/jquery-ui.min.js"></script>
+<script type="text/javascript" src="javascript/libs/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="javascript/libs/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="javascript/libs/imagesloaded.pkgd.min.js"></script>
+<script type="text/javascript" src="javascript/ui.js"></script>
+<script type="text/javascript" src="javascript/libs/swiper.min.js"></script>
+<script type="text/javascript" src="javascript/libs/slick.min.js"></script>
+<script type="text/javascript" src="javascript/slide.js"></script>
+<script type="text/javascript" src="javascript/libs/jquery.form.min.js"></script>
+<script type="text/javascript" src="javascript/common.js"></script>
+
 
 </head>
 

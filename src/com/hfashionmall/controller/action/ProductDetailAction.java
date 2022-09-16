@@ -1,6 +1,7 @@
 package com.hfashionmall.controller.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hfashionmall.dao.ProductDAO;
+import com.hfashionmall.dao.ReviewDAO;
 import com.hfashionmall.dto.ProductVO;
+import com.hfashionmall.dto.ReviewVO;
 
 public class ProductDetailAction implements Action {
 
@@ -26,8 +29,13 @@ public class ProductDetailAction implements Action {
     ProductVO productVO= productDAO.getProduct(product_code);
     
     // product_code로 리뷰 vo 생성
+    ReviewDAO reviewDAO = ReviewDAO.getInstance();
+    ArrayList<ReviewVO> reviewList = reviewDAO.findByProd(product_code);
+    int reviewCount = reviewDAO.countTotalReview(product_code);
     
     request.setAttribute("productVO", productVO);
+    request.setAttribute("reviewList", reviewList);
+    request.setAttribute("reviewCount", reviewCount);
     // request.setAttribute("reviewVO", reviewVO);
     
     RequestDispatcher dispatcher = request
