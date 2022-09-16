@@ -219,7 +219,7 @@
 											<li class="depth2-menu-main"><a
 												href="javascript:void(0);" onclick="goCategoryLink(this);"
 												tp="OTLT_MAIN">MAIN</a></li>
-											<li><a href="hfashionmallServlet?command=brand&case=tommy"
+											<li><a href="hfashionmallServlet?command=brand&case=Tommy Hilfiger"
 												onclick="goCategoryLink(this);" tp="OTLT_LIST" brndid="THBR">TOMMY
 													HILFIGER</a>
 												<ul>
@@ -242,7 +242,7 @@
 														onclick="goCategoryLink(this);" tp="OTLT_LIST"
 														brndid="T6HGR">GOLF</a></li>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=dkny"
+											<li><a href="hfashionmallServlet?command=brand&case=DKNY"
 												onclick="goCategoryLink(this);" tp="OTLT_LIST" brndid="DKBR">DKNY</a>
 												<ul>
 													<li><a href="javascript:void(0);"
@@ -252,7 +252,7 @@
 														onclick="goCategoryLink(this);" tp="OTLT_LIST"
 														brndid="DMHGR">MEN</a></li>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=ck"
+											<li><a href="hfashionmallServlet?command=brand&case=Calvin Klein"
 												onclick="goCategoryLink(this);" tp="OTLT_LIST" brndid="CKBR">ck
 													Calvin Klein</a>
 												<ul>
@@ -509,7 +509,7 @@
 									<div class="depth2-inner">
 										<ul class="depth2-menu">
 											<!-- 카테고리 depth : 1, 자사 브랜드 여부 : Y -->
-											<li><a href="hfashionmallServlet?command=brand&case=tommy"
+											<li><a href="hfashionmallServlet?command=brand&case=Tommy Hilfiger"
 												onclick="goCategoryLink(this);" tp="BRND_MAIN"
 												brndctgryno="BDMA08">TOMMY HILFIGER</a>
 												<ul>
@@ -532,7 +532,7 @@
 														onclick="goCategoryLink(this);" tp="BRND_MAIN"
 														brndctgryno="BDMA08A09">GOLF</a></li>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=dkny"
+											<li><a href="hfashionmallServlet?command=brand&case=DKNY"
 												onclick="goCategoryLink(this);" tp="BRND_MAIN"
 												brndctgryno="BDMA09">DKNY</a>
 												<ul>
@@ -543,7 +543,7 @@
 														onclick="goCategoryLink(this);" tp="BRND_MAIN"
 														brndctgryno="BDMA09A02">MEN</a></li>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=ck"
+											<li><a href="hfashionmallServlet?command=brand&case=Calvin Klein"
 												onclick="goCategoryLink(this);" tp="BRND_MAIN"
 												brndctgryno="BDMA07">ck Calvin Klein</a>
 												<ul>
@@ -565,7 +565,7 @@
 												brndctgryno="BDMA21A01">rouge＆lounge</a>
 												<ul>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=sjyp"
+											<li><a href="hfashionmallServlet?command=brand&case=SJYP"
 												onclick="goCategoryLink(this);" tp="BRND_MAIN"
 												brndctgryno="BDMA21A02">SJYP</a>
 												<ul>
@@ -582,7 +582,7 @@
 														onclick="goCategoryLink(this);" tp="BRND_MAIN"
 														brndctgryno="BDMA43A02">SHOES</a></li>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=ck"
+											<li><a href="hfashionmallServlet?command=brand&case=Calvin Klein"
 												onclick="goCategoryLink(this);" tp="BRND_MAIN"
 												brndctgryno="BDMA24">Calvin Klein</a>
 												<ul>
@@ -646,7 +646,7 @@
 												brndctgryno="BDMA21A31">Ferraro Milano</a>
 												<ul>
 												</ul></li>
-											<li><a href="hfashionmallServlet?command=brand&case=fila"
+											<li><a href="hfashionmallServlet?command=brand&case=FILA"
 												onclick="goCategoryLink(this);" tp="BRND_MAIN"
 												brndctgryno="BDMA21A09">FILA</a>
 												<ul>
@@ -805,7 +805,7 @@
 													<li><a href="javascript:void(0);"
 														onclick="goCategoryLink(this);" tp="CTGRY"
 														dspctgryno="HFMA02A10">스커트</a></li>
-													<li><a href="hfashionmallServlet?command=catagory&case=bag"
+													<li><a href="hfashionmallServlet?command=catagory&case=가방"
 														onclick="goCategoryLink(this);" tp="CTGRY"
 														dspctgryno="HFMA02A11">가방</a></li>
 													<li><a href="javascript:void(0);"
@@ -842,7 +842,7 @@
 													<li><a href="javascript:void(0);"
 														onclick="goCategoryLink(this);" tp="CTGRY"
 														dspctgryno="HFMA04A10">EXCLUSIVE</a></li>
-													<li><a href="hfashionmallServlet?command=catagory&case=hat"
+													<li><a href="hfashionmallServlet?command=catagory&case=모자"
 														onclick="goCategoryLink(this);" tp="CTGRY"
 														dspctgryno="HFMA04A08">모자</a></li>
 													<li><a href="javascript:void(0);"
