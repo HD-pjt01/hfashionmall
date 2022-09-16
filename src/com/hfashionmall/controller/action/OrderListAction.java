@@ -26,12 +26,12 @@ public class OrderListAction implements Action {
       url = "hfashionmallServlet?command=login_form";
     } else {
       OrderDAO orderDAO = OrderDAO.getInstance();
-      int oseq=Integer.parseInt(request.getParameter("oseq"));
-      ArrayList<OrderVO> orderList = orderDAO.listOrderById(loginUser.getMember_id(), "1", oseq);
+      int order_id = Integer.parseInt(request.getParameter("order_id"));
+      ArrayList<OrderVO> orderList = orderDAO.listOrderById(loginUser.getMember_id(), "1", order_id);
       
       int totalPrice=0;
       for(OrderVO orderVO :orderList){
-        totalPrice+=orderVO.getPrice2()*orderVO.getQuantity();
+        totalPrice+=orderVO.getPrice()*orderVO.getProduct_count();
       }
       
       request.setAttribute("orderList", orderList);

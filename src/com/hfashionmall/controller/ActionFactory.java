@@ -72,9 +72,9 @@ public class ActionFactory {
 			action = new QnaViewAction();
 		} else if (command.equals("search")) {
 			action = new SearchFormAction();
-		}else if (command.equals("search_result")) {
+		} else if (command.equals("search_result")) {
 			action = new SearchAction();
-		}
+		} 
 
 		// admin
 		if (command.equals("admin_login_form")) {

@@ -27,10 +27,16 @@ public class CartListAction implements Action {
       CartDAO cartDAO = CartDAO.getInstance();
       ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getMember_id());
 
-      int totalPrice = 0;
-      for (CartVO cartVO : cartList) {
-        totalPrice += cartVO.getPrice2() * cartVO.getQuantity();
-      }
+      int totalPrice = 10;
+      
+	
+		  for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price() *
+		  cartVO.getProduct_count(); }
+		 
+      
+		/*
+		 * for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price(); }
+		 */
 
       request.setAttribute("cartList", cartList);
       request.setAttribute("totalPrice", totalPrice);

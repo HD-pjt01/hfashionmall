@@ -78,28 +78,25 @@ public class QnaDAO {
     return qnaVO;
   }
 
-  public void insertqna(QnaVO qnaVO, String member_id) {
-    String sql = "insert into qna values (qna_seq.nextval, ?, ?, 'no', sysdate, 'brand-class-kind', ?)";
-    String commit = "commit";
+  public void insertqna(QnaVO qnaVO, String session_id) {
+    String sql = "insert into qna values (qna_seq.nextval, ?, ?, 'no', sysdate, ?, ?)";
     // qna_answer -> default 'no'
     
     Connection conn = null;
     PreparedStatement pstmt = null;
-    PreparedStatement pstmt_2 = null;
     try {
       conn = DBManager.getConnection();
       pstmt = conn.prepareStatement(sql);
+      System.out.println(qnaVO.getQna_subject() + "!!!" + qnaVO.getQna_content() + "!!!" + qnaVO.getQna_classification() + "!!!" + session_id);
       pstmt.setString(1, qnaVO.getQna_subject());
       pstmt.setString(2, qnaVO.getQna_content());
-      pstmt.setString(3, member_id);
+      pstmt.setString(3, qnaVO.getQna_classification());
+      pstmt.setString(4, session_id);
       pstmt.executeUpdate();
-      pstmt_2 = conn.prepareStatement(commit);
-      pstmt_2.executeUpdate();
     } catch (Exception e) {
       e.printStackTrace();
     } finally {
       DBManager.close(conn, pstmt);
-      DBManager.close(conn, pstmt_2);
     }
   }
 

@@ -2,14 +2,17 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="./header.jsp"%>
+
 <body>
 	<div id="container">
 		<div id="divposition">
 			<div class="search-field" id="searchField">
-				<form id="searchForm" method="post" action = "hfashionmallServlet?command=search_result">
+				<form id="searchForm" method="post"
+					action="hfashionmallServlet?command=search_result">
 
 					<div class="input-box">
-						<input type="text" title="!!!" name="SearchWord" placeholder="검색어를 입력하세요">
+						<input type="text" title="검색어 입력" name="SearchWord"
+							id= "Searchwindow" placeholder="검색어를 입력하세요">
 					</div>
 				</form>
 				<button type="submit" class="btn-search" id="btnSearch"

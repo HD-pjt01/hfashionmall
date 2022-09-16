@@ -2,6 +2,68 @@
   pageEncoding="UTF-8"%>  
 <%@ include file="../header.jsp" %>
 
+<!-- 
+<section class="content-wrap">
+	<h2 class="page-title">로그인</h2>
+	<div class="login-wrap">
+		<div id="loginTab" class="login-tab tab-wrap2 ui-tab initialized">
+			<ul class="tabs tab-btn">
+				<li><a href="#" onclick="hPointEnable()">H.Point 통합회원</a></li>
+				<li><a href="#" onclick="hPointEnable()">H패션몰 회원</a></li>
+				<li><a href="#" onclick="hPointEnable()">비회원</a></li>
+			</ul>
+			<div class="tab-cont">
+				<div class="login-group hpoint">
+					<div class="login-group simple" >
+						<form method="post" action="hfashionmallServlet?command=login">
+							<ul class="login-input">
+								<li>
+					                <div class="input-box">
+					                    <input type="text" title="H패션몰 아이디" placeholder="H패션몰 아이디" class="inp-reset" id="userIdMall" name="member_id" value="${id}" maxlength="20">
+					                    <div class="etc">
+					                        <button type="button" class="btn-clear"><span>지우기</span></button>
+					                    </div>
+					                </div>
+					                <p class="txt-invalid" id="descUserIdMall"></p>
+					            </li>
+					            <li>
+					                <div class="input-box">
+					                    <input type="password" title="H패션몰 비밀번호" placeholder="H패션몰 비밀번호" class="inp-reset" id="passwordMall" name="member_pw" maxlength="15">
+					                    <div class="etc">
+					                        <button type="button" class="btn-masking"><span>마스킹</span></button>
+					                        <button type="button" class="btn-clear"><span>지우기</span></button>
+					                    </div>
+					                </div>
+					                <p class="txt-invalid" id="descPasswordMall"></p>
+					            </li>
+					        </ul>
+					        <div class="login-link">
+				                <div class="login-check">
+				                    <label class="check-skin">
+				                        <input type="checkbox" id="chkSaveIdMall" name="saveIdMall">
+				                        <span>아이디 저장</span>
+				                    </label>
+				                </div>
+				                <input type="button" value="아이디 비밀번호 찾기" class="submit"
+				                 onclick="location='hfashionmallServlet?command=find_id_form'">
+				            </div>
+				            <div class="btn-box">
+				            	<input type="submit" value="로그인" class="submit">
+				            </div>
+				        </form>
+					</div>
+				</div>
+				<div class="login-guide" >
+					<p class="txt-login">H패션몰 간편회원은<br> H패션몰의 모든 서비스를<br> 이용할 수 있습니다.</p>
+					 <input type="button" value="회원가입" class="cancel"
+		                 onclick="location='hfashionmallServlet?command=join_form'">
+					<p>이미지</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> -->
+
 	<div id="container">
 		<div class="breadcrumb-wrap">
 			<ol class="breadcrumb">

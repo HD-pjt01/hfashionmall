@@ -22,8 +22,8 @@ public class OrderDAO {
 	}
 
 	// 사용자가 주문
-	public int insertOrder(ArrayList<CartVO> cartList, String id) {
-		int maxOseq = 0;
+	public int insertOrder(ArrayList<CartVO> cartList, String member_member_id) {
+		int maxOrder_id = 0;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -32,51 +32,109 @@ public class OrderDAO {
 		try {
 			conn = DBManager.getConnection();
 
-			String selectMaxOseq = "select max(oseq) from orders";
+			String insertOrder = "insert into orders(order_id, member_member_id) values(" + "orders_seq.nextval, ?)";
+			pstmt = conn.prepareStatement(insertOrder);
+			pstmt.setString(1, member_member_id);
+			pstmt.executeUpdate();
+			pstmt.close();
+
+			// order 에서 가장 최근에 들어간 값을 order_detail에 넣어줌
+			String selectMaxOseq = "select max(order_id) from orders";
 			pstmt = conn.prepareStatement(selectMaxOseq);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				maxOseq = rs.getInt(1);
+				maxOrder_id = rs.getInt(1);
 			}
-			pstmt.close();
-
-			String insertOrder = "insert into orders(oseq, id) values("
-					+ "orders_seq.nextval, ?)";
-			pstmt = conn.prepareStatement(insertOrder);
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
 
 			for (CartVO cartVO : cartList) {
-				insertOrderDetail(cartVO, maxOseq);
+				insertOrderDetail(cartVO, maxOrder_id);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
-		return maxOseq;
+		return maxOrder_id;
 	}
 
-	public void insertOrderDetail(CartVO cartVO, int maxOseq) {
+	public void insertOrderDetail(CartVO cartVO, int maxOrder_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = DBManager.getConnection();
 
-			String insertOrderDetail = "insert into order_detail(odseq, oseq, "
-					+ "pseq, quantity) values(order_detail_seq.nextval, ?, ?, ?)";
+			String insertOrderDetail = "insert into order_detail(order_detail_id,  order_order_id, "
+					+ "product_product_code,  order_detail_product_count) values(order_detail_seq.nextval, ?, ?, ?)";
 			pstmt = conn.prepareStatement(insertOrderDetail);
-			pstmt.setInt(1, maxOseq);
-			pstmt.setInt(2, cartVO.getPseq());
-			pstmt.setInt(3, cartVO.getQuantity());
+			pstmt.setInt(1, maxOrder_id);
+			pstmt.setString(2, cartVO.getProduct_product_code());
+			pstmt.setInt(3, cartVO.getProduct_count());
 			pstmt.executeUpdate();
 			pstmt.close();
 
-			String updateCartResult = "update cart set result=2 where cseq=?";
+			// 주문 버튼 입력하면 cart_result를 2로 변경
+			String updateCartResult = "update cart set cart_result=2 where cart_id=?";
 			pstmt = conn.prepareStatement(updateCartResult);
-			pstmt.setInt(1, cartVO.getCseq());
+			pstmt.setInt(1, cartVO.getCart_id());
 			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+	}
+
+	// 상품상세에서 바로 주문 창으로 넘어가기
+	// 수정 필요
+	public int insertDirectOrder(String member_member_id, String product_code, int product_count) {
+		int maxOrder_id = 0;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs;
+
+		try {
+			conn = DBManager.getConnection();
+
+			String insertOrder = "insert into orders(order_id, member_member_id) values(" + "orders_seq.nextval, ?)";
+			pstmt = conn.prepareStatement(insertOrder);
+			pstmt.setString(1, member_member_id);
+			pstmt.executeUpdate();
+			pstmt.close();
+
+			// order 에서 가장 최근에 들어간 값을 order_detail에 넣어줌
+			String selectMaxOseq = "select max(order_id) from orders";
+			pstmt = conn.prepareStatement(selectMaxOseq);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				maxOrder_id = rs.getInt(1);
+			}
+				insertDirectOrderDetail(product_code, product_count, maxOrder_id);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		return maxOrder_id;
+	}
+
+	// 상세제품에서 바로 order_detail로 들어가기
+	public void insertDirectOrderDetail(String product_code, int product_count, int maxOrder_id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = DBManager.getConnection();
+
+			String insertOrderDetail = "insert into order_detail(order_detail_id,  order_order_id, product_product_code,  order_detail_product_count) values(order_detail_seq.nextval, ?, ?, ?)";
+			pstmt = conn.prepareStatement(insertOrderDetail);
+			pstmt.setInt(1, maxOrder_id);
+			pstmt.setString(2, product_code);
+			pstmt.setInt(3, product_count);
+			pstmt.executeUpdate();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -85,10 +143,9 @@ public class OrderDAO {
 	}
 
 	// 사용자가 주문 내역 검색
-	public ArrayList<OrderVO> listOrderById(String id, String result, int oseq) {
+	public ArrayList<OrderVO> listOrderById(String id, String result, int order_id) {
 		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-		String sql = "select * from order_view where id=? "
-				+ "and result like '%'||?||'%' and oseq=?";
+		String sql = "select * from order_view where member_member_id=? " + "and order_detail_result=? and order_id=?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -97,27 +154,33 @@ public class OrderDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, result);
-			pstmt.setInt(3, oseq);
+			pstmt.setInt(3, order_id);
+
 			rs = pstmt.executeQuery();
+
 			while (rs.next()) {
+
 				OrderVO orderVO = new OrderVO();
-				orderVO.setOdseq(rs.getInt("ODSEQ"));
-				orderVO.setOseq(rs.getInt("OSEQ"));
-				orderVO.setId(rs.getString("ID"));
-				orderVO.setIndate(rs.getTimestamp("INDATE"));
-				orderVO.setMname(rs.getString("MNAME"));
-				orderVO.setZipNum(rs.getString("ZIP_NUM"));
-				orderVO.setAddress(rs.getString("ADDRESS"));
-				orderVO.setPhone(rs.getString("PHONE"));
-				orderVO.setPseq(rs.getInt("PSEQ"));
-				orderVO.setQuantity(rs.getInt("QUANTITY"));
-				orderVO.setPname(rs.getString("PNAME"));
-				orderVO.setPrice2(rs.getInt("PRICE2"));
-				orderVO.setResult(rs.getString("RESULT"));
+
+				orderVO.setOrder_detail_id(rs.getInt(1));
+				orderVO.setOrder_id(rs.getInt(2));
+				orderVO.setMember_member_id(rs.getString(3));
+				orderVO.setOrder_register(rs.getTimestamp(4));
+				orderVO.setProduct_code(rs.getString(5));
+				orderVO.setProduct_count(rs.getInt(6));
+				orderVO.setMname(rs.getString(7));
+				orderVO.setZipcode(rs.getString(8));
+				orderVO.setAddr(rs.getString(9));
+				orderVO.setPhone(rs.getString(10));
+				orderVO.setPname(rs.getString(11));
+				orderVO.setPrice(rs.getInt(12));
+				orderVO.setOrder_detail_result(rs.getString(13));
 				orderList.add(orderVO);
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("ordervo받아와서 출력 오류");
 		} finally {
 			DBManager.close(conn, pstmt, rs);
 		}
@@ -125,10 +188,12 @@ public class OrderDAO {
 	}
 
 	// 현재 진행 중인 주문 내역만 조회
+	// member_id로 진행중인 주문 내역 가져오기
 	public ArrayList<Integer> selectSeqOrderIng(String id) {
 		ArrayList<Integer> oseqList = new ArrayList<Integer>();
-		String sql = "select distinct oseq from order_view "
-				+ "where id=? and result='1' order by oseq desc";
+//		최신 주문을 위로 띄움
+		String sql = "select distinct order_id from order_view "
+				+ "where member_member_id=? and order_detail_result ='1' order by order_id desc";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -149,13 +214,112 @@ public class OrderDAO {
 		return oseqList;
 	}
 
-	/* *
-	 * 관리자 모드에서 사용되는 메소드 * *
+	// 현재 배송완료 주문 내역만 조회
+	// member_id로 진행중인 주문 내역 가져오기
+	public ArrayList<Integer> selectSeqOrdered(String id) {
+		ArrayList<Integer> oseqList = new ArrayList<Integer>();
+//		최신 주문을 위로 띄움
+		String sql = "select distinct order_id from order_view "
+				+ "where member_member_id=? and order_detail_result ='2' order by order_id desc";
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			con = DBManager.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				oseqList.add(rs.getInt(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(con, pstmt, rs);
+		}
+		return oseqList;
+	}
+	
+	// 리뷰 가능 주문 불러오기
+	// order_detail_result = 2, review_result = 1
+	// 사용자가 주문 내역 검색
+		public ArrayList<OrderVO> listOrderRivewable(String id, String o_result, String r_result) {
+			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+			String sql = "select * from order_view where member_member_id=? " + "and order_detail_result=? and review_result=?";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.setString(2, o_result);
+				pstmt.setString(3, r_result);
+
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+
+					OrderVO orderVO = new OrderVO();
+
+					orderVO.setOrder_detail_id(rs.getInt(1));
+					orderVO.setOrder_id(rs.getInt(2));
+					orderVO.setMember_member_id(rs.getString(3));
+					orderVO.setOrder_register(rs.getTimestamp(4));
+					orderVO.setProduct_code(rs.getString(5));
+					orderVO.setProduct_count(rs.getInt(6));
+					orderVO.setMname(rs.getString(7));
+					orderVO.setZipcode(rs.getString(8));
+					orderVO.setAddr(rs.getString(9));
+					orderVO.setPhone(rs.getString(10));
+					orderVO.setPname(rs.getString(11));
+					orderVO.setPrice(rs.getInt(12));
+					orderVO.setOrder_detail_result(rs.getString(13));
+					orderList.add(orderVO);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(" 리뷰 가능한 order 받아와서 출력 오류");
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return orderList;
+		}
+
+	/*
+	 * // ReviewDao 에서 받아온 order_detail_id 만 가져오기 // id : member_id, public
+	 * ArrayList<OrderVO> OrderByReviewable() { OrderVO orderVO = new OrderVO();
+	 * String sql = "select * from order_view where order_detail_id=? "; Connection
+	 * conn = null; PreparedStatement pstmt = null; ResultSet rs = null; try { conn
+	 * = DBManager.getConnection(); pstmt = conn.prepareStatement(sql);
+	 * pstmt.setInt(1, od_id);
+	 * 
+	 * rs = pstmt.executeQuery();
+	 * 
+	 * while (rs.next()) {
+	 * 
+	 * orderVO.setOrder_detail_id(rs.getInt(1)); orderVO.setOrder_id(rs.getInt(2));
+	 * orderVO.setMember_member_id(rs.getString(3));
+	 * orderVO.setOrder_register(rs.getTimestamp(4));
+	 * orderVO.setProduct_code(rs.getString(5));
+	 * orderVO.setProduct_count(rs.getInt(6)); orderVO.setMname(rs.getString(7));
+	 * orderVO.setZipcode(rs.getString(8)); orderVO.setAddr(rs.getString(9));
+	 * orderVO.setPhone(rs.getString(10)); orderVO.setPname(rs.getString(11));
+	 * orderVO.setPrice(rs.getInt(12));
+	 * orderVO.setOrder_detail_result(rs.getString(13)); }
+	 * 
+	 * } catch (Exception e) { e.printStackTrace();
+	 * System.out.println("review 가능한 ordervo받아오기 출력 오류"); } finally {
+	 * DBManager.close(conn, pstmt, rs); } return orderVO; }
+	 */
+	/*
+	 * * 관리자 모드에서 사용되는 메소드 * *
 	 */
 	public ArrayList<OrderVO> listOrder(String member_name) {
 		ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-		String sql = "select * from order_view where mname like '%'||?||'%' " +
-				"order by result, oseq desc";
+		String sql = "select * from order_view where mname like '%'||?||'%' " + "order by result, oseq desc";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
