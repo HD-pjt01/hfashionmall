@@ -15,7 +15,7 @@ public class QnaWriteFormAction implements Action {
   @Override
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String url = "qna/qnaWrite.jsp";
+    String url = "member/qnaWrite.jsp";
     
     HttpSession session = request.getSession();
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");    

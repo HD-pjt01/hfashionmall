@@ -18,12 +18,12 @@ public class IndexAction implements Action {
       throws ServletException, IOException {    
     String url = "/index.jsp";
     
-    ProductDAO productDAO=ProductDAO.getInstance();
-    ArrayList<ProductVO> newProductList = productDAO.listNewProduct();
-    ArrayList<ProductVO> bestProductList = productDAO.listBestProduct();
+    //ProductDAO productDAO=ProductDAO.getInstance();
+    //ArrayList<ProductVO> newProductList = productDAO.listNewProduct();
+    //ArrayList<ProductVO> bestProductList = productDAO.listBestProduct();
     
-    request.setAttribute("newProductList", newProductList);
-    request.setAttribute("bestProductList", bestProductList);
+    //request.setAttribute("newProductList", newProductList);
+    //request.setAttribute("bestProductList", bestProductList);
     
     RequestDispatcher dispatcher = request.getRequestDispatcher(url);
     dispatcher.forward(request, response);

@@ -8,11 +8,10 @@ import java.sql.SQLException;
 
 public class DBManager {
 
-	private static String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+	private static String url = "jdbc:oracle:thin:@localhost:5151/xepdb1";
 	private static String uid = "hf";
 	private static String pwd = "hf";
 
-	// ī�ؼ� ������
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {

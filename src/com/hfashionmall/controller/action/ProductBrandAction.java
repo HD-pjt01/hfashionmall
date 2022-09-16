@@ -23,7 +23,7 @@ public class ProductBrandAction implements Action {
 		System.out.println("brand : " + brand);
 		
 		ProductDAO productDAO=ProductDAO.getInstance();
-		ArrayList<ProductVO>productBrandList= productDAO.listBrandProduct(brand);
+		ArrayList<ProductVO> productBrandList= productDAO.listBrandProduct(brand);
 		
 		request.setAttribute("productBrandList", productBrandList);
 		RequestDispatcher dispatcher = request

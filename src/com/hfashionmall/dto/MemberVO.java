@@ -16,8 +16,7 @@ public class MemberVO {
 	//탈퇴 여부
 	private String member_birth; // varchar2(20)
 	private Timestamp member_update; // date
-  
-  
+	    
 	public String getMember_id() {
 		return member_id;
 	}

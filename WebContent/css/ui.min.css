@@ -31,83 +31,75 @@
 }
 
 @font-face {
-    font-family: "ct";
-    font-weight: 300;
-    src: url("../fonts/5695476/c58f40f4-bf47-4a78-9d7a-12d323f1f275.woff2") format("woff2"), url("../fonts/5695476/525b9e24-7011-4437-8166-63bc6480fe85.woff") format("woff");
+	font-family: "ct";
+	font-weight: 300;
+	src: url("../fonts/Happiness-Sans-Regular.woff2") format("woff2"),
+		url("../fonts/Happiness-Sans-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "ct";
-    font-style: italic;
-    font-weight: 300;
-    src: url("../fonts/5695478/69a98d07-f64c-410f-965e-18ad2a504c27.woff2") format("woff2"), url("../fonts/5695478/0255bfda-c900-4d2d-8667-ad9cb9362801.woff") format("woff");
+	font-family: "ct";
+	font-weight: 300;
+	src: url("../fonts/Happiness-Sans-Regular.woff2") format("woff2"),
+		url("../fonts/Happiness-Sans-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "ct";
-    font-weight: 400;
-    src: url("../fonts/5695479/b1b591d0-9eeb-477c-ab33-5cf2f1bbc7e3.woff2") format("woff2"), url("../fonts/5695479/a293904d-716b-4e26-a430-296b5376a4fe.woff") format("woff");
+	font-family: "ct";
+	font-weight: 400;
+	src: url("../fonts/Happiness-Sans-Regular.woff2") format("woff2"),
+		url("../fonts/Happiness-Sans-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "ct";
-    font-style: italic;
-    font-weight: 400;
-    src: url("../fonts/5695482/481969d1-3610-425e-a2f0-d9c70853de0b.woff2") format("woff2"), url("../fonts/5695482/b422d3e1-cd62-4295-b5ed-734840d32f1e.woff") format("woff");
+	font-family: "ct";
+	font-weight: 700;
+	src: url("../fonts/Happiness-Sans-Regular.woff2") format("woff2"),
+		url("../fonts/Happiness-Sans-Regular.woff") format("woff");
 }
 
 @font-face {
-    font-family: "ct";
-    font-weight: 700;
-    src: url("../fonts/5695488/c3b56908-18d5-4d6a-9cb6-1c8bbceb6ff7.woff2") format("woff2"), url("../fonts/5695488/ae814eb0-14da-4198-85e0-2ca858fc1698.woff") format("woff");
+	font-family: "ct";
+	font-weight: 500;
+	src: url("../fonts/Happiness-Sans-Regular.woff2") format("woff2"),
+		url("../fonts/Happiness-Sans-Regular.woff") format("woff");
+}
+
+
+@font-face {
+	font-family: 'Noto';
+	font-style: normal;
+	font-weight: 300;
+	src: url(../fonts/NotoSans-Light.woff2) format("woff2"),
+		url(../fonts/NotoSans-Light.woff) format("woff"),
+		url(../fonts/NotoSans-Light.otf) format("opentype");
 }
 
 @font-face {
-    font-family: "ct";
-    font-style: italic;
-    font-weight: 700;
-    src: url("../fonts/5695494/f79f7657-2d51-48d1-a41a-10fb3576527d.woff2") format("woff2"), url("../fonts/5695494/234f8543-9255-4323-8b4c-071c30bb2407.woff") format("woff");
+	font-family: 'Noto';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/NotoSans-Regular.woff2) format("woff2"),
+		url(../fonts/NotoSans-Regular.woff) format("woff"),
+		url(../fonts/NotoSans-Regular.otf) format("opentype");
 }
 
 @font-face {
-    font-family: "ct";
-    font-weight: 500;
-    src: url("../fonts/5695484/0f0ce8a4-cd9e-4064-b7d3-94c3467438c8.woff2") format("woff2"), url("../fonts//5695484/49db96b2-de91-48d5-83fa-753072c343c6.woff") format("woff");
+	font-family: 'Noto';
+	font-style: normal;
+	font-weight: 700;
+	src: url(../fonts/NotoSans-Bold.woff2) format("woff2"),
+		url(../fonts/NotoSans-Bold.woff) format("woff"),
+		url(../fonts/NotoSans-Bold.otf) format("opentype");
 }
 
 @font-face {
-    font-family: "ct";
-    font-style: italic;
-    font-weight: 500;
-    src: url("../fonts/5695486/4419b057-d736-42a0-b976-7b83d78563fc.woff2") format("woff2"), url("../fonts//5695486/cba4e901-c14e-4786-a59d-cf6e784e8a13.woff") format("woff");
-}
-
-@font-face {
-    font-family: 'Noto';
-    font-style: normal;
-    font-weight: 300;
-    src: url(../fonts/NotoSans-Light.woff2) format("woff2"), url(../fonts/NotoSans-Light.woff) format("woff"), url(../fonts/NotoSans-Light.otf) format("opentype");
-}
-
-@font-face {
-    font-family: 'Noto';
-    font-style: normal;
-    font-weight: 400;
-    src: url(../fonts/NotoSans-Regular.woff2) format("woff2"), url(../fonts/NotoSans-Regular.woff) format("woff"), url(../fonts/NotoSans-Regular.otf) format("opentype");
-}
-
-@font-face {
-    font-family: 'Noto';
-    font-style: normal;
-    font-weight: 700;
-    src: url(../fonts/NotoSans-Bold.woff2) format("woff2"), url(../fonts/NotoSans-Bold.woff) format("woff"), url(../fonts/NotoSans-Bold.otf) format("opentype");
-}
-
-@font-face {
-    font-family: 'Noto';
-    font-style: normal;
-    font-weight: 500;
-    src: url(../fonts/NotoSans-Medium.woff2) format("woff2"), url(../fonts/NotoSans-Medium.woff) format("woff"), url(../fonts/NotoSans-Medium.otf) format("opentype");
+	font-family: 'Noto';
+	font-style: normal;
+	font-weight: 500;
+	src: url(../fonts/NotoSans-Medium.woff2) format("woff2"),
+		url(../fonts/NotoSans-Medium.woff) format("woff"),
+		url(../fonts/NotoSans-Medium.otf) format("opentype");
 }
 
 /* reset */

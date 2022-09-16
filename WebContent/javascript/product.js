@@ -188,13 +188,13 @@ function needLogin() {
 	})
 };
 
-var tab1 = $("#detail-img-text-box").offset().top - 100;
-var tab2 = $("#detail-review-box").offset().top - 100;
-var tab3 = $("#detail-qna-box").offset().top - 100;
-var tab4 = $("#detail-purchaseInfo-box").offset().top - 100;
+//var tab1 = $("#detail-img-text-box").offset().top - 100;
+//var tab2 = $("#detail-review-box").offset().top - 100;
+//var tab3 = $("#detail-qna-box").offset().top - 100;
+//var tab4 = $("#detail-purchaseInfo-box").offset().top - 100;
 
 
-$(window).on("scroll", function() {
+/*$(window).on("scroll", function() {
 	var nowY = $(this).scrollTop();
 	
 	if(nowY > tab1) {
@@ -251,4 +251,4 @@ $("#tab-qna-a").click(function(event){
 $("#tab-purchaseInfo-a").click(function(event){
 	event.preventDefault();
 	$('html,body').animate({scrollTop:tab4+10}, 1000);
-});
+});*/

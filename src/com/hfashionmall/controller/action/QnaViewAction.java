@@ -16,7 +16,7 @@ public class QnaViewAction implements Action {
   @Override
   public void execute(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    String url = "qna/qnaView.jsp";
+    String url = "member/qnaView.jsp";
     
     HttpSession session = request.getSession();
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
@@ -24,9 +24,9 @@ public class QnaViewAction implements Action {
     if (loginUser == null) {
       url = "hfashionmallServlet?command=login_form";
     } else {
-      int qseq = Integer.parseInt(request.getParameter("qseq"));
+      int qna_sequence = Integer.parseInt(request.getParameter("qna_sequence"));
       QnaDAO qnaDAO = QnaDAO.getInstance();
-      QnaVO qnaVO = qnaDAO.getQna(qseq);
+      QnaVO qnaVO = qnaDAO.getQna(qna_sequence);
       request.setAttribute("qnaVO", qnaVO);
     }
     request.getRequestDispatcher(url).forward(request, response);
