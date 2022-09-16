@@ -27,7 +27,7 @@
 </form>
 
 		<!--End 실명확인팝업 요청 form ----------------------->
-		<form action="hfashionmallServlet?command=order_direct_insert" name="orderDTO" id="orderDTO" method="post">
+		<form name="orderDTO" id="orderDTO" method="post">
 		
 			<input type="hidden" name="myTmyYn" id="myTmyYn" value="N">
 			<section class="content-wrap">
