@@ -35,7 +35,7 @@ int reviewNo = 1;
   </article>
   -->
 <div id="container">
-<br><br><br><br><br><br>
+	<br> <br> <br> <br> <br> <br>
 	<div class="content-response">
 		<div class="product-view-top">
 			<div class="product-view-img">
@@ -43,28 +43,20 @@ int reviewNo = 1;
 					<div class="slide-container">
 						<div id="productImgSlide" class="swiper-wrapper">
 							<div class="swiper-slide">
-								<img
-									src="product_images/${productVO.product_code}_01.jpg"
-									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})"
-								 />
+								<img src="product_images/${productVO.product_code}_01.jpg"
+									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})" />
 							</div>
 							<div class="swiper-slide">
-								<img
-									src="product_images/${productVO.product_code}_02.jpg"
-									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})"
-								 />
+								<img src="product_images/${productVO.product_code}_02.jpg"
+									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})" />
 							</div>
 							<div class="swiper-slide">
-								<img
-									src="product_images/${productVO.product_code}_03.jpg"
-									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})"
-								 />
+								<img src="product_images/${productVO.product_code}_03.jpg"
+									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})" />
 							</div>
 							<div class="swiper-slide">
-								<img
-									src="product_images/${productVO.product_code}_04.jpg"
-									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})"
-								 />
+								<img src="product_images/${productVO.product_code}_04.jpg"
+									alt="[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})" />
 							</div>
 						</div>
 					</div>
@@ -81,14 +73,16 @@ int reviewNo = 1;
 
 				<p class="item-brand">
 					<a href="javascript:void(0);" onclick="goBrandMain(this);"
-						ctgryNo="BDMA21A09" ctgryOutptTpCd="" outptLinkUrl=""> ${productVO.product_brand}</a>
+						ctgryNo="BDMA21A09" ctgryOutptTpCd="" outptLinkUrl="">
+						${productVO.product_brand}</a>
 				</p>
 
 				<p class="item-tag">
-					<span class="code">${productVO.product_code}</span> <span class="tag"
-						style="color: #C2935F"> </span>
+					<span class="code">${productVO.product_code}</span> <span
+						class="tag" style="color: #C2935F"> </span>
 				</p>
-				<p class="item-name">[${productVO.product_brand}] ${productVO.product_name} (${productVO.product_code})</p>
+				<p class="item-name">[${productVO.product_brand}]
+					${productVO.product_name} (${productVO.product_code})</p>
 
 				<div class="item-price">
 					<p class="price">
@@ -119,7 +113,7 @@ int reviewNo = 1;
 									onclick="quantityCalc('plus');">
 									<span>더하기</span>
 								</button>
-							</span> <span class="price"> <span class="num">22,000</span>
+							</span> <span class="price"> <span class="num">${productVO.product_price}</span>
 								<button type="button" class="btn-reset"
 									onclick="resetOptionDiv(this);">
 									<span>옵션초기화</span>
@@ -149,7 +143,7 @@ int reviewNo = 1;
 						</div>
 
 						<div class="total" style="">
-							<strong class="tit">합계</strong> <span class="num">22,000</span>
+							<strong class="tit">합계</strong> <span class="num">${productVO.product_price}</span>
 						</div>
 
 						<div name="pkupDiv" class="dlv-sel" style="display: none;">
@@ -309,68 +303,68 @@ int reviewNo = 1;
 			</div>
 		</div>
 	</div>
-
+	<%--
 	<h1>${productVO.product_name}</h1>
 	<div class="products-box-info" id="itemdetail">
 		<form method="post" name="formm">
 			<!-- 이미지, 브랜드, 상품명, 가격, 사이즈선택  -->
-			<div class="products-info-image swiper-container">
-				<!-- 이미지 -->
-				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<img src="product_images/${productVO.product_code}_01.jpg"
-							style="width: 200px; height: 200px;" />
-						<!-- 동기적으로 불러오기 -->
-					</div>
-					<div class="swiper-slide">
-						<img src="product_images/${productVO.product_code}_02.jpg"
-							style="width: 200px; height: 200px;" />
-						<!-- 동기적으로 불러오기 -->
-					</div>
-					<div class="swiper-slide">
-						<img src="product_images/${productVO.product_code}_03.jpg"
-							style="width: 200px; height: 200px;" />
-						<!-- 동기적으로 불러오기 -->
-					</div>
-					<div class="swiper-slide">
-						<img src="product_images/${productVO.product_code}_04.jpg"
-							style="width: 200px; height: 200px;" />
-						<!-- 동기적으로 불러오기 -->
-					</div>
-				</div>
+	<div class="products-info-image swiper-container">
+		<!-- 이미지 -->
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<img src="product_images/${productVO.product_code}_01.jpg"
+					style="width: 200px; height: 200px;" />
+				<!-- 동기적으로 불러오기 -->
 			</div>
-			<span class="products-info-desciption">※ 이미지를 좌우로 드래그하면 더 많은
-				이미지를 확인하실 수 있습니다.</span>
-
-			<div class="products-box-detail">
-				<div class="products-box-detail-name">
-					<!-- 상품명 -->
-					<span>${productVO.product_name}</span>
-				</div>
-				<div class="products-box-detail-price">
-					<!-- 가격 -->
-					<span class="products-box-detail-price-figure">${productVO.product_price}</span>
-					<span>원</span>
-				</div>
-				<div class="products-box-detail-allPrice">
-					<span class="products-box-detail-allPrice-title">상품 금액</span> <span
-						class="products-box-detail-allPrice-figure"> <fmt:formatNumber
-							value="${productVO.product_price}" type="number" />원
-					</span>
-				</div>
-				<!-- 버튼 시작 -->
-				<button type="button" class="buy-btn" onclick="go_order()">바로
-					구매</button>
-				<!-- 장바구니 버튼 시작 -->
-				<button type="button" class="cart-btn" onclick="go_cart();">
-					<i class="material-icons">shopping_cart</i>
-				</button>
-				<!-- 장바구니 버튼 끝 -->
-				<!-- 버튼 끝 -->
+			<div class="swiper-slide">
+				<img src="product_images/${productVO.product_code}_02.jpg"
+					style="width: 200px; height: 200px;" />
+				<!-- 동기적으로 불러오기 -->
 			</div>
-		</form>
+			<div class="swiper-slide">
+				<img src="product_images/${productVO.product_code}_03.jpg"
+					style="width: 200px; height: 200px;" />
+				<!-- 동기적으로 불러오기 -->
+			</div>
+			<div class="swiper-slide">
+				<img src="product_images/${productVO.product_code}_04.jpg"
+					style="width: 200px; height: 200px;" />
+				<!-- 동기적으로 불러오기 -->
+			</div>
+		</div>
 	</div>
-	<!-- 아래 박스 전체 시작-->
+	<span class="products-info-desciption">※ 이미지를 좌우로 드래그하면 더 많은
+		이미지를 확인하실 수 있습니다.</span>
+
+	<div class="products-box-detail">
+		<div class="products-box-detail-name">
+			<!-- 상품명 -->
+			<span>${productVO.product_name}</span>
+		</div>
+		<div class="products-box-detail-price">
+			<!-- 가격 -->
+			<span class="products-box-detail-price-figure">${productVO.product_price}</span>
+			<span>원</span>
+		</div>
+		<div class="products-box-detail-allPrice">
+			<span class="products-box-detail-allPrice-title">상품 금액</span> <span
+				class="products-box-detail-allPrice-figure"> <fmt:formatNumber
+					value="${productVO.product_price}" type="number" />원
+			</span>
+		</div>
+		<!-- 버튼 시작 -->
+		<button type="button" class="buy-btn" onclick="go_order()">바로
+			구매</button>
+		<!-- 장바구니 버튼 시작 -->
+		<button type="button" class="cart-btn" onclick="go_cart();">
+			<i class="material-icons">shopping_cart</i>
+		</button>
+		<!-- 장바구니 버튼 끝 -->
+		<!-- 버튼 끝 -->
+	</div>
+	</form>
+</div>
+
 	<div class="wrap-detail-info">
 		<!-- 상품정보/리뷰/Q&A/주문정보 시작 -->
 		<div class="tab-detail-info">
@@ -430,7 +424,7 @@ int reviewNo = 1;
 		<!-- 주문정보 끝 -->
 
 	</div>
-</div>
-<!-- 아래 박스 전체 끝 -->
-<script type="text/javascript" src="javascript/product.js"></script>
-<%@ include file="../footer.jsp"%>
+</div> --%>
+	<!-- 아래 박스 전체 끝 -->
+	<script type="text/javascript" src="javascript/product.js"></script>
+	<%@ include file="../footer.jsp"%>
