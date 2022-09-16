@@ -11,7 +11,7 @@
 	                <p class="txt-sns">사용하는 SNS 계정으로 아이디 생성 없이 간편하게 회원가입 할 수 있습니다.</p>
 	            </div>
 				<h3 class="sec-title mt0" style="margin-top: 40px">필수 정보</h3>
-				<div class="tb1-write" style="padding-top: 40px; border-top: 1px solid #000;">
+				<div class="tbl-write" style="padding-top: 40px; border-top: 1px solid #000;">
 					<table>
 						<colgroup>
 						<col style="width: 160px">

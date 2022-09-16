@@ -1,0 +1,73 @@
+@charset "UTF-8";
+#mypage_summ {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-left: 500px;
+  display: inline-block;
+}
+
+#mypage_summ ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 0.5px solid #dcdbde;
+  border-radius: 30px;
+  margin: 0px;
+  padding: 0px;
+  background-color: rgba(238, 166, 89, 0.74);
+}
+
+#mypage_summ ul li {
+  list-style: none;
+  border-left: 0.5px solid #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  justify-items: center;
+  text-align: center;
+  padding-top: 15px;
+  font-family: "ON_IGothic";
+  color: #333333;
+  margin: 10px;
+}
+
+#mypage_summ ul li div {
+  display: block;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+}
+
+#mypage_summ ul li .bold {
+  font-size: 24px;
+  font-family: "ON_IGothic";
+  color: #FFF;
+}
+
+#mypage_summ ul li #point_top, #mypage_summ ul li #del_top {
+  position: relative;
+  top: 8px;
+}
+
+#mypage_summ ul li #name_bottom {
+  position: relative;
+  top: 7px;
+}
+
+#mypage_summ #mypage_summ_ul li:first-of-type {
+  border-left: none;
+}
+
+#reviewWrite {
+	padding:20px;
+	margin:50px;
+	color:red;
+}

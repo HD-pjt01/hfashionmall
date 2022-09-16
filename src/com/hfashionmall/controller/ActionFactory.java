@@ -1,6 +1,5 @@
 package com.hfashionmall.controller;
 
-
 import com.hfashionmall.controller.action.*;
 import com.hfashionmall.admin.controller.action.*;
 
@@ -12,7 +11,6 @@ public class ActionFactory {
   public static ActionFactory getInstance() {
     return instance;
   }
-
   public Action getAction(String command) {
     Action action = null;
     System.out.println("ActionFactory : " + command);
@@ -27,8 +25,7 @@ public class ActionFactory {
         action = new ProductBrandAction(); 
     } else if (command.equals("catagory")) {
       action = new ProductCategoryAction();
-    } 
-    else if (command.equals("contract")) {
+    } else if (command.equals("contract")) {
       action = new ContractAction();
     } else if (command.equals("join_form")) {
       action = new JoinFormAction();
@@ -60,10 +57,11 @@ public class ActionFactory {
       action = new OrderDetailAction();
     } else if (command.equals("order_all")) {
       action = new OrderAllAction();
-    } else if (command.equals("qna")) {
+    } 
+    /* 추가된 부분 2022 09 16 금요일 정승하 */
+    else if (command.equals("qna")) {
     	action = new QnaAction();
-    }
-    else if (command.equals("qna_list")) {
+    } else if (command.equals("qna_list")) {
       action = new QnaListAction();
     } else if (command.equals("qna_write_form")) {
       action = new QnaWriteFormAction();
@@ -71,7 +69,25 @@ public class ActionFactory {
       action = new QnaWriteAction();
     } else if (command.equals("qna_view")) {
       action = new QnaViewAction();
-    } 
+    } //   마이 페이지 리뷰 액션 추가
+	else if (command.equals("mypage_review")) {
+		action = new MyPageReviewAction();
+	} else if (command.equals("review_write")) {
+		action = new ReviewWriteAction();
+	}
+
+//상세 페이지에서 direct으로 order에 삽입
+	else if (command.equals("order_direct_insert")) {
+		action = new OrderDirectInsertAction();
+	}
+
+//카트 -> 주문서 창
+	else if (command.equals("ordering")) {
+		action = new OrderingAction();
+//제품 하나만 주문할 때 주문 창
+	} else if (command.equals("ordering_one")) {
+		action = new OrderingOneAction();
+	} 
     
     //admin
     if (command.equals("admin_login_form")) {

@@ -14,41 +14,47 @@ import com.hfashionmall.dto.OrderVO;
 
 public class OrderAllAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String url = "mypage/mypage.jsp";
-    
-    HttpSession session = request.getSession();
-    MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-    if (loginUser == null) {
-      url = "hfashionmallServlet?command=login_form";
-    } else {
-      OrderDAO orderDAO = OrderDAO.getInstance();
-      ArrayList<Integer> oseqList = 
-    		orderDAO.selectSeqOrderIng(loginUser.getMember_id());
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "mypage/mypage.jsp";
 
-      ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+		HttpSession session = request.getSession();
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			url = "hfashionmallServlet?command=login_form";
+		} else {
+			OrderDAO orderDAO = OrderDAO.getInstance();
+			ArrayList<Integer> oseqList = orderDAO.selectSeqOrdered(loginUser.getMember_id());
 
-      for (int oseq : oseqList) {
-        ArrayList<OrderVO> orderListIng = orderDAO.listOrderById(
-            loginUser.getMember_id(), "%", oseq);
+			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
 
-        OrderVO orderVO = orderListIng.get(0);
-        orderVO.setPname(orderVO.getPname() + " 외 "
-            + orderListIng.size() + "건");
-        System.out.println(orderVO.getIndate());
+			for (int oseq : oseqList) {
 
-        int totalPrice = 0;
-        for (OrderVO ovo : orderListIng) {
-          totalPrice += ovo.getPrice2() * ovo.getQuantity();
-        }
-        orderVO.setPrice2(totalPrice);
-        orderList.add(orderVO);
-      }
-      request.setAttribute("title", "총 주문 내역");
-      request.setAttribute("orderList", orderList);
-    }
-    request.getRequestDispatcher(url).forward(request, response);
-  }
+				ArrayList<OrderVO> orderListIng = orderDAO.listOrderById(loginUser.getMember_id(), "2", oseq);
+
+				if (orderListIng == null || orderListIng.size() == 0) {
+					request.setAttribute("title", "배송 완료 주문 내역");
+					request.setAttribute("orderList", orderList);
+				} else {
+					// 주문에서 제일 처음 주문 가져오기
+					OrderVO orderVO = orderListIng.get(0);
+					int count = orderListIng.size() - 1;
+					orderVO.setPname(orderVO.getPname() + " 외 " + count + "건");
+
+					int totalPrice = 0;
+					for (OrderVO ovo : orderListIng) {
+						totalPrice += ovo.getPrice() * ovo.getProduct_count();
+					}
+					orderVO.setPrice(totalPrice);
+					orderList.add(orderVO);
+				}
+
+				request.setAttribute("title", "배송 완료 주문 내역");
+				request.setAttribute("orderList", orderList);
+			}
+
+		}
+
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 }

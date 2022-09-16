@@ -49,6 +49,8 @@
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="css/ui.min.css">
+	<link rel="stylesheet" type="text/css" href="css/mypage.css">
+	<link rel="stylesheet" type="text/css" href="css/product.css">
 	<!-- javascript mingyu -->
 	<script type="text/javascript" src="javascript/libs/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="javascript/libs/jquery-ui.min.js"></script>
@@ -65,6 +67,8 @@
 	<script type="text/javascript" src="javascript/index.js"></script>
 	<script type="text/javascript" src="javascript/join.js"></script>
 	<script type="text/javascript" src="javascript/product.js"></script>
+	<script type="text/javascript" src="javascript/mypage.js"></script>
+	
 </head>
 
 
