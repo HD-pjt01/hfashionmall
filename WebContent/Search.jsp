@@ -26,5 +26,15 @@
 
 
 </body>
+<script>
+	let sf = document.getElementById("searchForm");
+	sf.addEventListener("submit", function(e) {
+		let msgEle = document.getElementById("Searchwindow");
+		if (msgEle.value.length == 0) {
+			alert('검색어를 입력해주세요');
+			e.preventDefault();
+		}
+	});
+</script>
 
 <%@ include file="./footer.jsp"%>
