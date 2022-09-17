@@ -1,12 +1,12 @@
 $(function() {
-	$('#btn-SearchLayer').click(function() {
-		$('#headerSearch').show();
+	$('#reviewOpen').click(function() {
+		$('#reviewPopup').show();
 	});
 });
 
 $(function() {
-	$('#btn-search-close').click(function() {
-		$('#headerSearch').hide();
+	$('#reviewClose').click(function() {
+		$('#reviewPopup').hide();
 	});
 });
 

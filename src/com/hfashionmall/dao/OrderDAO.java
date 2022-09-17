@@ -287,33 +287,10 @@ public class OrderDAO {
 			}
 			return orderList;
 		}
+		
 
-	/*
-	 * // ReviewDao 에서 받아온 order_detail_id 만 가져오기 // id : member_id, public
-	 * ArrayList<OrderVO> OrderByReviewable() { OrderVO orderVO = new OrderVO();
-	 * String sql = "select * from order_view where order_detail_id=? "; Connection
-	 * conn = null; PreparedStatement pstmt = null; ResultSet rs = null; try { conn
-	 * = DBManager.getConnection(); pstmt = conn.prepareStatement(sql);
-	 * pstmt.setInt(1, od_id);
-	 * 
-	 * rs = pstmt.executeQuery();
-	 * 
-	 * while (rs.next()) {
-	 * 
-	 * orderVO.setOrder_detail_id(rs.getInt(1)); orderVO.setOrder_id(rs.getInt(2));
-	 * orderVO.setMember_member_id(rs.getString(3));
-	 * orderVO.setOrder_register(rs.getTimestamp(4));
-	 * orderVO.setProduct_code(rs.getString(5));
-	 * orderVO.setProduct_count(rs.getInt(6)); orderVO.setMname(rs.getString(7));
-	 * orderVO.setZipcode(rs.getString(8)); orderVO.setAddr(rs.getString(9));
-	 * orderVO.setPhone(rs.getString(10)); orderVO.setPname(rs.getString(11));
-	 * orderVO.setPrice(rs.getInt(12));
-	 * orderVO.setOrder_detail_result(rs.getString(13)); }
-	 * 
-	 * } catch (Exception e) { e.printStackTrace();
-	 * System.out.println("review 가능한 ordervo받아오기 출력 오류"); } finally {
-	 * DBManager.close(conn, pstmt, rs); } return orderVO; }
-	 */
+
+	
 	/*
 	 * * 관리자 모드에서 사용되는 메소드 * *
 	 */

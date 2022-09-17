@@ -213,9 +213,6 @@ function click() {
 <input type="hidden" name="price" value="${cartVO.price}">
 <input type="hidden" name="totalPrice" value="${totalPrice}"> --%>
 
-
-
-
 						<div class="tbl-btn">
 							<button type="button" class="btn-type3-m" onclick="go_cart_delete()">
 								<span>선택삭제</span>

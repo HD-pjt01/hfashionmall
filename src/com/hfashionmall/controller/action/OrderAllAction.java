@@ -16,7 +16,7 @@ public class OrderAllAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "mypage/mypage.jsp";
+		String url = "mypage/orderDetail.jsp";
 
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
