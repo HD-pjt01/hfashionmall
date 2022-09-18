@@ -51,6 +51,5 @@
 		</table>
 	</form>
 </article>
-<%@ include file="../../footer.jsp"%>
 </body>
 </html>

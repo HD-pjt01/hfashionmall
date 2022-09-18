@@ -22,7 +22,7 @@
 		<input type="hidden" name="qna_sequence">
 		<table id="orderList">
 			<tr>
-				<th width="20%">제목</th>
+				<th>제목</th>
 				<td>${qnaVO.qna_subject}${qnaVO.qna_subject}</td>
 			</tr>
 			<tr>
@@ -36,11 +36,7 @@
 		</table>
 		<c:choose>
 			<c:when test='${qnaVO.qna_answer=="no"}'>
-				<table id="orderList">
-					<tr>
-						<td colspan="2"><img src="admin/images/opinionimg01.gif">
-						</td>
-					</tr>
+				<table id="qnaList">
 					<tr>
 						<td colspan="2"><textarea name="qna_answer" rows="10" id="accpCntn"
 								cols="30"></textarea> 
@@ -62,6 +58,5 @@
 		<input type="button" class="btn" value="목록" onClick="go_list()">
 	</form>
 </article>
-<%@ include file="../../footer.jsp"%>
 </body>
 </html>

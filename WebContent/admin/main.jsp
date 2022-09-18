@@ -2,54 +2,45 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>hfashionmall Admin</title>
-<link rel="stylesheet" href="admin/css/admin.css">
-<script type="text/javascript">
-	function admin_check() {
-		if (document.frm.admin_id.value == "") {
-			alert("아이디를 입력하세요.");
-			return false;
-		} else if (document.frm.admin_pw.value == "") {
-			alert("비밀번호를 입력하세요.");
-			return false;
+<%@ include file="/admin/header.jsp"%>
+<div id="container">
+	<script type="text/javascript">
+		function admin_check() {
+			if (document.frm.admin_id.value == "") {
+				alert("아이디를 입력하세요.");
+				return false;
+			} else if (document.frm.admin_pw.value == "") {
+				alert("비밀번호를 입력하세요.");
+				return false;
+			}
+			return true;
 		}
-		return true;
-	}
-</script>
-</head>
-
-<body>
-	<div id="wrap">
-		<div class="clear"></div>
-		<article>
-			<div id="loginform">
-				<form name="frm" method="post"
-					action="hfashionmallServlet?command=admin_login">
-					<table>
-						<tr>
-							<td>아 이 디</td>
-							<td><input type="text" name="admin_id" size="10"
-								value="admin"></td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>
-							<td><input type="password" name="admin_pw" size="10"
-								value="admin"></td>
-						</tr>
-						<tr align="center">
-							<td colspan="2"><input class="btn" type="submit"
-								value="관리자 로그인" onclick="return admin_check()"><br>
+	</script>
+	<article>
+		<div id="loginform">
+			<form name="frm" method="post"
+				action="hfashionmallServlet?command=admin_login">
+				<table>
+					<tr>
+						<td>아 이 디</td>
+						<td><input type="text" name="admin_id" size="10"
+							value="admin"></td>
+					</tr>
+					<tr>
+						<td>비밀번호</td>
+						<td><input type="password" name="admin_pw" size="10"
+							value="admin"></td>
+					</tr>
+					<tr align="center">
+						<td colspan="2"><input class="btn" type="submit"
+							value="관리자 로그인" onclick="return admin_check()"><br>
 							<br>
-								<h4 style="color: red">${message}</h4></td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</article>
-	</div>
+							<h4 style="color: red">${message}</h4></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</article>
+</div>
 </body>
 </html>

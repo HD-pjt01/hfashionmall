@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../header.jsp"%>
 <div id="container">
 	<form name="formm" method="post">
@@ -221,8 +222,6 @@
 				<div class="summary-box">
 					<ul>
 						<li><span class="title">전체문의</span> <span class="value">${fn:length(qnaList)}</span></li>
-						<li><span class="title">답변완료</span> <span class="value"></span></li>
-						<li><span class="title">답변대기</span> <span class="value"></span></li>
 					</ul>
 				</div>
 				<input type="hidden" id="ansStatCd" value="">

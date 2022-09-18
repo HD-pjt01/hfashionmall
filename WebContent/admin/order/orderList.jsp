@@ -65,6 +65,5 @@
       value="주문처리(입금확인)" onClick="go_order_save()">
 </form>
 </article>
-<%@ include file="../../footer.jsp"%>
 </body>
 </html>

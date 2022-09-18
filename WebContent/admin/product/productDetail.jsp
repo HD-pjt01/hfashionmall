@@ -37,6 +37,5 @@
 			onClick="go_list('${tpage}')">
 	</form>
 </article>
-<%@ include file="../../footer.jsp"%>
 </body>
 </html>
