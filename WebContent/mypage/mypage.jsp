@@ -308,7 +308,14 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                                     <li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
                                 </ul>
                             </li>
-							<li>
+                            <li>
+                                <div class="menu-depth1">리뷰 관리</div>
+                                <ul class="menu-depth2">
+                                    <li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
+                                    <li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
+                                </ul>
+                            </li>
+                            <li>
 								<div class="menu-depth1">QnA 조회</div>
 								<ul class="menu-depth2">
 									<li><a href="hfashionmallServlet?command=qna_view">1:1
@@ -318,13 +325,11 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
 							<li>
 								<div class="menu-depth1">회원정보</div>
 								<ul class="menu-depth2">
-									<li><a href="hfashionmallServlet?command=mypage_edit">회원정보
-											수정</a></li>
-									<li><a href="hfashionmallServlet?command=mypage_out">회원
-											탈퇴</a></li>
+									<li><a href="hfashionmallServlet?command=mypage_edit">회원정보 수정</a></li>
+									<li><a href="hfashionmallServlet?command=mypage_out">회원 탈퇴</a></li>
 								</ul>
 							</li>
-						</ul>
+                        </ul>
                     </nav>
                 </div>
                 <div class="snb-content-wrap">
