@@ -168,6 +168,7 @@ public class ProductDAO {
 		}
 		return productList;
 	}
+	
 
 	public ArrayList<ProductVO> listCategoryProduct(String product_category) {
 		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
