@@ -2331,7 +2331,7 @@ body.gnb-show #container::before {
     right: 0;
     width: 60px;
     height: 74px;
-    background: url("../images/btn_search.png") no-repeat 100% 50%;
+    background: url("../images/btn_search_head.png") no-repeat 100% 50%;
     font-size: 0;
 }
 
@@ -20705,7 +20705,7 @@ select.select-sm {
 
 .review-layer .review-write .write-inner {
     display: inline-block;
-    width: 760px;
+    width: 360px;
     vertical-align: top;
 }
 
