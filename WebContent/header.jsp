@@ -76,10 +76,7 @@
 		<div class="skip-nav">
 			<a href="#gnb">메뉴 바로가기</a> <a href="#container">본문 바로가기</a>
 		</div>
-
 		<!-- Header -->
-
-
 		<header id="header" class="">
 			<div class="header-inner">
 				<div class="header-wrap">

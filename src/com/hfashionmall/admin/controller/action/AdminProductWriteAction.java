@@ -36,9 +36,9 @@ public class AdminProductWriteAction implements Action {
     ); // 이 시점을 기해 파일은 이미 저장이 되었다
     
     ProductVO productVO = new ProductVO();
-    productVO.setProduct_kind(multi.getParameter("kind"));
-    productVO.setName(multi.getParameter("name"));
-    productVO.setPrice1(Integer.parseInt(multi.getParameter("price1")));
+    productVO.setProduct_brand(multi.getParameter("product_brand"));
+    productVO.setProduct_name(multi.getParameter("prdouct_name"));
+    productVO.setProduct_price(Integer.parseInt(multi.getParameter("price")));
     productVO.setPrice2(Integer.parseInt(multi.getParameter("price2")));
     productVO.setPrice3(Integer.parseInt(multi.getParameter("price2"))
         - Integer.parseInt(multi.getParameter("price1")));

@@ -58,7 +58,7 @@
                         <li><a href="https://www.handsome.co.kr">회사소개</a></li>
                         <li><a href="https://www.hfashionmall.com/public/cspage/shopInfo/">매장안내</a></li>
                         <li><a href="hfashionmallServlet?command=qna">고객센터</a></li>
-
+						<li><a href="hfashionmallServlet?command=admin_login_form">관리자</a></li>
                     </ul>
                 </div>
                 <div class="box">

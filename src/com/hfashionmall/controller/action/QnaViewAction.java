@@ -1,6 +1,7 @@
 package com.hfashionmall.controller.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +19,18 @@ public class QnaViewAction implements Action {
       throws ServletException, IOException {
     String url = "member/qnaView.jsp";
     
+    System.out.println("member/qnaView.jsp");
+    
     HttpSession session = request.getSession();
     MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
     if (loginUser == null) {
       url = "hfashionmallServlet?command=login_form";
     } else {
-      int qna_sequence = Integer.parseInt(request.getParameter("qna_sequence"));
+      //String qna_sequence = Integer.parseInt(request.getParameter("qna_sequence"));
       QnaDAO qnaDAO = QnaDAO.getInstance();
-      QnaVO qnaVO = qnaDAO.getQna(qna_sequence);
-      request.setAttribute("qnaVO", qnaVO);
+      ArrayList<QnaVO> qnaList = qnaDAO.listMyQna(loginUser.getMember_id());
+      request.setAttribute("qnaList", qnaList);
     }
     request.getRequestDispatcher(url).forward(request, response);
   }

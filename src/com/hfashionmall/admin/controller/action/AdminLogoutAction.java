@@ -11,17 +11,16 @@ import com.hfashionmall.controller.action.Action;
 
 public class AdminLogoutAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String url="hfashionmallServlet?command=admin_login_form";
-    
-    HttpSession session=request.getSession(false);
-    if(session!=null){
-      session.invalidate();
-      request.setAttribute("message", "");
-    }    
-    
-    request.getRequestDispatcher(url).forward(request, response);  
-  }
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "hfashionmallServlet?command=admin_login_form";
+
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate();
+			request.setAttribute("message", "");
+		}
+
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 }

@@ -57,9 +57,7 @@
 				<th>상품명</th>
 				<th>결제 금액</th>
 			</tr>
-
 			<c:forEach items="${orderList}" var="orderVO">
-
 				<!-- 이 리스트를 선택하면 리뷰 창이 생성 -->
 				<tr class="reviewWrite_tr" id="reviewWrite">
 					<td><fmt:formatDate value="${orderVO.order_register}"
@@ -67,11 +65,8 @@
 					<td>${orderVO.pname}</td>
 					<td><fmt:formatNumber value="${orderVO.price}" type="currency" /></td>
 				</tr>
-
 				<!-- 작성칸 -->
-
 				<tr>
-
 					<td id="id1" class="rateField view_hide" colspan="5">
 						<%-- 별점 할 때 사용					
 							<div class="rate_star_wrapper">

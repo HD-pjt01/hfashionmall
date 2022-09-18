@@ -3,8 +3,7 @@
 <%@ include file="../header.jsp"%>
 <div id="container">
 	<article>
-		<h2>1:1 고객 게시판</h2>
-		<h3>고객님의 질문에 대해서 운영자가 1:1 답변을 드립니다.</h3>
+		<h2>나의 QnA 조회</h2>
 		<form name="formm" method="post">
 			<table id="cartList">
 				<tr>

@@ -336,7 +336,7 @@ public class OrderDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				OrderVO orderVO = new OrderVO();
-				orderVO.setOdseq(rs.getInt("ODSEQ"));
+				orderVO.setOrder_id(rs.getInt("ODSEQ"));
 				orderVO.setOseq(rs.getInt("OSEQ"));
 				orderVO.setId(rs.getString("ID"));
 				orderVO.setPseq(rs.getInt("PSEQ"));
