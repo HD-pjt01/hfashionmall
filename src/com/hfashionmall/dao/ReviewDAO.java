@@ -56,7 +56,7 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from review_view where product_product_code=?";
+		String sql = "select * from review_view where product_product_code=? order by 3 desc";
 
 		try {
 			conn = DBManager.getConnection();
@@ -91,7 +91,8 @@ public class ReviewDAO {
 	}
 
 
-	// member_id로 리뷰 불러오기
+	// member_id로 리뷰 불러오기 
+	
 	public ArrayList<ReviewVO> findByMember_id(String member_id) {
 
 		ArrayList<ReviewVO> reviewList = new ArrayList<ReviewVO>();
@@ -100,7 +101,7 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select * from review_view where member_member_id =?";
+		String sql = "select * from review_view where member_member_id =? order by 3 desc";
 
 		try {
 			conn = DBManager.getConnection();

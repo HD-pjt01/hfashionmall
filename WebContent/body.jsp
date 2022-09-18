@@ -398,7 +398,8 @@
 					</span>
 				</div>
 			</div>
-		</section>
+		</section>'
+	
 		<section class="dp-section main-keyword-ranking">
 			<div class="keyword-ranking">
 				<h2 class="title">Category List</h2>

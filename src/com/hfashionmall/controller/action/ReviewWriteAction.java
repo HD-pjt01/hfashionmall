@@ -28,7 +28,7 @@ public class ReviewWriteAction implements Action {
 			int od_id = Integer.parseInt(request.getParameter("od_id"));
 
 			System.out.println("여기 od_id는" + od_id);
-
+			System.out.println("컨텐츠" + request.getParameter("r_content"));
 			// od_id로 order_view에서 member_id, mname , product_code, pname, od_result가져오기
 			/*
 			 * OrderDAO orderDAO = OrderDAO.getInstance(); OrderVO orderVO = new OrderVO();

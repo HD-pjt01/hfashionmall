@@ -70,15 +70,6 @@
 				</li>
 			</c:forEach>
 		</ul>
-		<div class="paging" id="pagingArea">
-			<span> <strong title="현재 페이지">1</strong> <a
-				href="javascript:void(0)" id="page_2" onclick="movePage('2')">2</a>
-				<a href="javascript:void(0)" id="page_3" onclick="movePage('3')">3</a>
-				<a href="javascript:void(0)" id="page_4" onclick="movePage('4')">4</a>
-				<a href="javascript:void(0)" id="page_5" onclick="movePage('5')">5</a>
-				<a href="javascript:void(0)" id="page_6" onclick="movePage('6')">6</a>
-			</span>
-		</div>
 	</section>
 	
 </div>

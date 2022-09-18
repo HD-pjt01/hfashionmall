@@ -56,11 +56,17 @@ public class ActionFactory {
 			action = new OrderListAction();
 		} else if (command.equals("mypage")) {
 			action = new MyPageAction();
+		} else if (command.equals("mypage_edit")) {
+			action = new MyPageEditAction();
+		} else if (command.equals("mypage_out")) {
+			action = new MyPageOutAction();
 		} else if (command.equals("order_detail")) {
 			action = new OrderDetailAction();
 		} else if (command.equals("order_all")) {
 			action = new OrderAllAction();
-		} else if (command.equals("qna")) {
+		}
+		/* 추가된 부분 2022 09 16 금요일 정승하 */
+		else if (command.equals("qna")) {
 			action = new QnaAction();
 		} else if (command.equals("qna_list")) {
 			action = new QnaListAction();
@@ -70,11 +76,41 @@ public class ActionFactory {
 			action = new QnaWriteAction();
 		} else if (command.equals("qna_view")) {
 			action = new QnaViewAction();
-		} else if (command.equals("search")) {
+		}
+
+		// 마이 페이지 리뷰 액션 추가
+		else if (command.equals("mypage_review")) {
+			action = new MyPageReviewAction();
+		} else if (command.equals("review_write")) {
+			action = new ReviewWriteAction();
+		} else if (command.equals("review_list")) {
+			action = new ReviewListAction();
+		} else if (command.equals("real_mypage")) {
+			action = new RealMyPageAction();
+		}
+
+		// 상세 페이지에서 direct으로 order에 삽입
+		else if (command.equals("order_direct_insert")) {
+			action = new OrderDirectInsertAction();
+		}
+
+		// 카트 -> 주문서 창
+		else if (command.equals("ordering")) {
+			action = new OrderingAction();
+			// 제품 하나만 주문할 때 주문 창
+		} else if (command.equals("ordering_one")) {
+			action = new OrderingOneAction();
+		}
+		// 검색
+		else if (command.equals("search")) {
 			action = new SearchFormAction();
 		} else if (command.equals("search_result")) {
 			action = new SearchAction();
-		} 
+		}
+		// 차트
+		else if (command.equals("chart")) {
+			action = new ChartAction();
+		}
 
 		// admin
 		if (command.equals("admin_login_form")) {
@@ -107,6 +143,8 @@ public class ActionFactory {
 			action = new AdminQnaDetailAction();
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
+		} else if (command.equals("admin_data")) {
+			action = new AdminDataAction();
 		}
 		return action;
 	}

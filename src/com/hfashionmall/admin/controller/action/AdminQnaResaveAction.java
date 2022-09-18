@@ -12,22 +12,21 @@ import com.hfashionmall.dto.QnaVO;
 
 public class AdminQnaResaveAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    String url = "hfashionmallServlet?command=admin_product_list";
+		String url = "hfashionmallServlet?command=admin_qna_list";
 
-    String qseq = request.getParameter("qseq").trim();
-    String reply =request.getParameter("reply").trim();
-    
-    QnaVO qnaVO = new QnaVO();
-    qnaVO.setQseq(Integer.parseInt(qseq));
-    qnaVO.setReply(reply);    
-    
-    QnaDAO qnaDAO = QnaDAO.getInstance();
-    qnaDAO.updateQna(qnaVO);
-    
-    response.sendRedirect(url);
-  }
+		String qna_sequence = request.getParameter("qna_sequence").trim();
+		String qna_answer = request.getParameter("qna_answer").trim();
+
+		QnaVO qnaVO = new QnaVO();
+		qnaVO.setQna_sequence(Integer.parseInt(qna_sequence));
+		qnaVO.setQna_answer(qna_answer);
+
+		QnaDAO qnaDAO = QnaDAO.getInstance();
+		qnaDAO.updateQna(qnaVO);
+
+		response.sendRedirect(url);
+	}
 }

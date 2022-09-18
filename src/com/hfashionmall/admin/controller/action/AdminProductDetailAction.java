@@ -12,30 +12,28 @@ import com.hfashionmall.dto.ProductVO;
 
 public class AdminProductDetailAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    String url = "admin/product/productDetail.jsp";
+		String url = "admin/product/productDetail.jsp";
 
-    String pseq = request.getParameter("pseq").trim();
+		String pseq = request.getParameter("pseq").trim();
 
-    ProductDAO productDAO = ProductDAO.getInstance();
-    ProductVO productVO = productDAO.getProduct(pseq);
+		ProductDAO productDAO = ProductDAO.getInstance();
+		ProductVO productVO = productDAO.getProduct(pseq);
 
-    request.setAttribute("productVO", productVO);
+		request.setAttribute("productVO", productVO);
 
-    // 상품 리스트(product_list.jsp) 페이지에서 쿼리 스트링으로 넘겨준 현재 페이지를 얻어온다.
-    String tpage = "1";
-    if (request.getParameter("tpage") != null) {
-      tpage = request.getParameter("tpage");
-    }
-    String kindList[] = { "0", "Heels", "Boots", "Sandals", "Slipers",
-        "Shcakers", "Sale" };
-    request.setAttribute("tpage", tpage);
-    int index=Integer.parseInt(productVO.getProduct_brand().trim());
-    request.setAttribute("kind", kindList[index]);
-    
-    request.getRequestDispatcher(url).forward(request, response);
-  }
+		// 상품 리스트(product_list.jsp) 페이지에서 쿼리 스트링으로 넘겨준 현재 페이지를 얻어온다.
+		String tpage = "1";
+		if (request.getParameter("tpage") != null) {
+			tpage = request.getParameter("tpage");
+		}
+		String kindList[] = { "0", "Heels", "Boots", "Sandals", "Slipers", "Shcakers", "Sale" };
+		request.setAttribute("tpage", tpage);
+		int index = Integer.parseInt(productVO.getProduct_brand().trim());
+		request.setAttribute("kind", kindList[index]);
+
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 }

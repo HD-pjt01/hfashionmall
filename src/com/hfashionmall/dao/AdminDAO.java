@@ -5,13 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import util.DBManager;
 
-public class WorkerDAO {
-	private WorkerDAO() {
+public class AdminDAO {
+	private AdminDAO() {
 	}
 
-	private static WorkerDAO instance = new WorkerDAO();
+	private static AdminDAO instance = new AdminDAO();
 
-	public static WorkerDAO getInstance() {
+	public static AdminDAO getInstance() {
 		return instance;
 	}
 
@@ -22,7 +22,7 @@ public class WorkerDAO {
 	
 	// 아이디를 검색 조건으로 주어서 비밀 번호를 얻어온다.	
 	public int workerCheck(String userid, String userpw) {
-		String sql = "select pwd from worker where id=?";
+		String sql = "select admin_pw from admin where admin_id=?";
 		int result = -1;
 		// 디비와 연동
 		Connection conn = null;
@@ -50,5 +50,5 @@ public class WorkerDAO {
 		return result;
 	}
 	
-}// WorkerDAO
+}// AdminDAO
 

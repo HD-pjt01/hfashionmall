@@ -13,17 +13,16 @@ import com.hfashionmall.dto.QnaVO;
 
 public class AdminQnaListAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    String url = "admin/qna/qnaList.jsp";
-    
-    QnaDAO qnaDAO = QnaDAO.getInstance();
-    ArrayList<QnaVO> qnaList = qnaDAO.listAllQna();
+		String url = "admin/qna/qnaList.jsp";
 
-    request.setAttribute("qnaList", qnaList);
+		QnaDAO qnaDAO = QnaDAO.getInstance();
+		ArrayList<QnaVO> qnaList = qnaDAO.listAllQna();
 
-    request.getRequestDispatcher(url).forward(request, response);
-  }
+		request.setAttribute("qnaList", qnaList);
+
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 }

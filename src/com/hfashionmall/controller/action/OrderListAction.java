@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.hfashionmall.dao.MemberDAO;
 import com.hfashionmall.dao.OrderDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.OrderVO;
@@ -34,6 +35,8 @@ public class OrderListAction implements Action {
         totalPrice+=orderVO.getPrice()*orderVO.getProduct_count();
       }
       
+    
+      request.setAttribute("memberVO", loginUser);
       request.setAttribute("orderList", orderList);
       request.setAttribute("totalPrice", totalPrice);
     }

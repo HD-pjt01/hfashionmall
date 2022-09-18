@@ -36,7 +36,7 @@ public class AdminProductUpdateAction implements Action {
     ); // 이 시점을 기해 파일은 이미 저장이 되었다
     
     ProductVO productVO = new ProductVO();
-    productVO.setPseq(Integer.parseInt(multi.getParameter("pseq")));
+    productVO.setProduct_code(Integer.parseInt(multi.getParameter("product_code")));
     productVO.setKind(multi.getParameter("kind"));
     productVO.setName(multi.getParameter("name"));
     productVO.setPrice1(Integer.parseInt(multi.getParameter("price1")));

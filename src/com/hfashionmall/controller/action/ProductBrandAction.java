@@ -19,6 +19,7 @@ public class ProductBrandAction implements Action {
 		String url="product/productBrand.jsp";
 		System.out.println("request : " + request);
 		String brand=request.getParameter("case").trim();
+		//String upAndDown = request.getParameter(brand).trim();
 		
 		System.out.println("brand : " + brand);
 		

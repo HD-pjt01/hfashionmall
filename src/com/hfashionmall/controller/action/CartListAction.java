@@ -27,7 +27,7 @@ public class CartListAction implements Action {
       CartDAO cartDAO = CartDAO.getInstance();
       ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getMember_id());
 
-      int totalPrice = 10;
+      int totalPrice = 0;
       
 	
 		  for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price() *

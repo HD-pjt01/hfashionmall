@@ -29,6 +29,9 @@ public class CartInsertAction implements Action {
       cartVO.setProduct_product_code(request.getParameter("product_code")); // 노다지는 제품번호를 코드로 , 우리는 제품 번호를 String으로
       cartVO.setProduct_count(Integer.parseInt(request
           .getParameter("quantity")));
+      
+      System.out.println(Integer.parseInt(request
+          .getParameter("quantity")));
 
       CartDAO cartDAO = CartDAO.getInstance();
       cartDAO.insertCart(cartVO);

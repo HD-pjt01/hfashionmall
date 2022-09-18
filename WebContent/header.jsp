@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -79,6 +79,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+	
 </style>
 
 </head>
@@ -114,11 +115,11 @@
 						<c:otherwise>
 							<span style="color: white">${sessionScope.loginUser.member_name}(${sessionScope.loginUser.member_id})</span>
 							<span><a href="hfashionmallServlet?command=logout">로그아웃</a></span>
-							<!-- <span><a href="hfashionmallServlet?command=qna_list">QnA</a></span> -->
+							
 							<span><a href="hfashionmallServlet?command=qna">QNA</a></span>
 						</c:otherwise>
 					</c:choose>
-					<span><a href="hfashionmallServlet?command=mypage">마이페이지</a></span>
+					<span><a href="hfashionmallServlet?command=real_mypage">마이페이지</a></span>
 					<span><a href="hfashionmallServlet?command=cart_list">장바구니</a></span>
 				</nav>
 
@@ -197,6 +198,10 @@
 							<a href="/display/best"> <span> 베스트</span>
 							</a>
 						</div>
+						<div class="gnb-category " id="">
+							<a href="hfashionmallServlet?command=chart"> <span> 가격대</span>
+							</a>
+						</div>
 						<div class="gnb-category " id="gnbBrnd">
 							<a href="#"> <span> 브랜드</span>
 							</a>
@@ -207,7 +212,7 @@
 										<li><a
 											href="hfashionmallServlet?command=brand&case=Tommy%20Hilfiger"
 											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA08"">TOMMY HILFIGER</a></li>
+											brndctgryno="BDMA08">TOMMY HILFIGER</a></li>
 										<li><a href="hfashionmallServlet?command=brand&case=DKNY"
 											onclick="goCategoryLink(this);" tp="BRND_MAIN"
 											brndctgryno="BDMA09">DKNY</a></li>
@@ -215,128 +220,17 @@
 											onclick="goCategoryLink(this);" tp="BRND_MAIN"
 											brndctgryno="BDMA07">ck Calvin Klein</a></li>
 										<!-- 카테고리 depth : 2, 자사 브랜드 여부 : Y -->
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A04">DECKE</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A01">rouge＆lounge</a>
-											<ul>
-											</ul></li>
 										<li><a href="hfashionmallServlet?command=brand&case=SJYP"
 											onclick="goCategoryLink(this);" tp="BRND_MAIN"
 											brndctgryno="BDMA21A02">SJYP</a>
 											<ul>
-											</ul></li>
+											</ul>
+											</li>
 										<!-- 카테고리 depth : 1, 자사 브랜드 여부 : N -->
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA43">BENSIMON</a></li>
-										<li><a href="hfashionmallServlet?command=brand&case=ck"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA24">Calvin Klein</a></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA33">athe vanessabruno</a></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA30">JILL STUART NEW YORK</a></li>
 										<!-- 카테고리 depth : 2, 자사 브랜드 여부 : N -->
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A21">allegri</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A34">American Needle</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A19">ARENA</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A32">BOSS</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A18">DESCENTE</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A31">Ferraro Milano</a>
-											<ul>
-											</ul></li>
 										<li><a href="hfashionmallServlet?command=brand&case=FILA"
 											onclick="goCategoryLink(this);" tp="BRND_MAIN"
 											brndctgryno="BDMA21A09">FILA</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A12">GUESS</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A23">Havaianas</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A25">HUGO</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A26">Kipling</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A29">Laulhere</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A27">Le Minor</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A33">LORNA MURRAY</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A28">MARTINE GOLF</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A30">SKECHERS</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A22">Taylormade</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A20">Timberland</a>
-											<ul>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="BRND_MAIN"
-											brndctgryno="BDMA21A24">vanessabruno</a>
 											<ul>
 											</ul></li>
 									</ul>
@@ -351,20 +245,8 @@
 									<ul class="depth2-menu">
 										<li><a href="javascript:void(0);"
 											onclick="goCategoryLink(this);" tp="CTGRY"
-											dspctgryno="HFMA01">남성</a>
+											dspctgryno="HFMA01">category</a>
 											<ul>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A18">EXCLUSIVE</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A01">티셔츠</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A02">셔츠</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A03">니트/스웨터</a></li>
 												<li><a
 													href="hfashionmallServlet?command=catagory&case=아우터"
 													onclick="goCategoryLink(this);" tp="CTGRY"
@@ -377,12 +259,7 @@
 													href="hfashionmallServlet?command=catagory&case=맨투맨"
 													onclick="goCategoryLink(this);" tp="CTGRY"
 													dspctgryno="HFMA01A06">맨투맨</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A07">수트정장</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A08">언더웨어</a></li>
+												
 												<li><a
 													href="hfashionmallServlet?command=catagory&case=가방"
 													onclick="goCategoryLink(this);" tp="CTGRY"
@@ -391,69 +268,6 @@
 													href="hfashionmallServlet?command=catagory&case=모자"
 													onclick="goCategoryLink(this);" tp="CTGRY"
 													dspctgryno="HFMA01A10">모자</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A12">수영복</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A13">악세서리</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA01A14">스포츠웨어</a></li>
-											</ul></li>
-										<li><a href="javascript:void(0);"
-											onclick="goCategoryLink(this);" tp="CTGRY"
-											dspctgryno="HFMA02">여성</a>
-											<ul>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A17">EXCLUSIVE</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A03">니트/스웨터</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A01">티셔츠</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A02">셔츠/블라우스</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A04">아우터</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A05">팬츠</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A06">데님</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A07">수트정장</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A08">언더웨어</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A09">원피스</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A10">스커트</a></li>
-												<li><a
-													href="hfashionmallServlet?command=catagory&case=bag"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A11">가방</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A12">신발</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A14">수영복</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A15">악세서리</a></li>
-												<li><a href="javascript:void(0);"
-													onclick="goCategoryLink(this);" tp="CTGRY"
-													dspctgryno="HFMA02A16">스포츠웨어</a></li>
 											</ul></li>
 									</ul>
 								</div>

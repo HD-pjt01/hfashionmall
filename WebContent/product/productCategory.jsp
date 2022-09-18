@@ -23,15 +23,9 @@
 										<li><label><input type="radio" name="pdSort"
 												value="NEW_GOD_SEQ" checked=""> <span>신상품순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
-												value="SALE_QTY_SEQ"> <span>인기상품순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
 												value="LWET_PRC_SEQ"> <span>낮은가격순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
 												value="BEST_PRC_SEQ"> <span>높은가격순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
-												value="BEST_DC_SEQ"> <span>할인율순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
-												value="BEST_CHOISE_SEQ"> <span>마이클로젯순</span></label></li>
 									</ul>
 								</div>
 							</div>
@@ -56,7 +50,7 @@
 									<div class="img">
 										<img src="product_images/${productVO.product_code}_01.jpg"
 											alt="[${productVO.product_code}] ${productVO.product_name} (${productVO.product_code})">
-									</div> 
+									</div>
 								</a>
 							</div>
 						</div>
@@ -93,6 +87,6 @@
 			</span>
 		</div>
 	</section>
-	
+
 </div>
 <%@ include file="../footer.jsp"%>
