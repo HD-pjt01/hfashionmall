@@ -25,9 +25,12 @@ public class CartInsertAction implements Action {
     } else {
       CartVO cartVO = new CartVO();
       cartVO.setMember_member_id(loginUser.getMember_id());
-      // 제품 코드랑 수량 -> form 에서 받아옴
+//       제품 코드랑 수량 -> form 에서 받아옴
       cartVO.setProduct_product_code(request.getParameter("product_code")); // 노다지는 제품번호를 코드로 , 우리는 제품 번호를 String으로
       cartVO.setProduct_count(Integer.parseInt(request
+          .getParameter("quantity")));
+      
+      System.out.println(Integer.parseInt(request
           .getParameter("quantity")));
 
       CartDAO cartDAO = CartDAO.getInstance();

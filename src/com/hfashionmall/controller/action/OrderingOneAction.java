@@ -23,17 +23,23 @@ public class OrderingOneAction implements Action {
 		if (loginUser == null) {
 			url = "hfashionmallServlet?command=login_form";
 		} else {
-			String product_code = request.getParameter("product_code").trim();
-			int product_count = Integer.parseInt(request.getParameter("product_count"));
-
-			ProductDAO productDAO = ProductDAO.getInstance();
-			ProductVO productVO = productDAO.getProduct(product_code);
-
-			request.setAttribute("productVO", productVO);
-			request.setAttribute("product_count", product_count);
+			
+			  String product_code = request.getParameter("product_code").trim(); 
+			  int product_count = Integer.parseInt(request.getParameter("quantity"));
+			  
+			  System.out.println(product_code);
+			  System.out.println(product_count);
+			  
+				
+				  ProductDAO productDAO = ProductDAO.getInstance(); ProductVO productVO =
+				  productDAO.getProduct(product_code);
+				  
+				  request.setAttribute("productVO", productVO);
+				  request.setAttribute("product_count", product_count);
+				 
 
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		 request.getRequestDispatcher(url).forward(request, response); 
 	}
 
 }

@@ -76,24 +76,36 @@ public class ActionFactory {
 			action = new QnaWriteAction();
 		} else if (command.equals("qna_view")) {
 			action = new QnaViewAction();
-		} // 마이 페이지 리뷰 액션 추가
+		}
+
+		// 마이 페이지 리뷰 액션 추가
 		else if (command.equals("mypage_review")) {
 			action = new MyPageReviewAction();
 		} else if (command.equals("review_write")) {
 			action = new ReviewWriteAction();
+		} else if (command.equals("review_list")) {
+			action = new ReviewListAction();
+		} else if (command.equals("real_mypage")) {
+			action = new RealMyPageAction();
 		}
 
-//상세 페이지에서 direct으로 order에 삽입
+		// 상세 페이지에서 direct으로 order에 삽입
 		else if (command.equals("order_direct_insert")) {
 			action = new OrderDirectInsertAction();
 		}
 
-//카트 -> 주문서 창
+		// 카트 -> 주문서 창
 		else if (command.equals("ordering")) {
 			action = new OrderingAction();
-//제품 하나만 주문할 때 주문 창
+			// 제품 하나만 주문할 때 주문 창
 		} else if (command.equals("ordering_one")) {
 			action = new OrderingOneAction();
+		}
+		// 검색
+		else if (command.equals("search")) {
+			action = new SearchFormAction();
+		} else if (command.equals("search_result")) {
+			action = new SearchAction();
 		}
 
 		// admin

@@ -36,7 +36,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString("product_code"));
+				product.setProduct_code(rs.getString("prodcut_code"));
 				product.setProduct_name(rs.getString("product_name"));
 
 				product.setProduct_brand(rs.getString("product_brand"));
@@ -75,7 +75,7 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString("product_code"));
+				product.setProduct_code(rs.getString("prodcut_code"));
 				product.setProduct_name(rs.getString("product_name"));
 
 				product.setProduct_brand(rs.getString("product_brand"));
@@ -168,7 +168,6 @@ public class ProductDAO {
 		}
 		return productList;
 	}
-	
 
 	public ArrayList<ProductVO> listCategoryProduct(String product_category) {
 		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
@@ -189,7 +188,47 @@ public class ProductDAO {
 			// System.out.println("rs.getString :" + rs.getString(1));
 			while (rs.next()) {
 				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString(1)); // product.setProduct_code(rs.getString("product_code"));
+				product.setProduct_code(rs.getString(1)); // product.setProduct_code(rs.getString("prodcut_code"));
+				product.setProduct_name(rs.getString(2));
+				product.setProduct_brand(rs.getString(3)); // product.setProduct_brand(rs.getString("product_brand"));
+				product.setProduct_category(rs.getString(4));
+
+				product.setProduct_price(rs.getInt(5));
+				product.setProduct_color(rs.getString(6));
+				product.setProduct_size(rs.getString(7));
+				product.setProduct_best(rs.getString(8));
+				product.setProduct_register(rs.getTimestamp(9));
+				product.setProduct_update(rs.getTimestamp(10));
+				productList.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return productList;
+	}
+
+	public ArrayList<ProductVO> listSearchProduct(String SearchWord) {
+		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
+		String sql = "Select * from product where product_name like '%'||?||'%'";
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		CallableStatement cstmt = null;
+
+		System.out.println("sql :  " + sql);
+		try {
+			conn = DBManager.getConnection();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setString(1, SearchWord);
+			rs = cstmt.executeQuery();
+			// System.out.println("rs.next() : " + rs.next() );
+			// System.out.println("rs.getString :" + rs.getString(1));
+			while (rs.next()) {
+				ProductVO product = new ProductVO();
+				product.setProduct_code(rs.getString(1)); // product.setProduct_code(rs.getString("prodcut_code"));
 				product.setProduct_name(rs.getString(2));
 				product.setProduct_brand(rs.getString(3)); // product.setProduct_brand(rs.getString("product_brand"));
 				product.setProduct_category(rs.getString(4));

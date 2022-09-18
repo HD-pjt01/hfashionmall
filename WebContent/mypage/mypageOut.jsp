@@ -11,44 +11,37 @@
 					<a href="hfashionmallServlet?command=order_all">MYPAGE</a>
 				</h2>
 				<nav id="lnb" class="lnb">
-					<ul>
-						<li>
-							<div class="menu-depth1">주문 조회</div>
-							<ul class="menu-depth2">
-								<li><a href="hfashionmallServlet?command=mypage">배송 중인
-										주문 조회</a></li>
-								<li><a href="hfashionmallServlet?command=order_all">배송
-										완료 주문 조회</a></li>
-								<li><a href="hfashionmallServlet?command=cart_list">장바구니
-										내역</a></li>
-							</ul>
-						</li>
-						<li>
-							<div class="menu-depth1">리뷰 관리</div>
-							<ul class="menu-depth2">
-								<li><a href="hfashionmallServlet?command=mypage_review">리뷰
-										쓰기</a></li>
-								<li><a href="/secured/mypage/getMyGodGodEvlList">나의
-										상품리뷰</a></li>
-							</ul>
-						</li>
-						<li>
-							<div class="menu-depth1">QnA 조회</div>
-							<ul class="menu-depth2">
-								<li><a href="hfashionmallServlet?command=qna_view">1:1
-										문의 내역</a></li>
-							</ul>
-						</li>
-						<li>
-							<div class="menu-depth1">회원정보</div>
-							<ul class="menu-depth2">
-								<li><a href="hfashionmallServlet?command=mypage_edit">회원정보
-										수정</a></li>
-								<li><a href="hfashionmallServlet?command=mypage_out">회원
-										탈퇴</a></li>
-							</ul>
-						</li>
-					</ul>
+					 <ul>
+                            <li>
+                                <div class="menu-depth1">주문 조회</div>
+                                <ul class="menu-depth2">
+                                    <li><a href="hfashionmallServlet?command=mypage">주문 완료 주문 조회</a></li>
+                                    <li><a href="hfashionmallServlet?command=order_all">배송 완료 주문 조회</a></li>
+                                    <li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="menu-depth1">리뷰 관리</div>
+                                <ul class="menu-depth2">
+                                    <li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
+                                    <li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
+                                </ul>
+                            </li>
+                            <li>
+								<div class="menu-depth1">QnA 조회</div>
+								<ul class="menu-depth2">
+									<li><a href="hfashionmallServlet?command=qna_view">1:1
+											문의 내역</a></li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-depth1">회원정보</div>
+								<ul class="menu-depth2">
+									<li><a href="hfashionmallServlet?command=mypage_edit">회원정보 수정</a></li>
+									<li><a href="hfashionmallServlet?command=mypage_out">회원 탈퇴</a></li>
+								</ul>
+							</li>
+                        </ul>
 				</nav>
 			</div>
 			<div class="snb-content-wrap">
