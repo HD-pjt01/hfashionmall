@@ -42,9 +42,11 @@
 						<li>
 							<div class="menu-depth1">회원정보</div>
 							<ul class="menu-depth2">
-								<li><a href="/secured/mypage/updateMember">회원정보 수정</a></li>
+								<li><a href="hfashionmallServlet?command=mypage_edit">회원정보
+										수정</a></li>
 
-								<li><a href="/secured/mypage/memberSecession">회원 탈퇴</a></li>
+								<li><a href="hfashionmallServlet?command=mypage_out">회원
+										탈퇴</a></li>
 							</ul>
 						</li>
 					</ul>

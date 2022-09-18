@@ -56,7 +56,7 @@ public class ActionFactory {
 			action = new OrderListAction();
 		} else if (command.equals("mypage")) {
 			action = new MyPageAction();
-		} else if (command.equals("mypage_eidt")) {
+		} else if (command.equals("mypage_edit")) {
 			action = new MyPageEditAction();
 		} else if (command.equals("mypage_out")) {
 			action = new MyPageOutAction();
