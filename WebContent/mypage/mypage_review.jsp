@@ -180,7 +180,7 @@ pointer_tr.onclick = function() {
                         <div class="menu-depth1">리뷰 관리</div>
                         <ul class="menu-depth2">
                             <li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
-                            <li><a href="/secured/mypage/getMyGodGodEvlList">나의 상품리뷰</a></li>
+                            <li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
                         </ul>
                     </li>
                     <li>

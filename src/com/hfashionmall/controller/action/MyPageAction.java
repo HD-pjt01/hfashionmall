@@ -35,7 +35,7 @@ public class MyPageAction implements Action {
 
 				// 리스트가 null일 경우
 				if (orderListIng == null || orderListIng.size() == 0) {
-					request.setAttribute("title", "배송 중인 주문 내역");
+					request.setAttribute("title", "주문 완료 주문 내역");
 					request.setAttribute("orderList", orderList);
 				} else {
 					// 주문에서 제일 처음 주문 가져오기
@@ -51,7 +51,7 @@ public class MyPageAction implements Action {
 					orderList.add(orderVO);
 				}
 
-				request.setAttribute("title", "배송 중인 주문 내역");
+				request.setAttribute("title", "주문 완료 주문 내역");
 				request.setAttribute("orderList", orderList);
 			}
 

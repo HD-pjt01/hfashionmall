@@ -70,7 +70,7 @@
                     <li>
                         <div class="menu-depth1">주문 조회</div>
                         <ul class="menu-depth2">
-                            <li><a href="hfashionmallServlet?command=mypage">배송 중인 주문 조회</a></li>
+                            <li><a href="hfashionmallServlet?command=mypage">주문 완료 주문 조회</a></li>
                             <li><a href="hfashionmallServlet?command=order_all">배송 완료 주문 조회</a></li>
                             <li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
                         </ul>
@@ -170,49 +170,7 @@
                 </dd>
               </dl>
 
-              <div class="period-calendar">
-                <div class="period-input">
-                  <input
-                    type="text"
-                    name="dateStart"
-                    id="dateStart"
-                    class="inp-datepicker datepicker hasDatepicker"
-                    title="시작일"
-                    value="2020-04-02"
-                    readonly=""
-                  /><button type="button" class="ui-datepicker-trigger">
-                    <img
-                      src="/resources/images/btn_calendar.png"
-                      alt="날짜 선택"
-                      title="날짜 선택"
-                    />
-                  </button>
-                </div>
-                <div class="period-input">
-                  <input
-                    type="text"
-                    name="dateEnd"
-                    id="dateEnd"
-                    class="inp-datepicker datepicker hasDatepicker"
-                    title="종료일"
-                    value="2020-04-17"
-                    readonly=""
-                  /><button type="button" class="ui-datepicker-trigger">
-                    <img
-                      src="/resources/images/btn_calendar.png"
-                      alt="날짜 선택"
-                      title="날짜 선택"
-                    />
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  class="btn-type4-sm btn-period"
-                  onclick="goSearch('', '');"
-                >
-                  <span>조회</span>
-                </button>
-              </div>
+
             </div>
             <script>
               $(".datepicker").datepicker({

@@ -78,6 +78,10 @@ public class ActionFactory {
 			action = new MyPageReviewAction();
 		} else if (command.equals("review_write")) {
 			action = new ReviewWriteAction();
+		} else if (command.equals("review_list")) {
+			action = new ReviewListAction();
+		} else if (command.equals("real_mypage")) {
+			action = new RealMyPageAction();
 		}
 
 // 상세 페이지에서 direct으로 order에 삽입

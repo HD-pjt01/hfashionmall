@@ -312,7 +312,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                                 <div class="menu-depth1">리뷰 관리</div>
                                 <ul class="menu-depth2">
                                     <li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
-                                    <li><a href="/secured/mypage/getMyGodGodEvlList">나의 상품리뷰</a></li>
+                                    <li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -327,31 +327,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                     </nav>
                 </div>
                 <div class="snb-content-wrap">
-                    <!-- 환영합니다 창 -->
-                    <div id="mypage_summ">
-                        <ul id="mypage_summ_ul">
-                            <li id="summ_first">
-                                <div class="top">
-                                    <span id="name" class="bold">${sessionScope.loginUser.member_name}</span> <span
-                                        id="name_top" class="text">님</span>
-                                </div>
-                                <div class="bottom">
-                                    <span id="name_bottom" class="text">환영합니다.</span>
-                                </div>
-                            </li>
-                            <li id="summ_last">
-                                <div class="top">
-                                    <span id="del_top" class="text">배송중인 주문</span>
-                                </div>
-                                <div class="bottom">
-                                    <!-- 진행중인 주문 리스트와 개수 -->
-                                    <span id="del" class="bold"><a href="#">10</a></span> <span id="del_bottom"
-                                        class="text">건</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- 환영합니다 창 끝!!!!! -->
+   
                     <!-- 200713 수정 -->
                     <script type="text/javascript"
                         src="/hfm_pc/resources/js/mypage/mypagecommon.js?timestamp=20220907151706"></script>
@@ -360,7 +336,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                     <!-- includeOrderList -->
 
                     <h3 class="sec-title">
-                        최근 주문상품 <span class="sub2">(최근 1개월 기준)</span>
+                         ${title}
                     </h3>
 
                     <div class="order-list-wrap order-slide-section">

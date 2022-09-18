@@ -288,7 +288,51 @@ public class OrderDAO {
 			return orderList;
 		}
 		
+		// member_id로 모든 주문 내역 가져오기
+		
+		// 사용자가 주문 내역 검색
+		// 최근 내역
+		public ArrayList<OrderVO> listOrderAllById(String id) {
+			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+			String sql = "select * from order_view where member_member_id=? order by 4 desc";
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				conn = DBManager.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+	
+				rs = pstmt.executeQuery();
 
+				while (rs.next()) {
+
+					OrderVO orderVO = new OrderVO();
+
+					orderVO.setOrder_detail_id(rs.getInt(1));
+					orderVO.setOrder_id(rs.getInt(2));
+					orderVO.setMember_member_id(rs.getString(3));
+					orderVO.setOrder_register(rs.getTimestamp(4));
+					orderVO.setProduct_code(rs.getString(5));
+					orderVO.setProduct_count(rs.getInt(6));
+					orderVO.setMname(rs.getString(7));
+					orderVO.setZipcode(rs.getString(8));
+					orderVO.setAddr(rs.getString(9));
+					orderVO.setPhone(rs.getString(10));
+					orderVO.setPname(rs.getString(11));
+					orderVO.setPrice(rs.getInt(12));
+					orderVO.setOrder_detail_result(rs.getString(13));
+					orderList.add(orderVO);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("사용자 id로 모든 주문 내역 출력 오류");
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+			return orderList;
+		}
 
 	
 	/*

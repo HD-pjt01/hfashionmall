@@ -1,5 +1,6 @@
 package com.hfashionmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import util.DBManager;
 
 import com.hfashionmall.dto.CartVO;
+
+import oracle.jdbc.OracleTypes;
 
 public class CartDAO {
 
@@ -44,43 +47,67 @@ public class CartDAO {
     }
   }
 
+	/*
+	 * public ArrayList<CartVO> listCart(String userId) { ArrayList<CartVO> cartList
+	 * = new ArrayList<CartVO>();
+	 * 
+	 * // 뷰 변경 완료 // 추후에 정렬 필요 String sql =
+	 * "select * from cart_view where member_member_id=?";
+	 * 
+	 * Connection conn = null; PreparedStatement pstmt = null; ResultSet rs = null;
+	 * 
+	 * try { conn = DBManager.getConnection(); pstmt = conn.prepareStatement(sql);
+	 * pstmt.setString(1, userId); // session에 저장한 userid rs = pstmt.executeQuery();
+	 * while (rs.next()) { CartVO cartVO = new CartVO();
+	 * 
+	 * cartVO.setCart_id(rs.getInt(1)); cartVO.setMember_member_id(rs.getString(2));
+	 * cartVO.setProduct_product_code(rs.getString(3));
+	 * cartVO.setMname(rs.getString(4)); cartVO.setPname(rs.getString(5));
+	 * cartVO.setProduct_count(rs.getInt(6));
+	 * cartVO.setCart_register(rs.getTimestamp(7));
+	 * cartVO.setProduct_price(rs.getInt(8)); cartList.add(cartVO); } } catch
+	 * (Exception e) { e.printStackTrace(); }finally { DBManager.close(conn, pstmt,
+	 * rs); } return cartList; }
+	 */
   public ArrayList<CartVO> listCart(String userId) {
-    ArrayList<CartVO> cartList = new ArrayList<CartVO>();  
-    
-    // 뷰 변경 완료
-    // 추후에 정렬 필요
-    String sql = "select * from cart_view where member_member_id=?";
-    
-    Connection conn = null;
-    PreparedStatement pstmt = null;
-    ResultSet rs = null;
-    
-    try {
-      conn = DBManager.getConnection();
-      pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, userId); // session에 저장한 userid
-      rs = pstmt.executeQuery();
-      while (rs.next()) {
-        CartVO cartVO = new CartVO();
-        
-        cartVO.setCart_id(rs.getInt(1));
-        cartVO.setMember_member_id(rs.getString(2));
-        cartVO.setProduct_product_code(rs.getString(3));
-        cartVO.setMname(rs.getString(4));
-        cartVO.setPname(rs.getString(5));
-        cartVO.setProduct_count(rs.getInt(6));
-        cartVO.setCart_register(rs.getTimestamp(7));
-        cartVO.setProduct_price(rs.getInt(8));
-        cartList.add(cartVO);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }finally {
-      DBManager.close(conn, pstmt, rs);
-    }
-    return cartList;
-  }
-
+	    ArrayList<CartVO> cartList = new ArrayList<CartVO>();  
+	    
+	    // 뷰 변경 완료
+	    // 추후에 정렬 필요
+	    //String sql = "select * from cart_view where member_member_id=?";
+	    String sql = "{call sp_listCart_select(?)}";
+	   CallableStatement cstmt = null;   
+	    
+	    Connection conn = null;
+	    //PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    
+	    try {
+	      conn = DBManager.getConnection();
+	      cstmt = conn.prepareCall(sql);
+	      cstmt.setString(1, userId); // session에 저장한 userid
+	      cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+	      rs = cstmt.executeQuery();
+	      while (rs.next()) {
+	        CartVO cartVO = new CartVO();
+	        
+	        cartVO.setCart_id(rs.getInt(1));
+	        cartVO.setMember_member_id(rs.getString(2));
+	        cartVO.setProduct_product_code(rs.getString(3));
+	        cartVO.setMname(rs.getString(4));
+	        cartVO.setPname(rs.getString(5));
+	        cartVO.setProduct_count(rs.getInt(6));
+	        cartVO.setCart_register(rs.getTimestamp(7));
+	        cartVO.setProduct_price(rs.getInt(8));
+	        cartList.add(cartVO);
+	      }
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }finally {
+	      DBManager.close(conn, cstmt, rs);
+	    }
+	    return cartList;
+	  }
   public void deleteCart(int cart_id) {
     String sql = "delete cart where cart_id=?";
     
