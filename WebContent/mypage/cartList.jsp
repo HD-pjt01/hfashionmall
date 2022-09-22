@@ -64,8 +64,7 @@ function click() {
 </article>
 <%@ include file="../footer.jsp"%> --%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 
 <body>
@@ -94,12 +93,7 @@ function click() {
 
 
 								<div class="cell-check">
-									<label class="check-skin only"> <input type="checkbox"
-										id="chk_0" name="cartAllCheckbox" class="allChk"> <input
-										type="checkbox" id="chk_0" name="cartAllCheckbox"
-										class="allChk"
-										onclick="javascript:check.all($(this),0);event.stopImmediatePropagation();">
-										<span>전체 선택</span>
+									<label class="check-skin only"> <input type="checkbox" id="chk_0" name="cartAllCheckbox" class="allChk"> <input type="checkbox" id="chk_0" name="cartAllCheckbox" class="allChk" onclick="javascript:check.all($(this),0);event.stopImmediatePropagation();"> <span>전체 선택</span>
 									</label>
 
 								</div>
@@ -132,11 +126,7 @@ function click() {
 
 												<div class="inner">
 													<div class="cell-check">
-														<label class="check-skin only"> <input
-															type="checkbox" soldoutyn="N" id="0_0" name="cart_id"
-															value="${cartVO.cart_id}"
-															onclick="javascript:check.one(0,0,$(this));event.stopImmediatePropagation();">
-															<span>선택</span>
+														<label class="check-skin only"> <input type="checkbox" soldoutyn="N" id="0_0" name="cart_id" value="${cartVO.cart_id}" onclick="javascript:check.one(0,0,$(this));event.stopImmediatePropagation();"> <span>선택</span>
 														</label>
 													</div>
 
@@ -145,12 +135,7 @@ function click() {
 														<div class="inner-row">
 															<div class="cell-pd">
 																<div class="item-img">
-																	<a href="javascript:void(0);"
-																		onclick="javascript:goToEncodeUrl('/product/GM0122040738612/detail');">
-																		<img
-																		src="https://cdn.hfashionmall.com/goods/THBR/22/04/07/GM0122040738612_1_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135"
-																		alt=""
-																		onerror="javascript:this.src='../../resources/images/temp/pd_86x129.jpg'">
+																	<a href="javascript:void(0);" onclick="javascript:goToEncodeUrl('/product/GM0122040738612/detail');"> <img src="product_images/${cartVO.product_product_code}_01.jpg" alt="" onerror="javascript:this.src='../../resources/images/temp/pd_86x129.jpg'">
 																	</a>
 																	<!-- 													<button type="button" class="btn-like-s " onclick="addBukmk(this,addBukmkCallback);" godno="GM0122040738612">
 														<span>좋아요</span>
@@ -162,14 +147,12 @@ function click() {
 														<a href="javascript:void(0);" onclick="javascript:goToEncodeUrl('/product/GM0122040738612/detail');">TOMMY HILFIGER KIDS </a>
 													</div> -->
 																	<div class="item-name" catename="키즈/남아/악세서리">
-																		<a
-																			href="hfashionmallServlet?command=product_detail&product_code=${cartVO.product_product_code}">
+																		<a href="hfashionmallServlet?command=product_detail&product_code=${cartVO.product_product_code}">
 																			<h3>${cartVO.pname}</h3>
 																		</a>
 																	</div>
 																	<div class="item-opt">
-																		<span> black , free </span> <span>수량 :
-																			${cartVO.product_count} 개</span>
+																		<span> black , free </span> <span>수량 : ${cartVO.product_count} 개</span>
 																	</div>
 
 																	<!-- <input type="hidden" name="list[0].bskGodList[0].itmQty" value="1" initvalue="1" readonly=""> -->
@@ -183,13 +166,10 @@ function click() {
 																</div>
 															</div>
 															<div class="cell-price">
-																<input type="hidden" id="benefit0_0" prctype="GNRL"
-																	amt="0" crsgrp="" godamt="0" imdtldcamt="0" cpnamt="0"
-																	cpnbamt="0"> <input type="hidden" id="price0_0"
-																	price="22000">
+																<input type="hidden" id="benefit0_0" prctype="GNRL" amt="0" crsgrp="" godamt="0" imdtldcamt="0" cpnamt="0" cpnbamt="0">
+																<input type="hidden" id="price0_0" price="22000">
 																<div class="price" emplmtddctyn="">
-																	<span> <span class="num" id="orderPrice0_0"">${cartVO.product_price}</span>
-																		원
+																	<span> <span class="num" id="orderPrice0_0"">${cartVO.product_price}</span> 원
 
 																	</span>
 																</div>
@@ -199,13 +179,10 @@ function click() {
 													</div>
 													<div class="cell-btn">
 														<!-- 품절은 아니나 매장픽업수령일자가 초과된 경우는 비활성화 처리함. -->
-														<button type="button" class="btn-type4-sm"
-															onclick="javascript:selectGoodsOrder(0,0);">
+														<button type="button" class="btn-type4-sm" onclick="javascript:selectGoodsOrder(0,0);">
 															<span>바로구매</span>
 														</button>
-														<button type="button" class="btn-del"
-															godno="GM0122040738612" itmqty="1"
-															onclick="javascript:goodsDel(0,0);">
+														<button type="button" class="btn-del" godno="GM0122040738612" itmqty="1" onclick="javascript:goodsDel(0,0);">
 															<span>삭제</span>
 														</button>
 													</div>
@@ -238,8 +215,7 @@ function click() {
 <input type="hidden" name="totalPrice" value="${totalPrice}"> --%>
 
 						<div class="tbl-btn">
-							<button type="button" class="btn-type3-m"
-								onclick="go_cart_delete()">
+							<button type="button" class="btn-type3-m" onclick="go_cart_delete()">
 								<span>선택삭제</span>
 							</button>
 							<!-- 						<button type="button" class="btn-type3-m" onclick="javascript:selectedGoodsDel(0, true);">
@@ -256,37 +232,27 @@ function click() {
 
 
 							<div class="inner">
-								<span class="price"> <span class="txt">상품금액</span> <span
-									id="totalGodAmt" class="num">${totalPrice}</span> 원
-								</span> <span class="symbol-plus">+</span> <span class="price">
-									<span class="txt">배송비
-										<button type="button" class="btn-tooltip"
-											onmouseenter="tooltip('dlvCost-info', null, '/tooltip?type=costInfo');">
+								<span class="price"> <span class="txt">상품금액</span> <span id="totalGodAmt" class="num">${totalPrice}</span> 원
+								</span> <span class="symbol-plus">+</span> <span class="price"> <span class="txt">배송비
+										<button type="button" class="btn-tooltip" onmouseenter="tooltip('dlvCost-info', null, '/tooltip?type=costInfo');">
 											<span>툴팁보기</span>
 										</button>
 								</span> <span id="totalDlvAmt" class="num">0</span> 원
-								</span> <span class="symbol-minus">-</span> <span class="price sale">
-									<span class="txt">총 할인금액</span> <span id="totalDcAmt"
-									class="num">0</span> 원
-								</span> <span class="symbol-eq">=</span> <span class="price total">
-									<span class="txt">결제금액</span> <span id="totalOrdAmt"
-									class="num">${totalPrice}</span> 원
+								</span> <span class="symbol-minus">-</span> <span class="price sale"> <span class="txt">총 할인금액</span> <span id="totalDcAmt" class="num">0</span> 원
+								</span> <span class="symbol-eq">=</span> <span class="price total"> <span class="txt">결제금액</span> <span id="totalOrdAmt" class="num">${totalPrice}</span> 원
 								</span>
 							</div>
 						</div>
 
 						<div class="btn-box">
-							<a href="hfashionmallServlet?command=index" class="btn-type4-lg">쇼핑
-								계속하기</a> <a href="javascript:undefined;" class="btn-type2-lg"
-								onclick="go_ordering()">선택상품 주문하기</a>
+							<a href="hfashionmallServlet?command=index" class="btn-type4-lg">쇼핑 계속하기</a> <a href="javascript:undefined;" class="btn-type2-lg" onclick="go_ordering()">선택상품 주문하기</a>
 						</div>
 
 
 
 						<ul class="txt-list">
 							<li>장바구니에 담긴 상품은 30일 동안 보관됩니다. 30일이 지난 상품은 자동 삭제됩니다.</li>
-							<li>장바구니에 최대 50개까지 상품 보관이 가능하며, 실제 구매 시에는 가격이나 혜택이 변동될 수
-								있습니다.</li>
+							<li>장바구니에 최대 50개까지 상품 보관이 가능하며, 실제 구매 시에는 가격이나 혜택이 변동될 수 있습니다.</li>
 							<!-- 200703 text -->
 							<li>장바구니에 담은 상품이 판매종료가 되었을 경우 자동 삭제 됩니다.</li>
 						</ul>
@@ -569,13 +535,11 @@ function click() {
 				};
 			}));
 </script>
-						<script type="text/javascript" async=""
-							src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+						<script type="text/javascript" async="" src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
 						<!-- // WIDERPLANET  SCRIPT END 2020.09.05 -->
 
 						<!-- criteo  SCRIPT START 2020.09.05 -->
-						<script type="text/javascript"
-							src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+						<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
 						<script type="text/javascript">
 	window.criteo_q = window.criteo_q || [];
 	window.criteo_q.push(
@@ -604,9 +568,7 @@ function click() {
 	}
 </script>
 						<noscript>
-							<img
-								src='http://gtc18.acecounter.com:8080/?uid=BS4A44285281177&je=n&'
-								border='0' width='0' height='0' alt=''>
+							<img src='http://gtc18.acecounter.com:8080/?uid=BS4A44285281177&je=n&' border='0' width='0' height='0' alt=''>
 						</noscript>
 						<!-- AceCounter Log Gathering Script End -->
 
@@ -631,8 +593,7 @@ function click() {
 	}
 </script>
 						<noscript>
-							<img height="1" width="1" style="display: none"
-								src="https://www.facebook.com/tr?id=811734278847433&ev=AddToCart&noscript=1" />
+							<img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=811734278847433&ev=AddToCart&noscript=1" />
 						</noscript>
 						<!-- 20200911 End Facebook Pixel Code -->
 
@@ -669,10 +630,10 @@ function click() {
 					</div>
 
 
-					<input type="hidden" id="venepiaYn" value=""> <input
-						type="hidden" id="welfareMallYn" value=""> <input
-						type="hidden" name="myTmyYn" id="myTmyYn" value="N"> <input
-						type="hidden" name="myTmyTrgtYn" id="myTmyTrgtYn" value="N">
+					<input type="hidden" id="venepiaYn" value="">
+					<input type="hidden" id="welfareMallYn" value="">
+					<input type="hidden" name="myTmyYn" id="myTmyYn" value="N">
+					<input type="hidden" name="myTmyTrgtYn" id="myTmyTrgtYn" value="N">
 
 					<form name="cartSearchDTO" id="cartSearchDTO"></form>
 					<script>
@@ -707,11 +668,10 @@ function click() {
 </script>
 				</div>
 
-				
 
 
-				<script type="text/javascript"
-					src="/hfm_pc/resources/js/cart.js?timestamp=20220914145945"></script>
+
+				<script type="text/javascript" src="/hfm_pc/resources/js/cart.js?timestamp=20220914145945"></script>
 
 
 

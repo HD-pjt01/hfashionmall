@@ -110,10 +110,10 @@
                                                                 </li>
                                                                 <li>
                                                                     <button type="button" class="btn-like2"
-                                                                        onclick="addGodEvlLikeCount(this,addLikeList);"
+                                                                        onclick="location.href='hfashionmallServlet?product_detail&product_code=${review.product_code}'"
                                                                         godevlturn="1" reviewgodno="115369702">
                                                                         <span class="like-count" likecnt="3">
-                                                                            3</span>
+                                                                            </span>
                                                                     </button>
                                                                 </li>
                                                                 <li>

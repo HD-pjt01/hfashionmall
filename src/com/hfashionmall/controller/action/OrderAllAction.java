@@ -52,7 +52,8 @@ public class OrderAllAction implements Action {
 				request.setAttribute("title", "배송 완료 주문 내역");
 				request.setAttribute("orderList", orderList);
 			}
-
+			request.setAttribute("title", "배송 완료 주문 내역");
+			request.setAttribute("orderList", orderList);
 		}
 
 		request.getRequestDispatcher(url).forward(request, response);

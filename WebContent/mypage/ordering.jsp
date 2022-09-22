@@ -43,7 +43,7 @@
 											<div class="inner">
 												<div class="cell-pd">
 													<div class="item-img">
-														<img src="https://cdn.hfashionmall.com/goods/THBR/22/04/07/GM0122040738612_1_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135" alt="" onerror="javascript:this.src='/hfm_pc/resources/images/temp/pd_86x129.jpg'">
+														<img src="product_images/${cartVO.product_product_code}_01.jpg" alt="" onerror="javascript:this.src='/hfm_pc/resources/images/temp/pd_86x129.jpg'">
 													</div>
 													<div class="item-info">
 

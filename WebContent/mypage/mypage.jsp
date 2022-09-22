@@ -349,7 +349,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                         <c:choose>
                             <c:when test="${orderList.size() == 0}">
                                 <div class="nodata">
-                                    <p class="txt-nodata">최근 주문 상품이 없습니다.</p>
+                                    <p class="txt-nodata">상품이 없습니다.</p>
                                 </div>
                             </c:when>
                             <c:otherwise>
@@ -375,7 +375,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                                                                                     <a href="javascript:void(0);"
                                                                                         onclick="goGoodDetail('GM0121011331478', 'Y', 'SALE_PROGRS', 'Y');">
                                                                                         <img
-                                                                                            src="https://cdn.hfashionmall.com/goods/THBR/21/01/13/GM0121011331478_0_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135" />
+                                                                                            src="product_images/${orderVO.product_code}_01.jpg" />
                                                                                     </a>
                                                                                 </div>
                                                                                 <div class="item-info">
@@ -414,9 +414,9 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                                                                             <div class="cell-status">
                                                                                 <div class="cell-inner">
                                                                                     <div class="status">
-                                                                                        입금대기<br />
+                                                                                        주문 날짜<br />
                                                                                         <span
-                                                                                            class="txt-cmt pcolor">주문 완료</span>
+                                                                                            class="txt-cmt pcolor">${orderVO.order_register}</span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

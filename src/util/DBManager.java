@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DBManager {
 
-	private static String url = "jdbc:oracle:thin:@localhost:5151/xepdb1";
+	private static String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 	private static String uid = "hf";
 	private static String pwd = "hf";
 
@@ -24,8 +24,7 @@ public class DBManager {
 		return conn;
 	}
 
-	public static void close(Connection conn, PreparedStatement pstmt,
-			ResultSet rset) {
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rset) {
 		if (rset != null) {
 			try {
 				rset.close();

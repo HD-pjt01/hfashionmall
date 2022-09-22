@@ -20,96 +20,19 @@ public class ProductDAO {
 		return instance;
 	}
 
-	// 신상품
-	public ArrayList<ProductVO> listNewProduct() {
-		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-		// String sql = "select * from new_pro_view";
-		String sql = "select *  from product";
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString("prodcut_code"));
-				product.setProduct_name(rs.getString("product_name"));
-
-				product.setProduct_brand(rs.getString("product_brand"));
-				product.setProduct_category(rs.getString("product_category"));
-
-				product.setProduct_price(rs.getInt("product_price"));
-				product.setProduct_color(rs.getString("product_color"));
-				product.setProduct_size(rs.getString("product_size"));
-				product.setProduct_best(rs.getString("product_best"));
-				product.setProduct_register(rs.getTimestamp("product_register"));
-				product.setProduct_update(rs.getTimestamp("product_update"));
-				product.setProduct_price(rs.getInt("product_quantity"));
-				productList.add(product);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-		return productList;
-	}
-
-	// 베스트 상품
-	public ArrayList<ProductVO> listBestProduct() {
-		ArrayList<ProductVO> productList = new ArrayList<ProductVO>();
-		// String sql = "select * from best_pro_view";
-		String sql = "select *  from product";
-
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString("prodcut_code"));
-				product.setProduct_name(rs.getString("product_name"));
-
-				product.setProduct_brand(rs.getString("product_brand"));
-				product.setProduct_category(rs.getString("product_category"));
-
-				product.setProduct_price(rs.getInt("product_price"));
-				product.setProduct_color(rs.getString("product_color"));
-				product.setProduct_size(rs.getString("product_size"));
-				product.setProduct_best(rs.getString("product_best"));
-				product.setProduct_register(rs.getTimestamp("product_register"));
-				product.setProduct_update(rs.getTimestamp("product_update"));
-				productList.add(product);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(conn, pstmt, rs);
-		}
-		return productList;
-	}
-
 	public ProductVO getProduct(String product_code) {
 		ProductVO product = null;
-		String sql = "select * from product where product_code=?";
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
+		// String sql = "select * from product where product_code=?";
+		String sql = "select * from table(getProduct_pipe_table_func(?))";
 		ResultSet rs = null;
+		Connection conn = null;
+		CallableStatement cstmt = null;
 
 		try {
-			con = DBManager.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, product_code);
-			rs = pstmt.executeQuery();
+			conn = DBManager.getConnection();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setString(1, product_code);
+			rs = cstmt.executeQuery();
 			if (rs.next()) {
 				product = new ProductVO();
 				product.setProduct_code(rs.getString(1));
@@ -128,7 +51,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(con, pstmt, rs);
+			DBManager.close(conn, cstmt, rs);
 		}
 		return product;
 	}
@@ -184,13 +107,12 @@ public class ProductDAO {
 			cstmt = conn.prepareCall(sql);
 			cstmt.setString(1, product_category);
 			rs = cstmt.executeQuery();
-			// System.out.println("rs.next() : " + rs.next() );
-			// System.out.println("rs.getString :" + rs.getString(1));
+
 			while (rs.next()) {
 				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString(1)); // product.setProduct_code(rs.getString("prodcut_code"));
+				product.setProduct_code(rs.getString(1));
 				product.setProduct_name(rs.getString(2));
-				product.setProduct_brand(rs.getString(3)); // product.setProduct_brand(rs.getString("product_brand"));
+				product.setProduct_brand(rs.getString(3));
 				product.setProduct_category(rs.getString(4));
 
 				product.setProduct_price(rs.getInt(5));
@@ -224,13 +146,12 @@ public class ProductDAO {
 			cstmt = conn.prepareCall(sql);
 			cstmt.setString(1, SearchWord);
 			rs = cstmt.executeQuery();
-			// System.out.println("rs.next() : " + rs.next() );
-			// System.out.println("rs.getString :" + rs.getString(1));
+	
 			while (rs.next()) {
 				ProductVO product = new ProductVO();
-				product.setProduct_code(rs.getString(1)); // product.setProduct_code(rs.getString("prodcut_code"));
+				product.setProduct_code(rs.getString(1));
 				product.setProduct_name(rs.getString(2));
-				product.setProduct_brand(rs.getString(3)); // product.setProduct_brand(rs.getString("product_brand"));
+				product.setProduct_brand(rs.getString(3));
 				product.setProduct_category(rs.getString(4));
 
 				product.setProduct_price(rs.getInt(5));
@@ -395,64 +316,5 @@ public class ProductDAO {
 			DBManager.close(con, pstmt, rs);
 		}
 		return productList;
-	}
-
-	public int insertProduct(ProductVO product) {
-		int result = 0;
-
-		String sql = "insert into product (" + "product_code, product_brand, name, price) "
-				+ "values(product_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			con = DBManager.getConnection();
-			pstmt = con.prepareStatement(sql);
-			// pstmt.setString(1, product.getKind());
-			// pstmt.setString(2, product.getName());
-			// pstmt.setInt(3, product.getPrice1());
-			// pstmt.setInt(4, product.getPrice2());
-			// pstmt.setInt(5, product.getPrice3());
-			// pstmt.setString(6, product.getContent());
-			// pstmt.setString(7, product.getImage());
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("추가 실패");
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt);
-		}
-		return result;
-	}
-
-	public int updateProduct(ProductVO product) {
-		int result = -1;
-		String sql = "update product set kind=?, useyn=?, name=?"
-				+ ", price1=?, price2=?, price3=?, content=?, image=?, bestyn=? " + "where pseq=?";
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			con = DBManager.getConnection();
-			pstmt = con.prepareStatement(sql);
-			// pstmt.setString(1, product.getKind());
-			// pstmt.setString(2, product.getUseyn());
-			// pstmt.setString(3, product.getName());
-			// pstmt.setInt(4, product.getPrice1());
-			// pstmt.setInt(5, product.getPrice2());
-			// pstmt.setInt(6, product.getPrice3());
-			// pstmt.setString(7, product.getContent());
-			// pstmt.setString(8, product.getImage());
-			// pstmt.setString(9, product.getBestyn());
-			// pstmt.setInt(10, product.getPseq());
-			result = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			DBManager.close(con, pstmt);
-		}
-		return result;
 	}
 }

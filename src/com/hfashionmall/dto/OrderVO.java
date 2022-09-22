@@ -19,7 +19,7 @@ public class OrderVO {
 
 	private int price;
 	private String order_detail_result;
-
+	
 	public int getOrder_id() {
 		return order_id;
 	}

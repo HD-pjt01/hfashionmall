@@ -34,10 +34,12 @@ public class MyPageAction implements Action {
 				ArrayList<OrderVO> orderListIng = orderDAO.listOrderById(loginUser.getMember_id(), "1", oseq);
 
 				// 리스트가 null일 경우
-				if (orderListIng == null || orderListIng.size() == 0) {
+				if (orderListIng == null || orderListIng.size()==0 ) {
 					request.setAttribute("title", "주문 완료 주문 내역");
 					request.setAttribute("orderList", orderList);
+					System.out.println("null 실행");
 				} else {
+					System.out.println("null 실행");
 					// 주문에서 제일 처음 주문 가져오기
 					OrderVO orderVO = orderListIng.get(0);
 					int count = orderListIng.size() - 1;
@@ -54,6 +56,9 @@ public class MyPageAction implements Action {
 				request.setAttribute("title", "주문 완료 주문 내역");
 				request.setAttribute("orderList", orderList);
 			}
+			
+			request.setAttribute("title", "주문 완료 주문 내역");
+			request.setAttribute("orderList", orderList);
 
 		}
 		request.getRequestDispatcher(url).forward(request, response);

@@ -1,5 +1,6 @@
 package com.hfashionmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import util.DBManager;
 
 import com.hfashionmall.dto.CartVO;
+
+import oracle.jdbc.OracleTypes;
 
 public class CartDAO {
 
@@ -22,26 +25,30 @@ public class CartDAO {
 
 	// table에 cart sequence 받아오기 필요
 	public void insertCart(CartVO cartVO) {
-		// cart_seq삽입 필요
-		String sql = "insert into cart(cart_id,member_member_id,product_product_code, product_count)"
-				+ " values(cart_seq.nextval,?, ?, ?)";
 
+		// cart_seq삽입 필요
+		/*
+		 * String sql =
+		 * "insert into cart(cart_id,member_member_id,product_product_code, product_count)"
+		 * + " values(cart_seq.nextval,?, ?, ?)";
+		 */
+
+		String sql = "{call sp_cart_insert(?, ?, ?)}";
+		CallableStatement cstmt = null;
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		// PreparedStatement pstmt = null;
 
 		try {
-			System.out.println(cartVO.getMember_member_id() + " " + cartVO.getProduct_product_code() + " "
-					+ cartVO.getProduct_count());
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, cartVO.getMember_member_id());
-			pstmt.setString(2, cartVO.getProduct_product_code()); // 상품코드 String으로 받아옴
-			pstmt.setInt(3, cartVO.getProduct_count());
-			pstmt.executeUpdate();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setString(1, cartVO.getMember_member_id());
+			cstmt.setString(2, cartVO.getProduct_product_code()); // 상품코드 String으로 받아옴
+			cstmt.setInt(3, cartVO.getProduct_count());
+			cstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, cstmt);
 		}
 	}
 
@@ -50,7 +57,9 @@ public class CartDAO {
 
 		// 뷰 변경 완료
 		// 추후에 정렬 필요
-		String sql = "select * from cart_view where member_member_id=?";
+		// String sql = "select * from cart_view where member_member_id=?";
+		String sql = "{call sp_listCart_select(?, ?)}";
+		CallableStatement cstmt = null;
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -58,9 +67,12 @@ public class CartDAO {
 
 		try {
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId); // session에 저장한 userid
-			rs = pstmt.executeQuery();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setString(1, userId); // session에 저장한 userid
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			rs = cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(2);
+
 			while (rs.next()) {
 				CartVO cartVO = new CartVO();
 
@@ -83,20 +95,22 @@ public class CartDAO {
 	}
 
 	public void deleteCart(int cart_id) {
-		String sql = "delete cart where cart_id=?";
+		// String sql = "delete cart where cart_id=?";
+		String sql = "{call sp_cart_delete(?)}";
+		CallableStatement cstmt = null;
 
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		// PreparedStatement pstmt = null;
 
 		try {
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, cart_id);
-			pstmt.executeUpdate();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setInt(1, cart_id);
+			cstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, cstmt);
 		}
 	}
 }

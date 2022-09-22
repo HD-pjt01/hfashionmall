@@ -160,7 +160,7 @@ int reviewNo = 1;
 
                             <div class="btn-box">
                                 <button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag"
-                                    onclick="go_cart()">
+                                    onclick="go_cart()" style="margin-left:10px">
                                     <span>장바구니</span>
                                 </button>
                                 <input type="hidden" id="product_code" value="N">
@@ -306,14 +306,14 @@ int reviewNo = 1;
                                                             <ul class="etc-info">
                                                                 <li>
                                                                     <span class="point size-m"><span class="ico"
-                                                                            style="width:80%">별점 4점</span></span>
+                                                                            style="width:60%">별점 4점</span></span>
                                                                 </li>
                                                                 <li>
                                                                     <button type="button" class="btn-like2"
                                                                         onclick="addGodEvlLikeCount(this,addLikeList);"
                                                                         godevlturn="1" reviewgodno="115369702">
                                                                         <span class="like-count" likecnt="3">
-                                                                            3</span>
+                                                                            </span>
                                                                     </button>
                                                                 </li>
                                                                 <li>

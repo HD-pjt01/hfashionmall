@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                             </li>
                             <li id="summ_last">
                                 <div class="top">
-                                    <span id="del_top" class="text">배송중인 주문</span>
+                                    <span id="del_top" class="text">주문 총 수량</span>
                                 </div>
                                 <div class="bottom">
                                     <!-- 진행중인 주문 리스트와 개수 -->
@@ -111,7 +111,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                                                                                     <a href="javascript:void(0);"
                                                                                         onclick="goGoodDetail('GM0121011331478', 'Y', 'SALE_PROGRS', 'Y');">
                                                                                         <img
-                                                                                            src="https://cdn.hfashionmall.com/goods/THBR/21/01/13/GM0121011331478_0_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135" />
+                                                                                            src="product_images/${orderVO.product_code}_01.jpg" />
                                                                                     </a>
                                                                                 </div>
                                                                                 <div class="item-info">

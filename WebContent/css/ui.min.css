@@ -3410,6 +3410,7 @@ body.gnb-show #container::before {
 [class*="btn-type4"] {
     color: #fff !important;
     background: #333;
+    margin-right: 10px;
 }
 
 [class*="btn-type5"] {
@@ -20705,7 +20706,7 @@ select.select-sm {
 
 .review-layer .review-write .write-inner {
     display: inline-block;
-    width: 360px;
+    width: 720px;
     vertical-align: top;
 }
 
@@ -23803,7 +23804,7 @@ select.select-sm {
 }
 
 .process-img-guide .order-process li::before {
-    background: url(../images/mypage/img_process_order.png) no-repeat;
+    background: url(../images/img_process_order.png) ;
 }
 
 .process-txt-guide {
