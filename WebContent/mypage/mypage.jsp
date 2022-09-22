@@ -128,13 +128,7 @@ pageEncoding="UTF-8"%> <%@ include file="../header.jsp" %>
                                                                                             
                                                                                         </a>
                                                                                     </div>
-                                                                                    <!-- <div class="item-opt">
-                                                                                        <a href="javascript:void(0);"
-                                                                                            onclick="goGoodDetail('GM0121011331478', 'Y', 'SALE_PROGRS', 'Y');">
-                                                                                            <span> BLACK , F </span>
-                                                                                            <span>수량 : 1</span>
-                                                                                        </a>
-                                                                                    </div> -->
+
                                                                                     <div class="item-btn"></div>
                                                                                 </div>
                                                                             </div>
