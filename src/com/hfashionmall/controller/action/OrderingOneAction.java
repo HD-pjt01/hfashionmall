@@ -34,6 +34,7 @@ public class OrderingOneAction implements Action {
 				  ProductDAO productDAO = ProductDAO.getInstance(); ProductVO productVO =
 				  productDAO.getProduct(product_code);
 				  
+				  System.out.println("주문서로 이동");
 				  request.setAttribute("productVO", productVO);
 				  request.setAttribute("product_count", product_count);
 				 

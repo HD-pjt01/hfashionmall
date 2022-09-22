@@ -14,33 +14,30 @@ import com.hfashionmall.dto.MemberVO;
 
 public class CartListAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String url = "mypage/cartList.jsp";
+	// cart테이블에 있는 cartlist를 불러와서 뷰에 전달
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "mypage/cartList.jsp";
 
-    HttpSession session = request.getSession();
-    MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-    if (loginUser == null) {
-      url = "hfashionmallServlet?command=login_form";
-    } else {
-      CartDAO cartDAO = CartDAO.getInstance();
-      ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getMember_id());
+		HttpSession session = request.getSession();
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			url = "hfashionmallServlet?command=login_form";
+		} else {
+			CartDAO cartDAO = CartDAO.getInstance();
+			ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getMember_id());
 
-      int totalPrice = 0;
-      
-	
-		  for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price() *
-		  cartVO.getProduct_count(); }
-		 
-      
-		/*
-		 * for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price(); }
-		 */
+			int totalPrice = 0;
 
-      request.setAttribute("cartList", cartList);
-      request.setAttribute("totalPrice", totalPrice);
-    }
-    request.getRequestDispatcher(url).forward(request, response);
-  }
+			for (CartVO cartVO : cartList) {
+				totalPrice += cartVO.getProduct_price() * cartVO.getProduct_count();
+			}
+
+			// cartlist와 cart에 담긴 제품의 전체 가격을 뷰에 전달
+			request.setAttribute("cartList", cartList);
+			request.setAttribute("totalPrice", totalPrice);
+			System.out.println("cartlist.jsp에 값 전달");
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 }

@@ -12,6 +12,8 @@ import com.hfashionmall.dao.OrderDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.OrderVO;
 
+import sun.security.util.Length;
+
 public class MyPageAction implements Action {
 
 	@Override
@@ -25,41 +27,23 @@ public class MyPageAction implements Action {
 			url = "hfashionmallServlet?command=login_form";
 		} else {
 			OrderDAO orderDAO = OrderDAO.getInstance();
-			ArrayList<Integer> oseqList = orderDAO.selectSeqOrderIng(loginUser.getMember_id());
-
 			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
+			 orderList = orderDAO.listOrderAllById(loginUser.getMember_id());
+			 
+			 for(OrderVO orderVO : orderList  ) {
+					
+					  if( orderVO.getOrder_detail_result().equals("1")) 
+					  {orderVO.setOrder_detail_result("주문 완료"); } 
+					  else if (orderVO.getOrder_detail_result().equals("2")) {
+					  orderVO.setOrder_detail_result("배송 완료"); } 
+					  else {
+					  orderVO.setOrder_detail_result("이상"); }	 
+				
+			 }
 
-			for (int oseq : oseqList) {
 
-				ArrayList<OrderVO> orderListIng = orderDAO.listOrderById(loginUser.getMember_id(), "1", oseq);
-
-				// 리스트가 null일 경우
-				if (orderListIng == null || orderListIng.size()==0 ) {
-					request.setAttribute("title", "주문 완료 주문 내역");
-					request.setAttribute("orderList", orderList);
-					System.out.println("null 실행");
-				} else {
-					System.out.println("null 실행");
-					// 주문에서 제일 처음 주문 가져오기
-					OrderVO orderVO = orderListIng.get(0);
-					int count = orderListIng.size() - 1;
-					orderVO.setPname(orderVO.getPname() + " 외 " + count + "건");
-
-					int totalPrice = 0;
-					for (OrderVO ovo : orderListIng) {
-						totalPrice += ovo.getPrice() * ovo.getProduct_count();
-					}
-					orderVO.setPrice(totalPrice);
-					orderList.add(orderVO);
-				}
-
-				request.setAttribute("title", "주문 완료 주문 내역");
+				request.setAttribute("title", "주문 완료 주문 조회");
 				request.setAttribute("orderList", orderList);
-			}
-			
-			request.setAttribute("title", "주문 완료 주문 내역");
-			request.setAttribute("orderList", orderList);
-
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}

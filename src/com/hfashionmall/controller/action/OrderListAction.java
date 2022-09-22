@@ -13,6 +13,7 @@ import com.hfashionmall.dao.OrderDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.OrderVO;
 
+// 주문 테이블에서 현재 주문한 데이터를 받아 주문 리스트 출력
 public class OrderListAction implements Action {
 
   @Override

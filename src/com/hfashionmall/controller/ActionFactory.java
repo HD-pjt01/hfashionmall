@@ -54,16 +54,16 @@ public class ActionFactory {
 			action = new OrderInsertAction();
 		} else if (command.equals("order_list")) {
 			action = new OrderListAction();
-		} else if (command.equals("mypage")) {
-			action = new MyPageAction();
+		} else if (command.equals("mypage_order_complete")) {
+			action = new MyPageOrderCompleteAction();
 		} else if (command.equals("mypage_edit")) {
 			action = new MyPageEditAction();
 		} else if (command.equals("mypage_out")) {
 			action = new MyPageOutAction();
 		} else if (command.equals("order_detail")) {
 			action = new OrderDetailAction();
-		} else if (command.equals("order_all")) {
-			action = new OrderAllAction();
+		} else if (command.equals("mypage_deliv_complete")) {
+			action = new MyPageOrderDelivCompleteAction();
 		}
 		/* 추가된 부분 2022 09 16 금요일 정승하 */
 		else if (command.equals("qna")) {
@@ -85,8 +85,8 @@ public class ActionFactory {
 			action = new ReviewWriteAction();
 		} else if (command.equals("review_list")) {
 			action = new ReviewListAction();
-		} else if (command.equals("real_mypage")) {
-			action = new RealMyPageAction();
+		} else if (command.equals("mypage")) {
+			action = new MyPageAction();
 		}
 
 		// 상세 페이지에서 direct으로 order에 삽입

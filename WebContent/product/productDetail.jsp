@@ -256,14 +256,7 @@ int reviewNo = 1;
                             </div>
 
                             <div id="allReviewList" class="board-list board-review ui-fold" style="">
-                                <input type="hidden" name="allReviewTotalRow" value="12">
-                                <input type="hidden" name="allReviewTotalScore" value="4.7">
-                                <input type="hidden" id="allReviewTotalScorePercent" value="94">
-                                <input type="hidden" id="godNo" value="">
-                                <input type="hidden" id="godEvlTurn" value="">
-
                                 <ul class="list-content">
-
                                     <c:choose>
                                         <c:when test="${reviewList.size() == 0}">
                                            <div class="nodata">

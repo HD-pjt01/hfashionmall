@@ -35,8 +35,7 @@ public class ProductDetailAction implements Action {
     request.setAttribute("productVO", productVO);
     request.setAttribute("reviewList", reviewList);
     request.setAttribute("reviewCount", reviewCount);
-    // request.setAttribute("reviewVO", reviewVO);
-    
+
     RequestDispatcher dispatcher = request
         .getRequestDispatcher(url);
     dispatcher.forward(request, response);

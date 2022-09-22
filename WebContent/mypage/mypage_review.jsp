@@ -30,26 +30,27 @@
 						<a href="/secured/mypage/myPage">MYPAGE</a>
 					</h2>
 					<nav id="lnb" class="lnb">
-						<ul>
-							<li>
-								<div class="menu-depth1">주문 조회</div>
-								<ul class="menu-depth2">
-									<li><a href="hfashionmallServlet?command=mypage">주문 완료 주문 조회</a></li>
-									<li><a href="hfashionmallServlet?command=order_all">배송 완료 주문 조회</a></li>
-									<li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
-								</ul>
-							</li>
-							<li>
-								<div class="menu-depth1">리뷰 관리</div>
-								<ul class="menu-depth2">
-									<li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
-									<li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
-								</ul>
-							</li>
-							<li>
+                        <ul>
+                            <li>
+                                <div class="menu-depth1">주문 조회</div>
+                                <ul class="menu-depth2">
+                                    <li><a href="hfashionmallServlet?command=mypage_order_complete">주문 완료 주문 조회</a></li>
+                                    <li><a href="hfashionmallServlet?command=mypage_deliv_complete">배송 완료 주문 조회</a></li>
+                                    <li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="menu-depth1">리뷰 관리</div>
+                                <ul class="menu-depth2">
+                                    <li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
+                                    <li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
+                                </ul>
+                            </li>
+                            <li>
 								<div class="menu-depth1">QnA 조회</div>
 								<ul class="menu-depth2">
-									<li><a href="hfashionmallServlet?command=qna_view">1:1 문의 내역</a></li>
+									<li><a href="hfashionmallServlet?command=qna_view">1:1
+											문의 내역</a></li>
 								</ul>
 							</li>
 							<li>
@@ -59,8 +60,8 @@
 									<li><a href="hfashionmallServlet?command=mypage_out">회원 탈퇴</a></li>
 								</ul>
 							</li>
-						</ul>
-					</nav>
+                        </ul>
+                    </nav>
 				</div>
 				<div class="snb-content-wrap">
 					<script type="text/javascript" src="/resources/js/moment.js"></script>

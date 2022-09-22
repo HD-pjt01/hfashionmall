@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../header.jsp"%>
@@ -11,46 +10,42 @@
 					<a href="hfashionmallServlet?command=order_all">MYPAGE</a>
 				</h2>
 				<nav id="lnb" class="lnb">
-					 <ul>
-                            <li>
-                                <div class="menu-depth1">주문 조회</div>
-                                <ul class="menu-depth2">
-                                    <li><a href="hfashionmallServlet?command=mypage">주문 완료 주문 조회</a></li>
-                                    <li><a href="hfashionmallServlet?command=order_all">배송 완료 주문 조회</a></li>
-                                    <li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="menu-depth1">리뷰 관리</div>
-                                <ul class="menu-depth2">
-                                    <li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
-                                    <li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
-                                </ul>
-                            </li>
-                            <li>
-								<div class="menu-depth1">QnA 조회</div>
-								<ul class="menu-depth2">
-									<li><a href="hfashionmallServlet?command=qna_view">1:1
-											문의 내역</a></li>
-								</ul>
-							</li>
-							<li>
-								<div class="menu-depth1">회원정보</div>
-								<ul class="menu-depth2">
-									<li><a href="hfashionmallServlet?command=mypage_edit">회원정보 수정</a></li>
-									<li><a href="hfashionmallServlet?command=mypage_out">회원 탈퇴</a></li>
-								</ul>
-							</li>
-                        </ul>
+					<ul>
+						<li>
+							<div class="menu-depth1">주문 조회</div>
+							<ul class="menu-depth2">
+								<li><a href="hfashionmallServlet?command=mypage_order_complete">주문 완료 주문 조회</a></li>
+								<li><a href="hfashionmallServlet?command=mypage_deliv_complete">배송 완료 주문 조회</a></li>
+								<li><a href="hfashionmallServlet?command=cart_list">장바구니 내역</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="menu-depth1">리뷰 관리</div>
+							<ul class="menu-depth2">
+								<li><a href="hfashionmallServlet?command=mypage_review">리뷰 쓰기</a></li>
+								<li><a href="hfashionmallServlet?command=review_list">나의 상품리뷰</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="menu-depth1">QnA 조회</div>
+							<ul class="menu-depth2">
+								<li><a href="hfashionmallServlet?command=qna_view">1:1 문의 내역</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="menu-depth1">회원정보</div>
+							<ul class="menu-depth2">
+								<li><a href="hfashionmallServlet?command=mypage_edit">회원정보 수정</a></li>
+								<li><a href="hfashionmallServlet?command=mypage_out">회원 탈퇴</a></li>
+							</ul>
+						</li>
+					</ul>
 				</nav>
 			</div>
 			<div class="snb-content-wrap">
-				<input type="hidden" name="_csrf"
-					value="60d516a6-cc06-4ae0-8ed6-77d9a6564fbb"> <input
-					type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
+				<input type="hidden" name="_csrf" value="60d516a6-cc06-4ae0-8ed6-77d9a6564fbb"> <input type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
 				<!-- 200713 수정 -->
-				<script type="text/javascript"
-					src="/hfm_pc/resources/js/mypage/mypagecommon.js?timestamp=20220907151706"></script>
+				<script type="text/javascript" src="/hfm_pc/resources/js/mypage/mypagecommon.js?timestamp=20220907151706"></script>
 
 				<!-- 다이나믹 컨피그 설정 HFM_EQL_CONN_YN ERP 연동 유무 -->
 				<!-- includeOrderList -->

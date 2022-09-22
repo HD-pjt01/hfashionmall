@@ -30,8 +30,10 @@ public class OrderInsertAction implements Action {
       
       OrderDAO orderDAO = OrderDAO.getInstance();      
       
+      // 현재 주문한 주문 id를 받아와서 현재 주문 리스트 출력
       int maxOrder_id=orderDAO.insertOrder(cartList, loginUser.getMember_id());
       url = "hfashionmallServlet?command=order_list&order_id="+maxOrder_id;
+      System.out.println("주문 테이블이 insert완료");
     }
     response.sendRedirect(url);
   }

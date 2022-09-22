@@ -21,6 +21,7 @@ public class CartDeleteAction implements Action {
       System.out.println(cart_id);
       CartDAO cartDAO = CartDAO.getInstance();
       cartDAO.deleteCart(Integer.parseInt(cart_id));
+      System.out.println("cart_id : " + cart_id + "카트에서 삭제");
     }
     request.getRequestDispatcher(url).forward(request, response);
   }

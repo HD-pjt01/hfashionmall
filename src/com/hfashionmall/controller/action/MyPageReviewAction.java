@@ -32,16 +32,6 @@ public class MyPageReviewAction implements Action {
 			//ReviewDAO reviewDAO = ReviewDAO.getInstance();
 			OrderDAO orderDAO = OrderDAO.getInstance();
 
-			// 리뷰가능한 order_detail_id 받아오기
-			//ArrayList<Integer> odIdList = reviewDAO.ReviewAbleOdId(loginUser.getMember_id(), "2", "1");
-
-			// order_detail_id로 orderlist가져오기
-			/*
-			 * ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-			 * 
-			 * for (int od_id : odIdList) { OrderVO orderVO =
-			 * orderDAO.OrderByReviewable(od_id); orderList.add(orderVO); }
-			 */
 			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
 			orderList = orderDAO.listOrderRivewable(loginUser.getMember_id(), "2", "1");
 			
