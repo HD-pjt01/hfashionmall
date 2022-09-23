@@ -11,7 +11,8 @@ import util.DBManager;
 import com.hfashionmall.dto.CartVO;
 
 import oracle.jdbc.OracleTypes;
-
+//----------------------------------cartdao 박서은, 심지연 작성------------------------------------
+//
 public class CartDAO {
 
 	private CartDAO() {
@@ -23,7 +24,7 @@ public class CartDAO {
 		return instance;
 	}
 
-	// table에 cart sequence 받아오기 필요
+	// cart 테이블에 cart 데이터 저장
 	public void insertCart(CartVO cartVO) {
 
 		// cart_seq삽입 필요
@@ -52,11 +53,10 @@ public class CartDAO {
 		}
 	}
 
+	// 사용자 id로 cartlist출력
 	public ArrayList<CartVO> listCart(String userId) {
 		ArrayList<CartVO> cartList = new ArrayList<CartVO>();
 
-		// 뷰 변경 완료
-		// 추후에 정렬 필요
 		// String sql = "select * from cart_view where member_member_id=?";
 		String sql = "{call sp_listCart_select(?, ?)}";
 		CallableStatement cstmt = null;
@@ -93,7 +93,9 @@ public class CartDAO {
 		}
 		return cartList;
 	}
-
+	
+	
+// cart_id로 카트 내역 삭제
 	public void deleteCart(int cart_id) {
 		// String sql = "delete cart where cart_id=?";
 		String sql = "{call sp_cart_delete(?)}";
@@ -114,3 +116,4 @@ public class CartDAO {
 		}
 	}
 }
+//----------------------------------cartdao 박서은, 심지연 작성------------------------------------

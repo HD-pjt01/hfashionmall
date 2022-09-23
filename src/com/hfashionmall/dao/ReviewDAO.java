@@ -13,6 +13,7 @@ import util.DBManager;
 import java.util.*;
 import java.sql.*;
 
+//----------------------------------reviewdao 박서은, 심지연 작성------------------------------------
 public class ReviewDAO {
 	private ReviewDAO() {
 	}
@@ -23,7 +24,7 @@ public class ReviewDAO {
 		return instance;
 	}
 
-	// 작성 완료
+	// 제품마다 리뷰가 몇 개 인지 계산
 	public int countTotalReview(String product_code) {
 		Connection conn = null;
 		// PreparedStatement pstmt = null;
@@ -54,6 +55,7 @@ public class ReviewDAO {
 	}
 
 	// product code로 리뷰 불러오기
+	// 최신순으로 정렬
 	public ArrayList<ReviewVO> findByProd(String product_code) {
 
 		ArrayList<ReviewVO> reviewList = new ArrayList<ReviewVO>();
@@ -97,7 +99,7 @@ public class ReviewDAO {
 	}
 
 	// member_id로 리뷰 불러오기
-
+	// 최신 순으로 정렬
 	public ArrayList<ReviewVO> findByMember_id(String member_id) {
 
 		ArrayList<ReviewVO> reviewList = new ArrayList<ReviewVO>();
@@ -140,7 +142,7 @@ public class ReviewDAO {
 		return reviewList;
 	}
 
-	// test
+	// 리뷰 테이블에 데이터 저장
 	public void insertReview(ReviewVO reviewvo) {
 		Connection conn = null;
 		// PreparedStatement pstmt = null;
@@ -172,6 +174,7 @@ public class ReviewDAO {
 		}
 	}
 
+	// review가 작성되면 review의 상태를 2로 바꿔 리뷰가 작성 됐음을 표시
 	public void updateReviewResult(int od_id) {
 		// String sql = "update order_detail set review_result='2' where
 		// order_detail_id=?";
@@ -194,3 +197,4 @@ public class ReviewDAO {
 		}
 	}
 }
+//----------------------------------reviewdao 박서은, 심지연 작성------------------------------------

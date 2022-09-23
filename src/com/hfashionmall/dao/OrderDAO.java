@@ -13,6 +13,7 @@ import com.hfashionmall.dto.OrderVO;
 
 import oracle.jdbc.OracleTypes;
 
+//----------------------------------orderdao 박서은,심지연 작성------------------------------------
 public class OrderDAO {
 
    private OrderDAO() {
@@ -24,7 +25,8 @@ public class OrderDAO {
       return instance;
    }
 
-   // 사용자가 주문
+   // 카트 테이블의 내용 주문 테이블에 저장
+   // 카트에 담긴 리스트와 주문자 데이터 저장
    public int insertOrder(ArrayList<CartVO> cartList, String member_member_id) {
       int maxOrder_id = 0;
 
@@ -51,11 +53,13 @@ public class OrderDAO {
          rs = cstmt.executeQuery();
          if (rs.next()) {
             maxOrder_id = rs.getInt(1);
-         }
+         }        
+         System.out.println("주문테이블에 주문id 저장");
 
          for (CartVO cartVO : cartList) {
             insertOrderDetail(cartVO, maxOrder_id);
          }
+         System.out.println("주문상세 테이블에 주문상세 내역 저장");
       } catch (Exception e) {
          e.printStackTrace();
       } finally {
@@ -64,6 +68,7 @@ public class OrderDAO {
       return maxOrder_id;
    }
 
+   // 주문 id를 가지고 상세 주문 테이블에 데이터 저장
    public void insertOrderDetail(CartVO cartVO, int maxOrder_id) {
       Connection conn = null;
       // PreparedStatement pstmt = null;
@@ -100,7 +105,7 @@ public class OrderDAO {
    }
 
    // 상품상세에서 바로 주문 창으로 넘어가기
-   // 수정 필요
+   // 제품 코드와 사용자 아이디로 바로 주문테이블에 데이터 저장
    public int insertDirectOrder(String member_member_id, String product_code, int product_count) {
       int maxOrder_id = 0;
 
@@ -134,7 +139,7 @@ public class OrderDAO {
       return maxOrder_id;
    }
 
-   // 상세제품에서 바로 order_detail로 들어가기
+   // '바로 구매' 부분에서 바로 구매 제품 주문 상세 테이블에 저장
    public void insertDirectOrderDetail(String product_code, int product_count, int maxOrder_id) {
       Connection conn = null;
       PreparedStatement pstmt = null;
@@ -156,7 +161,8 @@ public class OrderDAO {
       }
    }
 
-   // 사용자가 주문 내역 검색
+   
+   // 사용자 별로 주문 상태(배송 완료 / 주문 완료)를 받아와 해당 상태의 주문 내역 조회
    public ArrayList<OrderVO> listOrderById(String id, String result, int order_id) {
       ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
       // String sql = "select * from order_view where member_member_id=? " + "and
@@ -207,7 +213,7 @@ public class OrderDAO {
       return orderList;
    }
 
-   // 현재 진행 중인 주문 내역만 조회
+   // 현재 주문 완료 주문 내역만 조회
    // member_id로 진행중인 주문 내역 가져오기
    public ArrayList<Integer> selectSeqOrderIng(String id) {
       ArrayList<Integer> oseqList = new ArrayList<Integer>();
@@ -277,8 +283,8 @@ public class OrderDAO {
    }
 
    // 리뷰 가능 주문 불러오기
-   // order_detail_result = 2, review_result = 1
-   // 사용자가 주문 내역 검색
+   // order_detail_result = 2, review_result = 1 
+   // 배송이 완료 되었고, 리뷰가 작성되지 않은 주문에 한해 리뷰 작성 가능
    public ArrayList<OrderVO> listOrderRivewable(String id, String o_result, String r_result) {
       ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
       String sql = "select * from order_view where member_member_id=? "
@@ -325,9 +331,6 @@ public class OrderDAO {
    }
 
    // member_id로 모든 주문 내역 가져오기
-
-   // 사용자가 주문 내역 검색
-   // 최근 내역
    public ArrayList<OrderVO> listOrderAllById(String id) {
       ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
       String sql = "select * from order_view where member_member_id=? order by 4 desc";
@@ -370,8 +373,7 @@ public class OrderDAO {
       return orderList;
    }
 
-   // 사용자 아이디랑 order_id로 order가져오기
-   // 사용자가 주문 내역 검색
+   // 사용자 아이디랑 order_id로 주문 내역 가져오기
    public ArrayList<OrderVO> listOrderByOrderId(String id, int order_id) {
       ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
       String sql = "select * from order_view where member_member_id=? and order_id=?";
@@ -415,13 +417,15 @@ public class OrderDAO {
       }
       return orderList;
    }
+   
+ //----------------------------------orderdao 박서은,심지연 작성------------------------------------
 
    /*
     * * 관리자 모드에서 사용되는 메소드 * *
     */
    public ArrayList<OrderVO> listOrder(String member_name) {
       ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-      String sql = "select * from order_view where mname like '%'||?||'%' " + "order by result, oseq desc";
+      String sql = "select * from order_view where mname like '%'||?||'%' ";
 
       Connection conn = null;
       PreparedStatement pstmt = null;
