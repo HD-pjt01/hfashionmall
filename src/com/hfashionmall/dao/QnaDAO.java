@@ -12,6 +12,7 @@ import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.QnaVO;
 
 import oracle.jdbc.OracleTypes;
+
 //--------------------------------------심지연, 정승하 작성----------------------------------------------
 public class QnaDAO {
 
@@ -26,7 +27,6 @@ public class QnaDAO {
 
 	public ArrayList<QnaVO> listQna(String qna_sequence) {
 		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
-
 		String sql = "{call sp_listQna_select(?)}";
 
 		Connection conn = null;

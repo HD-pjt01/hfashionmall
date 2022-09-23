@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.dto.MemberVO;
 //--------------------------------------정승하 작성----------------------------------------------시작
 public class QnaWriteFormAction implements Action {
-
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "member/qnaWrite.jsp";

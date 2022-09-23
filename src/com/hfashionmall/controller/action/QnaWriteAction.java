@@ -16,7 +16,6 @@ public class QnaWriteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "hfashionmallServlet?command=qna";
-
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 
@@ -33,5 +32,6 @@ public class QnaWriteAction implements Action {
 		}
 		response.sendRedirect(url);
 	}
+
 }
 //--------------------------------------정승하 작성----------------------------------------------끝

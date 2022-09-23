@@ -22,6 +22,7 @@ public class AdminLoginAction implements Action {
 
 		AdminDAO adminDAO = AdminDAO.getInstance();
 
+
 		int result = adminDAO.adminCheck(admin_id, admin_pw);
 
 		if (result == 1) {// 로그인 성공

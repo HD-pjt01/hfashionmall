@@ -28,8 +28,6 @@
 							회원리스트</a></li>
 					<li><a href='hfashionmallServlet?command=admin_qna_list'>
 							QnA리스트</a></li>
-					<li><a href='hfashionmallServlet?command=admin_data'>
-							데이터통계</a></li>
 				</ul>
 			</nav>
 		</div>

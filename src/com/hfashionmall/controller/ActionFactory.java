@@ -23,8 +23,9 @@ public class ActionFactory {
 		} else if (command.equals("product_detail")) {
 			action = new ProductDetailAction();
 		}
+
 		//--------------------------------------정승하 작성----------------------------------------------시작
-		// QnA 액션
+		// Product 액션
 		else if (command.equals("brand")) {
 			action = new ProductBrandAction();
 		} else if (command.equals("catagory")) {
@@ -115,7 +116,7 @@ public class ActionFactory {
 			action = new ChartAction();
 		}
 
-		//--------------------------------------정승하 작성----------------------------------------------
+		//--------------------------------------정승하 작성----------------------------------------------시작
 		// 관리자 액션
 		if (command.equals("admin_login_form")) {
 			action = new AdminIndexAction();
@@ -136,7 +137,7 @@ public class ActionFactory {
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
 		}
-		//--------------------------------------정승하 작성----------------------------------------------
+		//--------------------------------------정승하 작성----------------------------------------------끝
 		return action;
 	}
 }

@@ -17,11 +17,14 @@ public class ProductBrandAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "product/productBrand.jsp";
 		System.out.println("request : " + request);
+
 		String brand = request.getParameter("case").trim();
-		// String upAndDown = request.getParameter(brand).trim();
+
 		System.out.println("brand : " + brand);
+
 		ProductDAO productDAO = ProductDAO.getInstance();
 		ArrayList<ProductVO> productBrandList = productDAO.listBrandProduct(brand);
+		
 		request.setAttribute("productBrandList", productBrandList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
