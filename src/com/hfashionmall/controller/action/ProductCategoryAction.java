@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashionmall.dao.ProductDAO;
 import com.hfashionmall.dto.ProductVO;
 
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class ProductCategoryAction implements Action {
 
 	@Override
@@ -30,4 +30,4 @@ public class ProductCategoryAction implements Action {
 		dispatcher.forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------끝

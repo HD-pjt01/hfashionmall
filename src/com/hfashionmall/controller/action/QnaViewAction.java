@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.dao.QnaDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.QnaVO;
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------시작
 //사용자 한 명이 작성한 QnA 리스트를 관리자에서 호출
 public class QnaViewAction implements Action {
 	@Override
@@ -30,4 +30,4 @@ public class QnaViewAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------끝

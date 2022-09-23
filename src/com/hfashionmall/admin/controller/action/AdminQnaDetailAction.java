@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashionmall.dao.QnaDAO;
 import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dto.QnaVO;
-
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class AdminQnaDetailAction implements Action {
 
 	@Override
@@ -27,3 +27,4 @@ public class AdminQnaDetailAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------끝

@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hfashionmall.controller.action.Action;
 
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class AdminIndexAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String url = "admin/main.jsp";  
-     
-    RequestDispatcher dispatcher=request.getRequestDispatcher(url);
-    dispatcher.forward(request, response);
-  }
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "admin/main.jsp";
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
+	}
 }
+//--------------------------------------정승하 작성----------------------------------------------끝

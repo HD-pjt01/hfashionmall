@@ -12,7 +12,7 @@ import com.hfashionmall.dao.ProductDAO;
 import com.hfashionmall.dto.ProductVO;
 import com.hfashionmall.dao.ReviewDAO;
 import com.hfashionmall.dto.ReviewVO;
-//--------------------------------------박서은 작성----------------------------------------------
+//--------------------------------------박서은, 정승하 작성----------------------------------------------시작
 // 제품 상세 페이지 처리
 public class ProductDetailAction implements Action {
 
@@ -44,4 +44,4 @@ public class ProductDetailAction implements Action {
     System.out.println("제품 상세 페이지 출력");
   }
 }
-//--------------------------------------박서은 작성----------------------------------------------
+//--------------------------------------박서은, 정승하 작성----------------------------------------------끝

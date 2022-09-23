@@ -21,7 +21,7 @@ public class AdminDAO {
 	// login.jsp -> workerCheck.jsp
 	
 	// 아이디를 검색 조건으로 주어서 비밀 번호를 얻어온다.	
-	public int workerCheck(String userid, String userpw) {
+	public int adminCheck(String userid, String userpw) {
 		String sql = "select admin_pw from admin where admin_id=?";
 		int result = -1;
 		// 디비와 연동

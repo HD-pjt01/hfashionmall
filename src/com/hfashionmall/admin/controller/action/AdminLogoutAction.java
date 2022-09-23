@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashionmall.controller.action.Action;
-
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class AdminLogoutAction implements Action {
 
 	@Override
@@ -24,3 +24,4 @@ public class AdminLogoutAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------끝

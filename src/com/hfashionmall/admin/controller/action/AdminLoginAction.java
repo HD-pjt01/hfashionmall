@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dao.AdminDAO;
 
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class AdminLoginAction implements Action {
 
 	@Override
@@ -21,7 +22,7 @@ public class AdminLoginAction implements Action {
 
 		AdminDAO adminDAO = AdminDAO.getInstance();
 
-		int result = adminDAO.workerCheck(admin_id, admin_pw);
+		int result = adminDAO.adminCheck(admin_id, admin_pw);
 
 		if (result == 1) {// 로그인 성공
 			HttpSession session = request.getSession();
@@ -36,3 +37,4 @@ public class AdminLoginAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------끝

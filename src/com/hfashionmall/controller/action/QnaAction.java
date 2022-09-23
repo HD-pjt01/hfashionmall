@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.hfashionmall.dto.MemberVO;
 
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------시작
 // QnA 작성 url 호출
 public class QnaAction implements Action {
 	  @Override
@@ -25,4 +25,4 @@ public class QnaAction implements Action {
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------끝

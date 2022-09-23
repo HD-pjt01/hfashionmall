@@ -11,6 +11,7 @@ import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dao.MemberDAO;
 import com.hfashionmall.dto.MemberVO;
 
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class AdminMemberListAction implements Action {
 
 	@Override
@@ -30,3 +31,4 @@ public class AdminMemberListAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------끝

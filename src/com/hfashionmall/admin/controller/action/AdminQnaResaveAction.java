@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashionmall.dao.QnaDAO;
 import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dto.QnaVO;
-
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class AdminQnaResaveAction implements Action {
 
 	@Override
@@ -30,3 +30,4 @@ public class AdminQnaResaveAction implements Action {
 		response.sendRedirect(url);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------끝

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashionmall.dto.MemberVO;
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------시작
 public class QnaWriteFormAction implements Action {
 
 	@Override
@@ -25,4 +25,4 @@ public class QnaWriteFormAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------
+//--------------------------------------정승하 작성----------------------------------------------끝
