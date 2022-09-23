@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dao.QnaDAO;
 import com.hfashionmall.dto.QnaVO;
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자        수정내용
+ * --------    -------------------------------
+ * 정승하        관리자에서 QnA 리스트를 호출
+ */
 public class AdminQnaListAction implements Action {
 
 	@Override
@@ -26,4 +30,3 @@ public class AdminQnaListAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------끝

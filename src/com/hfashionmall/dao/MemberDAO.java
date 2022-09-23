@@ -141,14 +141,7 @@ public class MemberDAO {
 	}
 
 	public int insertMember(MemberVO memberVO) {
-		// String sql = "insert into member(member_id, member_pw, member_name,
-		// member_addr, member_phone,";
-		// sql += " member_email, member_zipcode, member_register, member_useYN,
-		// member_birth, member_update) values(?, ?, ?, ?, ?, ?, ?, sysdate, ?, ?,
-		// sysdate)";
-
 		Connection conn = null;
-		// PreparedStatement pstmt = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 
@@ -156,12 +149,9 @@ public class MemberDAO {
 		String id = memberVO.getMember_id();
 		String pw = memberVO.getMember_pw();
 		String name = memberVO.getMember_name();
-		// String addr = memberVO.getMember_addr();
+
 		String phone = memberVO.getMember_phone();
 		String email = memberVO.getMember_email();
-		// String zipcode = memberVO.getMember_zipcode();
-		// String register = memberVO.getMember_register();
-		// String useYN = memberVO.getMember_useYN();
 		String birth = memberVO.getMember_birth();
 		// String update = memberVO.getMember_update();
 		String sql = "{call sp_member_insert(?, ?, ?, ?, ?, ?)}";

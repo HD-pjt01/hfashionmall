@@ -3,8 +3,6 @@
 <%@ include file="../header.jsp"%>
 <div id="container">
 	<section class="content-response">
-		<!-- type2 저거를 뺐음 기존 클래스 명은 page-title type2 임 -->
-		<!-- <h2 class="page-title type2"> -->
 		<c:forEach items="${productCategoryList}" var="productVO"
 			varStatus="status" begin="1" end="1">
 			<h2 class="page-title">${productVO.product_category}</h2>
@@ -30,7 +28,6 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>

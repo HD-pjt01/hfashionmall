@@ -11,7 +11,11 @@ import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dao.MemberDAO;
 import com.hfashionmall.dto.MemberVO;
 
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자        수정내용
+ * --------    -------------------------------
+ * 정승하        관리자에서 회원가입한 멤버 리스트를 호출
+ */
 public class AdminMemberListAction implements Action {
 
 	@Override
@@ -31,4 +35,3 @@ public class AdminMemberListAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------끝

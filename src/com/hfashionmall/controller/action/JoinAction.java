@@ -30,11 +30,10 @@ public class JoinAction implements Action {
 		memberVO.setMember_email(request.getParameter("member_email"));
 		memberVO.setMember_zipcode(request.getParameter("member_zipcode"));
 
-		// memberVO.setMember_register(request.getParameter("member_register"));
+
 		memberVO.setMember_useYN(request.getParameter("member_useYN"));
 
 		memberVO.setMember_birth(request.getParameter("member_birth"));
-		// memberVO.setMember_update(request.getParameter("member_update"));
 
 		session.setAttribute("member_id", request.getParameter("member_id"));
 

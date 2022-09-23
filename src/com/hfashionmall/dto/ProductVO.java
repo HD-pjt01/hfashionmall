@@ -1,7 +1,11 @@
 package com.hfashionmall.dto;
 
 import java.sql.Timestamp;
-
+/**
+ * 수정자              수정내용
+ * -----------       -------------------------------
+ * 정승하              ProductVO 정의
+ */
 public class ProductVO {
    
    private String product_code;

@@ -24,14 +24,16 @@ public class ActionFactory {
 			action = new ProductDetailAction();
 		}
 
-		//--------------------------------------정승하 작성----------------------------------------------시작
-		// Product 액션
+		/**
+		 * 수정자        수정내용
+		 * --------    -------------------------------
+		 * 정승하        상품의 브랜드, 카테고리, 디테일 액션 팩토리 설정
+		 */
 		else if (command.equals("brand")) {
 			action = new ProductBrandAction();
 		} else if (command.equals("catagory")) {
 			action = new ProductCategoryAction();
 		} 
-		//--------------------------------------정승하 작성----------------------------------------------끝
 		else if (command.equals("contract")) {
 			action = new ContractAction();
 		} else if (command.equals("join_form")) {
@@ -67,20 +69,18 @@ public class ActionFactory {
 		} else if (command.equals("mypage_deliv_complete")) {
 			action = new MyPageOrderDelivCompleteAction();
 		}
-		//--------------------------------------정승하 작성----------------------------------------------시작
-		// QnA 액션
+		/**
+		 * 수정자        수정내용
+		 * --------    -------------------------------
+		 * 정승하        QnA 액션 팩토리 설정
+		 */
 		else if (command.equals("qna")) {
 			action = new QnaAction();
-		} else if (command.equals("qna_list")) {
-			action = new QnaListAction();
-		} else if (command.equals("qna_write_form")) {
-			action = new QnaWriteFormAction();
 		} else if (command.equals("qna_write")) {
 			action = new QnaWriteAction();
 		} else if (command.equals("qna_view")) {
 			action = new QnaViewAction();
 		}
-		//--------------------------------------정승하 작성----------------------------------------------끝
 
 		// 마이 페이지 리뷰 액션 추가
 		else if (command.equals("mypage_review")) {
@@ -116,8 +116,11 @@ public class ActionFactory {
 			action = new ChartAction();
 		}
 
-		//--------------------------------------정승하 작성----------------------------------------------시작
-		// 관리자 액션
+		/**
+		 * 수정자        수정내용
+		 * --------    -------------------------------
+		 * 정승하        관리자 액션 팩토리 설정
+		 */
 		if (command.equals("admin_login_form")) {
 			action = new AdminIndexAction();
 		} else if (command.equals("admin_login")) {
@@ -126,8 +129,6 @@ public class ActionFactory {
 			action = new AdminLogoutAction();
 		} else if (command.equals("admin_product_list")) {
 			action = new AdminProductListAction();
-		} else if (command.equals("admin_order_list")) {
-			action = new AdminOrderListAction();
 		} else if (command.equals("admin_member_list")) {
 			action = new AdminMemberListAction();
 		} else if (command.equals("admin_qna_list")) {
@@ -137,7 +138,6 @@ public class ActionFactory {
 		} else if (command.equals("admin_qna_repsave")) {
 			action = new AdminQnaResaveAction();
 		}
-		//--------------------------------------정승하 작성----------------------------------------------끝
 		return action;
 	}
 }

@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import util.DBManager;
 
 import com.hfashionmall.dto.ProductVO;
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자              수정내용
+ * -----------       -------------------------------
+ * 정승하, 심지연        ProductDAO 작성 및 수정
+ */
 public class ProductDAO {
 	private ProductDAO() {
 	}
@@ -22,7 +26,6 @@ public class ProductDAO {
 
 	public ProductVO getProduct(String product_code) {
 		ProductVO product = null;
-		// String sql = "select * from product where product_code=?";
 		String sql = "select * from table(getProduct_pipe_table_func(?))";
 		ResultSet rs = null;
 		Connection conn = null;
@@ -101,7 +104,6 @@ public class ProductDAO {
 		ResultSet rs = null;
 		CallableStatement cstmt = null;
 
-		System.out.println("sql :  " + sql);
 		try {
 			conn = DBManager.getConnection();
 			cstmt = conn.prepareCall(sql);
@@ -171,7 +173,7 @@ public class ProductDAO {
 	}
 
 	/*
-	 * * 관리자 모드에서 사용되는 메소드 *
+	 * * 관리자 메서드 정의
 	 */
 	public int totalRecord(String product_name) {
 		int total_pages = 0;
@@ -207,7 +209,6 @@ public class ProductDAO {
 	static int view_rows = 5; // 페이지의 개수
 	static int counts = 8; // 한 페이지에 나타낼 상품의 개수
 
-	// 페이지 이동을 위한 메소드
 	public String pageNumber(int tpage, String name) {
 		String str = "";
 
@@ -295,13 +296,6 @@ public class ProductDAO {
 					product.setProduct_register(rs.getTimestamp("product_register"));
 					product.setProduct_update(rs.getTimestamp("product_update"));
 					product.setProduct_quantity(rs.getInt("product_quantity"));
-					// product.setPseq(rs.getInt(1));
-					// product.setIndate(rs.getTimestamp(2));
-					// product.setName(rs.getString(3));
-					// product.setPrice1(rs.getInt(4));
-					// product.setPrice2(rs.getInt(5));
-					// product.setUseyn(rs.getString(6));
-					// product.setBestyn(rs.getString(7));
 					productList.add(product);
 					if (rs.isLast()) {
 						break;

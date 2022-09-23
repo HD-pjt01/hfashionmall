@@ -13,8 +13,11 @@ import com.hfashionmall.dto.ProductVO;
 import com.hfashionmall.dao.ReviewDAO;
 import com.hfashionmall.dto.ReviewVO;
 
-//--------------------------------------박서은, 정승하 작성----------------------------------------------시작
-// 제품 상세 페이지 처리
+/**
+ * 수정자           수정내용
+ * -----------    ---------------------------
+ * 정승하, 박서은    선택한 상품 상세 내용을 호출
+ */
 public class ProductDetailAction implements Action {
 
 	@Override
@@ -43,4 +46,3 @@ public class ProductDetailAction implements Action {
 		System.out.println("제품 상세 페이지 출력");
 	}
 }
-//--------------------------------------박서은, 정승하 작성----------------------------------------------끝

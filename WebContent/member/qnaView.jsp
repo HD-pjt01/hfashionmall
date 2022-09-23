@@ -59,12 +59,6 @@
 				<!-- 200713 수정 -->
 				<script type="text/javascript"
 					src="/hfm_pc/resources/js/mypage/mypagecommon.js?timestamp=20220907151706"></script>
-
-				<!-- 다이나믹 컨피그 설정 HFM_EQL_CONN_YN ERP 연동 유무 -->
-				<!-- includeOrderList -->
-
-				<!-- //200713 수정 -->
-				<!-- 리뷰 작성 팝업 -->
 				<div id="getGoodsReviewPopup"></div>
 				<div id="layerTracking" class="layer-pop" tabindex="0"></div>
 
@@ -213,8 +207,6 @@
 						}
 					}
 				</script>
-				<!-- //추천 아이템 리스트 -->
-				<!-- //snb-content-wrap -->
 			</div>
 			<div class="snb-content-wrap">
 				<script type="text/javascript"

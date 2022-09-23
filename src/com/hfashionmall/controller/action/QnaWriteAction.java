@@ -11,7 +11,11 @@ import com.hfashionmall.dao.QnaDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.QnaVO;
 
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자        수정내용
+ * --------    -------------------------------
+ * 정승하        QnA 작성 URL을 호출
+ */
 public class QnaWriteAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +36,4 @@ public class QnaWriteAction implements Action {
 		}
 		response.sendRedirect(url);
 	}
-
 }
-//--------------------------------------정승하 작성----------------------------------------------끝

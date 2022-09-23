@@ -1,7 +1,11 @@
 package com.hfashionmall.dto;
 
 import java.sql.Timestamp;
-
+/**
+ * 수정자              수정내용
+ * -----------       -------------------------------
+ * 정승하              QnaVO 정의
+ */
 public class QnaVO {
 	private int   qna_sequence; 
 	private String qna_subject; // 제목 not null

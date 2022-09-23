@@ -13,7 +13,11 @@ import com.hfashionmall.dto.QnaVO;
 
 import oracle.jdbc.OracleTypes;
 
-//--------------------------------------심지연, 정승하 작성----------------------------------------------
+/**
+ * 수정자              수정내용
+ * -----------       -------------------------------
+ * 정승하, 심지연        QnaDAO 작성 및 수정
+ */
 public class QnaDAO {
 
 	private QnaDAO() {
@@ -30,7 +34,6 @@ public class QnaDAO {
 		String sql = "{call sp_listQna_select(?)}";
 
 		Connection conn = null;
-		// PreparedStatement pstmt = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 
@@ -90,10 +93,8 @@ public class QnaDAO {
 
 	public QnaVO getQna(int qna_sequence) {
 		QnaVO qnaVO = null;
-		// String sql = "select * from qna where qna_sequence=?";
 		String sql = "{call sp_getQna_select(?, ?)}";
 		Connection conn = null;
-		// PreparedStatement pstmt = null;
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 		try {
@@ -121,7 +122,6 @@ public class QnaDAO {
 
 	public void insertqna(QnaVO qnaVO, String session_id) {
 		String sql = "insert into qna values (qna_seq.nextval, ?, ?, 'no', sysdate, ?, ?)";
-		// qna_answer -> default 'no'
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -143,11 +143,10 @@ public class QnaDAO {
 	}
 
 	/*
-	 * * 관리자 모드에서 필요한 메소드
+	 * * 관리자 메서드 정의
 	 */
 	public ArrayList<QnaVO> listAllQna() {
 		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
-		// 게시판의 데이터를 가지고 오는 쿼리 rep:1:게시물 2: 답변
 		String sql = "select * from qna order by qna_register desc";
 
 		Connection conn = null;

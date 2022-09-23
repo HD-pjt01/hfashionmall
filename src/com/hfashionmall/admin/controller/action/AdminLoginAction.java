@@ -10,7 +10,11 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.controller.action.Action;
 import com.hfashionmall.dao.AdminDAO;
 
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자        수정내용
+ * --------    -------------------------------
+ * 정승하        관리자 아이디, 비밀번호 체크 후 로그인 실행
+ */
 public class AdminLoginAction implements Action {
 
 	@Override
@@ -21,7 +25,6 @@ public class AdminLoginAction implements Action {
 		String admin_pw = request.getParameter("admin_pw").trim();
 
 		AdminDAO adminDAO = AdminDAO.getInstance();
-
 
 		int result = adminDAO.adminCheck(admin_id, admin_pw);
 
@@ -38,4 +41,3 @@ public class AdminLoginAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------끝

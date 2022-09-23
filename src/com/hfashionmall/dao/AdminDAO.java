@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import util.DBManager;
-
+/**
+ * 수정자              수정내용
+ * -----------       -------------------------------
+ * 정승하              AdminDAO 작성 및 수정
+ */
 public class AdminDAO {
 	private AdminDAO() {
 	}
@@ -13,22 +17,15 @@ public class AdminDAO {
 
 	public static AdminDAO getInstance() {
 		return instance;
-	}
-
-	// 사용자 인증을 위한 메소드 : -1:아이디 존재 X
-	// 0:아이디 존재하지만 비밀번호 불일치
-	// 1:아이디와 비밀번호 모두 일치
-	// login.jsp -> workerCheck.jsp
-	
-	// 아이디를 검색 조건으로 주어서 비밀 번호를 얻어온다.	
+	}	
 	public int adminCheck(String userid, String userpw) {
 		String sql = "select admin_pw from admin where admin_id=?";
 		int result = -1;
-		// 디비와 연동
+
 		Connection conn = null;
-		// 쿼리문(select)을 수행하기 위한 문장 객체
+
 		PreparedStatement pstmt = null;
-		// 결과값을 저장할 ResultSet
+
 		ResultSet rs = null;			
 		
 		try {
@@ -36,12 +33,11 @@ public class AdminDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userid);
 			rs = pstmt.executeQuery();
-			if (rs.next()) { // 전달인자로 준 아이디와 일치하는 행이 존재
-				result = 0; // 등록된 관리자...
-				String dbPwd = rs.getString(1); // 디비 저장된 비밀번호
-				// 디비의 비밀번호와 입력한 비밀번호 일치 여부
+			if (rs.next()) { 
+				result = 0; 
+				String dbPwd = rs.getString(1); 
 				if (dbPwd.equals(userpw)) {
-					result = 1; // 비밀번호 마저도 일치
+					result = 1;
 				}
 			}
 			DBManager.close(conn, pstmt, rs);
@@ -49,6 +45,5 @@ public class AdminDAO {
 		}
 		return result;
 	}
-	
-}// AdminDAO
+}
 

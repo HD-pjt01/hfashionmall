@@ -1,7 +1,11 @@
 package com.hfashionmall.dto;
 
 import java.sql.Timestamp;
-
+/**
+ * 수정자              수정내용
+ * -----------       -------------------------------
+ * 박소은              MemberVO 정의
+ */
 public class MemberVO {
 	private String member_id; // varchar2(20)
 	private String member_pw; // varchar2(20)

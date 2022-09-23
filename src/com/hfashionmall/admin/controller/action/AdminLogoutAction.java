@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashionmall.controller.action.Action;
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자        수정내용
+ * --------    -------------------------------
+ * 정승하        관리자 로그아웃 실행
+ */
 public class AdminLogoutAction implements Action {
 
 	@Override
@@ -24,4 +28,4 @@ public class AdminLogoutAction implements Action {
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------끝
+

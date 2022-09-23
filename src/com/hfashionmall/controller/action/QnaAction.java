@@ -10,8 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import com.hfashionmall.dto.MemberVO;
 
-//--------------------------------------정승하 작성----------------------------------------------시작
-// QnA 작성 url 호출
+/**
+ * 수정자        수정내용
+ * --------    ---------------------------
+ * 정승하        QnA 작성 URL을 호출
+ */
 public class QnaAction implements Action {
 	  @Override
 	  public void execute(HttpServletRequest request, HttpServletResponse response)
@@ -25,5 +28,3 @@ public class QnaAction implements Action {
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------끝
-

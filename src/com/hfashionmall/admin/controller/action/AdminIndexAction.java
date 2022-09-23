@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hfashionmall.controller.action.Action;
 
-//--------------------------------------정승하 작성----------------------------------------------시작
+/**
+ * 수정자        수정내용
+ * --------    ---------------------------
+ * 정승하        관리자 URL을 호출
+ */
 public class AdminIndexAction implements Action {
 
 	@Override
@@ -20,4 +24,3 @@ public class AdminIndexAction implements Action {
 		dispatcher.forward(request, response);
 	}
 }
-//--------------------------------------정승하 작성----------------------------------------------끝
