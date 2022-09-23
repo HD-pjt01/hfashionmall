@@ -24,8 +24,7 @@ public class DBManager {
 		return conn;
 	}
 
-	public static void close(Connection conn, PreparedStatement pstmt,
-			ResultSet rset) {
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rset) {
 		if (rset != null) {
 			try {
 				rset.close();

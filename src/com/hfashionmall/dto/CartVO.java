@@ -13,6 +13,7 @@ public class CartVO {
 	private int product_price;
 	private Timestamp cart_register;
 	
+	
 	public int getCart_id() {
 		return cart_id;
 	}
@@ -66,11 +67,6 @@ public class CartVO {
 		return "CartVO [cart_id=" + cart_id + ", member_member_id=" + member_member_id + ", product_product_code="
 				+ product_product_code + ", mname=" + mname + ", pname=" + pname + ", product_count=" + product_count
 				+ ", product_price=" + product_price + ", cart_register=" + cart_register + "]";
-	}
-	
-	
-
-
-	
+	}	
 
 }

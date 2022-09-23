@@ -43,7 +43,7 @@
 											<div class="inner">
 												<div class="cell-pd">
 													<div class="item-img">
-														<img src="https://cdn.hfashionmall.com/goods/THBR/22/04/07/GM0122040738612_1_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135" alt="" onerror="javascript:this.src='/hfm_pc/resources/images/temp/pd_86x129.jpg'">
+														<img src="product_images/${cartVO.product_product_code}_01.jpg" alt="" onerror="javascript:this.src='/hfm_pc/resources/images/temp/pd_86x129.jpg'">
 													</div>
 													<div class="item-info">
 
@@ -66,35 +66,6 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-
-							<!--                             
-                            <div class="row">
-                        
-                                <div class="inner">
-                                    <div class="cell-pd">
-                                        <div class="item-img">
-                                            <img src="https://cdn.hfashionmall.com/goods/THBR/22/04/07/GM0122040738615_1_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135"
-                                                alt=""
-                                                onerror="javascript:this.src='/hfm_pc/resources/images/temp/pd_86x129.jpg'">
-                                        </div>
-                                        <div class="item-info">
-                                            <div class="item-brand">TOMMY HILFIGER KIDS</div>
-                                            <div class="item-name">면혼방 배색 패턴 크루삭스 2P</div>
-                                            <div class="item-opt">
-                                                <span> BEIGE, S </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="cell-qt">1</div>
-                                    <div class="cell-price">
-                                        <div class="price">
-                                            <span><span class="num">22,000</span> 원</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-							<!-- //row -->
-							<!-- 배송정보 -->
 							<div class="cell-dlv">
 								<div class="inner">
 									<p>

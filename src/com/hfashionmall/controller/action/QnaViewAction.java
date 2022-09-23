@@ -11,27 +11,23 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.dao.QnaDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.QnaVO;
-
+//--------------------------------------정승하 작성----------------------------------------------
+//사용자 한 명이 작성한 QnA 리스트를 관리자에서 호출
 public class QnaViewAction implements Action {
-
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String url = "member/qnaView.jsp";
-    
-    System.out.println("member/qnaView.jsp");
-    
-    HttpSession session = request.getSession();
-    MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
-
-    if (loginUser == null) {
-      url = "hfashionmallServlet?command=login_form";
-    } else {
-      //String qna_sequence = Integer.parseInt(request.getParameter("qna_sequence"));
-      QnaDAO qnaDAO = QnaDAO.getInstance();
-      ArrayList<QnaVO> qnaList = qnaDAO.listMyQna(loginUser.getMember_id());
-      request.setAttribute("qnaList", qnaList);
-    }
-    request.getRequestDispatcher(url).forward(request, response);
-  }
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "member/qnaView.jsp";
+		System.out.println("member/qnaView.jsp");
+		HttpSession session = request.getSession();
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			url = "hfashionmallServlet?command=login_form";
+		} else {
+			QnaDAO qnaDAO = QnaDAO.getInstance();
+			ArrayList<QnaVO> qnaList = qnaDAO.listMyQna(loginUser.getMember_id());
+			request.setAttribute("qnaList", qnaList);
+		}
+		request.getRequestDispatcher(url).forward(request, response);
+	}
 }
+//--------------------------------------정승하 작성----------------------------------------------

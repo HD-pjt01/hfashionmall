@@ -11,24 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashionmall.dao.ProductDAO;
 import com.hfashionmall.dto.ProductVO;
 
+//--------------------------------------정승하 작성----------------------------------------------
 public class ProductBrandAction implements Action {
-
 	@Override
-	public void execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		String url="product/productBrand.jsp";
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "product/productBrand.jsp";
 		System.out.println("request : " + request);
-		String brand=request.getParameter("case").trim();
-		//String upAndDown = request.getParameter(brand).trim();
-		
+		String brand = request.getParameter("case").trim();
+		// String upAndDown = request.getParameter(brand).trim();
 		System.out.println("brand : " + brand);
-		
-		ProductDAO productDAO=ProductDAO.getInstance();
-		ArrayList<ProductVO> productBrandList= productDAO.listBrandProduct(brand);
-		
+		ProductDAO productDAO = ProductDAO.getInstance();
+		ArrayList<ProductVO> productBrandList = productDAO.listBrandProduct(brand);
 		request.setAttribute("productBrandList", productBrandList);
-		RequestDispatcher dispatcher = request
-				.getRequestDispatcher(url);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------

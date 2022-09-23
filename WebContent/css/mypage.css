@@ -18,7 +18,7 @@
   border-radius: 30px;
   margin: 0px;
   padding: 0px;
-  background-color: rgba(238, 166, 89, 0.74);
+  background-color:#c2935f;
 }
 
 #mypage_summ ul li {
@@ -67,7 +67,7 @@
 }
 
 #reviewWrite {
-	padding:20px;
+	/* padding:20px; */
 	margin:50px;
 	color:red;
 }

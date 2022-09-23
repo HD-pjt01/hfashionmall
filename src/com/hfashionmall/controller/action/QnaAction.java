@@ -10,21 +10,19 @@ import javax.servlet.http.HttpSession;
 
 import com.hfashionmall.dto.MemberVO;
 
-
+//--------------------------------------정승하 작성----------------------------------------------
+// QnA 작성 url 호출
 public class QnaAction implements Action {
-
 	  @Override
 	  public void execute(HttpServletRequest request, HttpServletResponse response)
 	      throws ServletException, IOException {    
 	    String url = "member/qna.jsp";  
-	    
 	    HttpSession session = request.getSession();
 	    MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");    
-	    
 	    if (loginUser == null) {
 	      url = "hfashionmallServlet?command=login_form";
 	    } 
-	    
 	    request.getRequestDispatcher(url).forward(request, response);
 	}
 }
+//--------------------------------------정승하 작성----------------------------------------------

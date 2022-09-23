@@ -8,10 +8,12 @@ import com.hfashionmall.dto.CartVO;
 import com.hfashionmall.dto.OrderVO;
 import com.hfashionmall.dto.ReviewVO;
 
+import oracle.jdbc.OracleTypes;
 import util.DBManager;
 import java.util.*;
 import java.sql.*;
 
+//----------------------------------reviewdao 박서은, 심지연 작성------------------------------------
 public class ReviewDAO {
 	private ReviewDAO() {
 	}
@@ -22,32 +24,38 @@ public class ReviewDAO {
 		return instance;
 	}
 
-	// 작성 완료
+	// 제품마다 리뷰가 몇 개 인지 계산
 	public int countTotalReview(String product_code) {
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		// PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
 
-		String sql = "select count(*) from review_view where product_product_code=?";
+		// String sql = "select count(*) from review_view where product_product_code=?";
+		String sql = "{call sp_countTotalReview_select(?, ?)}";
 
 		try {
 			conn = DBManager.getConnection();
 
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, product_code);
-			rs = pstmt.executeQuery();
+			cstmt = conn.prepareCall(sql);
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.setString(2, product_code);
+			rs = cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(1);
+
 			if (rs.next()) {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, cstmt);
 		}
 		return 0;
 	}
 
 	// product code로 리뷰 불러오기
+	// 최신순으로 정렬
 	public ArrayList<ReviewVO> findByProd(String product_code) {
 
 		ArrayList<ReviewVO> reviewList = new ArrayList<ReviewVO>();
@@ -90,9 +98,8 @@ public class ReviewDAO {
 		return reviewList;
 	}
 
-
-	// member_id로 리뷰 불러오기 
-	
+	// member_id로 리뷰 불러오기
+	// 최신 순으로 정렬
 	public ArrayList<ReviewVO> findByMember_id(String member_id) {
 
 		ArrayList<ReviewVO> reviewList = new ArrayList<ReviewVO>();
@@ -135,19 +142,22 @@ public class ReviewDAO {
 		return reviewList;
 	}
 
-	// test
+	// 리뷰 테이블에 데이터 저장
 	public void insertReview(ReviewVO reviewvo) {
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		// PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 
 		try {
 			conn = DBManager.getConnection();
 
-			String insertReview = "insert into review (order_detail_order_detail_id, review_content)values (?,?)";
-			pstmt = conn.prepareStatement(insertReview);
-			pstmt.setInt(1, reviewvo.getOd_id());
-			pstmt.setString(2, reviewvo.getReview_content());
-			pstmt.executeUpdate();
+			// String insertReview = "insert into review (order_detail_order_detail_id,
+			// review_content)values (?,?)";
+			String insertReview = "{call sp_review_insert(?, ?)}";
+			cstmt = conn.prepareCall(insertReview);
+			cstmt.setInt(1, reviewvo.getOd_id());
+			cstmt.setString(2, reviewvo.getReview_content());
+			cstmt.executeUpdate();
 
 			/*
 			 * // 리뷰 작성한 주문 상품은 review_result = '2' 로 바꾸기 String updateReviewResult =
@@ -160,26 +170,31 @@ public class ReviewDAO {
 			e.printStackTrace();
 			System.out.println("리뷰 입력 중 오류");
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, cstmt);
 		}
 	}
 
+	// review가 작성되면 review의 상태를 2로 바꿔 리뷰가 작성 됐음을 표시
 	public void updateReviewResult(int od_id) {
-		String sql = "update order_detail set review_result='2' where order_detail_id=?";
+		// String sql = "update order_detail set review_result='2' where
+		// order_detail_id=?";
+		String sql = "{call sp_ReviewResult_update(?)}";
 
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		// PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 
 		try {
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, od_id);
-			pstmt.executeUpdate();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setInt(1, od_id);
+			cstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("업데이트 오류");
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, cstmt);
 		}
 	}
 }
+//----------------------------------reviewdao 박서은, 심지연 작성------------------------------------

@@ -10,22 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hfashionmall.dao.ProductDAO;
 import com.hfashionmall.dto.ProductVO;
-
+//--------------------------------------정승하 작성----------------------------------------------
 public class IndexAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {    
-    String url = "/index.jsp";
-    
-    //ProductDAO productDAO=ProductDAO.getInstance();
-    //ArrayList<ProductVO> newProductList = productDAO.listNewProduct();
-    //ArrayList<ProductVO> bestProductList = productDAO.listBestProduct();
-    
-    //request.setAttribute("newProductList", newProductList);
-    //request.setAttribute("bestProductList", bestProductList);
-    
-    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-    dispatcher.forward(request, response);
-  }
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "/index.jsp";
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
+	}
 }
+//--------------------------------------정승하 작성----------------------------------------------

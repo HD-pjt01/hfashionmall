@@ -12,13 +12,16 @@ import com.hfashionmall.dao.ReviewDAO;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.OrderVO;
 import com.hfashionmall.dto.ReviewVO;
-
+//--------------------------------------박서은 작성----------------------------------------------
+// 작성된 리뷰 내용, 리뷰id를 받아와 리뷰 테이블에 데이터 저장
+// 리뷰 테이블에 데이터 저장하고 리뷰 상태를 '작성 완료'로 변경
 public class ReviewWriteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "hfashionmallServlet?command=mypage_review";
 
+		// 로그인한 유저가 있는 지 확인 -> 없다면 로그인 창으로, 있다면 리뷰 작성 수행
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
@@ -27,35 +30,20 @@ public class ReviewWriteAction implements Action {
 
 			int od_id = Integer.parseInt(request.getParameter("od_id"));
 
-			System.out.println("여기 od_id는" + od_id);
-			System.out.println("컨텐츠" + request.getParameter("r_content"));
-			// od_id로 order_view에서 member_id, mname , product_code, pname, od_result가져오기
-			/*
-			 * OrderDAO orderDAO = OrderDAO.getInstance(); OrderVO orderVO = new OrderVO();
-			 * orderVO = orderDAO.OrderByReviewable(od_id);
-			 * 
-			 * String member_id = orderVO.getMember_member_id(); String mname =
-			 * orderVO.getMname(); String product_code = orderVO.getProduct_code(); String
-			 * pname = orderVO.getPname(); String od_result =
-			 * orderVO.getOrder_detail_result();
-			 */
-
-			// 받아온 값으로 리뷰테이블에 리뷰 저장
+			// 받아온 리뷰 데이터를 리뷰테이블에 저장
 			ReviewDAO reviewDAO = ReviewDAO.getInstance();
 			ReviewVO reviewVO = new ReviewVO();
 
 			reviewVO.setOd_id(od_id);
 			reviewVO.setReview_content(request.getParameter("r_content"));
-			/*
-			 * reviewVO.setMember_id(member_id); reviewVO.setMname(mname);
-			 * reviewVO.setProduct_code(product_code); reviewVO.setPname(pname);
-			 * reviewVO.setOd_result(od_result);
-			 */
 
 			reviewDAO.insertReview(reviewVO);
-			System.out.println("insert 완료");
+			System.out.println(" review content insert 완료");
 			reviewDAO.updateReviewResult(od_id);
+			System.out.println(" review 상태를 '리뷰 작성 완료'로 변경");
 		}
+		// 리뷰 작성 완료 후 다시 리뷰 작성 창 띄우기
 		response.sendRedirect(url);
 	}
 }
+//--------------------------------------박서은 작성----------------------------------------------

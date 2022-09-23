@@ -5,35 +5,7 @@
 int qnaNo = 1;
 int reviewNo = 1;
 %>
-<!--  <article>
-    <h1> Item </h1>
-    <div id="itemdetail" >
-      <form  method="post" name="formm">    
-        <fieldset>
-          <legend> Item detail Info</legend>  
-          <a href="hfashionmallServlet?command=product_detail&product_code=${productVO.product_code}">         
-            <span style="float: left;">
-              <img src="product_images/BRAND/${productVO.product_brand}/${productVO.product_code}/${productVO.product_code}_01.jpg" 
-              style="width:200px; height:200px;"/>
-            </span>              
-            <%-- <h2>${productVO.product_name}</h2>   --%>
-          </a>    
-          <label> 가 격 :  </label>
-          <p> ${productVO.product_price} 원</p>  
-          <label> 수 량 : </label>
-          <input  type="text"      name="quantity"  size="2"      value="1"><br>
-          <input  type="hidden"    name="product_code"       value="${productVO.product_code}"><br>
-        </fieldset>
-        <div class="clear"></div>
-        <div id="buttons">
-          <input type="button" value="장바구니에 담기"   class="submit"    onclick="go_cart()"> 
-          <input type="button" value="즉시 구매"       class="submit"    onclick="go_order()"> 
-          <input type="reset"  value="취소"           class="cancel">
-        </div>
-      </form>  
-    </div>
-  </article>
-  -->
+
 <div id="container">
     <br> <br> <br> <br> <br> <br>
     <form method="post" name="fomm">
@@ -160,7 +132,7 @@ int reviewNo = 1;
 
                             <div class="btn-box">
                                 <button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag"
-                                    onclick="go_cart()">
+                                    onclick="go_cart()" style="margin-left:10px">
                                     <span>장바구니</span>
                                 </button>
                                 <input type="hidden" id="product_code" value="N">
@@ -284,14 +256,7 @@ int reviewNo = 1;
                             </div>
 
                             <div id="allReviewList" class="board-list board-review ui-fold" style="">
-                                <input type="hidden" name="allReviewTotalRow" value="12">
-                                <input type="hidden" name="allReviewTotalScore" value="4.7">
-                                <input type="hidden" id="allReviewTotalScorePercent" value="94">
-                                <input type="hidden" id="godNo" value="">
-                                <input type="hidden" id="godEvlTurn" value="">
-
                                 <ul class="list-content">
-
                                     <c:choose>
                                         <c:when test="${reviewList.size() == 0}">
                                            <div class="nodata">
@@ -306,14 +271,14 @@ int reviewNo = 1;
                                                             <ul class="etc-info">
                                                                 <li>
                                                                     <span class="point size-m"><span class="ico"
-                                                                            style="width:80%">별점 4점</span></span>
+                                                                            style="width:60%">별점 4점</span></span>
                                                                 </li>
                                                                 <li>
                                                                     <button type="button" class="btn-like2"
                                                                         onclick="addGodEvlLikeCount(this,addLikeList);"
                                                                         godevlturn="1" reviewgodno="115369702">
                                                                         <span class="like-count" likecnt="3">
-                                                                            3</span>
+                                                                            </span>
                                                                     </button>
                                                                 </li>
                                                                 <li>

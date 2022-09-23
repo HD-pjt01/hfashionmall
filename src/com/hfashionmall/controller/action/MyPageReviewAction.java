@@ -15,10 +15,10 @@ import com.hfashionmall.dto.OrderVO;
 
 public class MyPageReviewAction implements Action {
 
+	// mypage에서 리뷰 가능한 주문 받아와서 mypage 리뷰 작성 페이지에 값 전달
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// reviewdao에서 odList 가져와서
-		// orderdao에서 order 가져오기
+
 		String url = "mypage/mypage_review.jsp";
 
 		// 현재 로그인한 유저 받아오기
@@ -28,20 +28,8 @@ public class MyPageReviewAction implements Action {
 		if (loginUser == null) {
 			url = "hfashionmallServlet?command=login_form";
 		} else {
-			// reviewdao, orderdao 만들기
-			//ReviewDAO reviewDAO = ReviewDAO.getInstance();
 			OrderDAO orderDAO = OrderDAO.getInstance();
 
-			// 리뷰가능한 order_detail_id 받아오기
-			//ArrayList<Integer> odIdList = reviewDAO.ReviewAbleOdId(loginUser.getMember_id(), "2", "1");
-
-			// order_detail_id로 orderlist가져오기
-			/*
-			 * ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-			 * 
-			 * for (int od_id : odIdList) { OrderVO orderVO =
-			 * orderDAO.OrderByReviewable(od_id); orderList.add(orderVO); }
-			 */
 			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
 			orderList = orderDAO.listOrderRivewable(loginUser.getMember_id(), "2", "1");
 			

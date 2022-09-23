@@ -7,14 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//--------------------------------------박소은 작성----------------------------------------------
 public class ContractAction implements Action {
 
-  @Override
-  public void execute(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String url = "/member/initJoin.jsp";  
-    System.out.println("request : " + request);
-    RequestDispatcher dispatcher=request.getRequestDispatcher(url);
-    dispatcher.forward(request, response);
-  }
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "/member/initJoin.jsp";
+		System.out.println("request : " + request);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
+	}
 }
+//--------------------------------------박소은 작성----------------------------------------------

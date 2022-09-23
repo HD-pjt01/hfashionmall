@@ -1,5 +1,6 @@
 ﻿package com.hfashionmall.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,8 @@ import util.DBManager;
 import com.hfashionmall.dto.MemberVO;
 import com.hfashionmall.dto.QnaVO;
 
+import oracle.jdbc.OracleTypes;
+//--------------------------------------심지연, 정승하 작성----------------------------------------------
 public class QnaDAO {
 
 	private QnaDAO() {
@@ -23,15 +26,20 @@ public class QnaDAO {
 
 	public ArrayList<QnaVO> listQna(String qna_sequence) {
 		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
-		String sql = "select * from qna order by qna_sequence desc";
+
+		String sql = "{call sp_listQna_select(?)}";
 
 		Connection conn = null;
-		PreparedStatement pstmt = null;
+		// PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
+
 		try {
 			conn = DBManager.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			cstmt = conn.prepareCall(sql);
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			rs = cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(1);
 			while (rs.next()) {
 				QnaVO qnaVO = new QnaVO();
 				qnaVO.setQna_sequence(rs.getInt("qna_sequence"));
@@ -52,7 +60,7 @@ public class QnaDAO {
 	public ArrayList<QnaVO> listMyQna(String member_member_id) {
 		ArrayList<QnaVO> qnaList = new ArrayList<QnaVO>();
 		String sql = "select * from qna where member_member_id=? order by qna_register desc";
-		
+
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -79,19 +87,22 @@ public class QnaDAO {
 		}
 		return qnaList;
 	}
-	 public QnaVO getQna(int qna_sequence) {
-		    QnaVO qnaVO = null;
-		    String sql = "select * from qna where qna_sequence=?";
-		    Connection conn = null;
-		    PreparedStatement pstmt = null;
-		    ResultSet rs = null;
-		    try {
-		      conn = DBManager.getConnection();
-		      pstmt = conn.prepareStatement(sql);
-		      pstmt.setInt(1, qna_sequence);
-		      rs = pstmt.executeQuery();
-		      if (rs.next()) {
-		        qnaVO = new QnaVO();
+
+	public QnaVO getQna(int qna_sequence) {
+		QnaVO qnaVO = null;
+		// String sql = "select * from qna where qna_sequence=?";
+		String sql = "{call sp_getQna_select(?, ?)}";
+		Connection conn = null;
+		// PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			cstmt = conn.prepareCall(sql);
+			cstmt.setInt(1, qna_sequence);
+			rs = cstmt.executeQuery();
+			if (rs.next()) {
+				qnaVO = new QnaVO();
 				qnaVO.setQna_sequence(rs.getInt("qna_sequence"));
 				qnaVO.setQna_subject(rs.getString("qna_subject"));
 				qnaVO.setQna_content(rs.getString("qna_content").replace("\r\n", "<br>"));
@@ -99,14 +110,14 @@ public class QnaDAO {
 				qnaVO.setQna_register(rs.getTimestamp("qna_register"));
 				qnaVO.setQna_classification(rs.getString("qna_classification"));
 				qnaVO.setMember_member_id(rs.getString("member_member_id"));
-		      }
-		    } catch (Exception e) {
-		      e.printStackTrace();
-		    } finally {
-		      DBManager.close(conn, pstmt);
-		    }
-		    return qnaVO;
-		  }
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, cstmt);
+		}
+		return qnaVO;
+	}
 
 	public void insertqna(QnaVO qnaVO, String session_id) {
 		String sql = "insert into qna values (qna_seq.nextval, ?, ?, 'no', sysdate, ?, ?)";

@@ -11,45 +11,37 @@ import javax.servlet.http.HttpSession;
 import com.hfashionmall.dao.CartDAO;
 import com.hfashionmall.dto.CartVO;
 import com.hfashionmall.dto.MemberVO;
-
+//--------------------------------------박서은 작성----------------------------------------------
+// '카트리스트'에서 제품 주문 시 주문서 창 띄우는 action처리
 public class OrderingAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "mypage/ordering.jsp";
+		
+		// 로그인한 유저가 있는 지 확인 -> 없다면 로그인 창으로, 있다면 리뷰 작성 수행
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {
 			url = "hfashionmallServlet?command=login_form";
 		} else {
-			
-			
-			// product code 받아옴
-			/*
-			 * String pname = request.getParameter("pname").trim(); String product_code =
-			 * request.getParameter("product_code").trim(); int product_count =
-			 * Integer.parseInt(request.getParameter("product_count")); int cart_id =
-			 * Integer.parseInt(request.getParameter("cart_id")); int price =
-			 * Integer.parseInt(request.getParameter("price")); int totalPrice =
-			 * Integer.parseInt(request.getParameter("totalPrice"));
-			 */
 			CartDAO cartDAO = CartDAO.getInstance();
 			ArrayList<CartVO> cartList = cartDAO.listCart(loginUser.getMember_id());
 
-			int totalPrice = 10;
+			int totalPrice = 0;
 
+			// 카트에 담긴 제품들의 가격 다 더하기
 			for (CartVO cartVO : cartList) {
 				totalPrice += cartVO.getProduct_price() * cartVO.getProduct_count();
 			}
 
-			/*
-			 * for (CartVO cartVO : cartList) { totalPrice += cartVO.getProduct_price(); }
-			 */
-
+			// 카트 리스트와 total가격을 받아와 주문서 뷰(jsp)에 전달
 			request.setAttribute("cartList", cartList);
 			request.setAttribute("totalPrice", totalPrice);
 		}
 		request.getRequestDispatcher(url).forward(request, response);
+		System.out.println("카트에 담긴 제품 주문서 출력");
 	}
 
 }
+//--------------------------------------박서은 작성----------------------------------------------

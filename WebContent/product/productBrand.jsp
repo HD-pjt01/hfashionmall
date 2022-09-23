@@ -5,8 +5,8 @@
 	<section class="content-response">
 		<!-- type2 저거를 뺐음 기존 클래스 명은 page-title type2 임 -->
 		<!-- <h2 class="page-title type2"> -->
-		<c:forEach items="${productBrandList}" var="productVO" varStatus="status" begin="1"
-			end="1">
+		<c:forEach items="${productBrandList}" var="productVO"
+			varStatus="status" begin="1" end="1">
 			<h2 class="page-title">${productVO.product_brand}</h2>
 		</c:forEach>
 		<div class="wrap-product-list">
@@ -23,15 +23,11 @@
 										<li><label><input type="radio" name="pdSort"
 												value="NEW_GOD_SEQ" checked=""> <span>신상품순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
-												value="SALE_QTY_SEQ"> <span>인기상품순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
 												value="LWET_PRC_SEQ"> <span>낮은가격순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
 												value="BEST_PRC_SEQ"> <span>높은가격순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
-												value="BEST_DC_SEQ"> <span>할인율순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
-												value="BEST_CHOISE_SEQ"> <span>마이클로젯순</span></label></li>
+										
+										
 									</ul>
 								</div>
 							</div>
@@ -41,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-			<ul class="product-list" id="productsList">
+		<ul class="product-list" id="productsList">
 			<c:forEach items="${productBrandList}" var="productVO">
 				<li godno="${productVO.product_code}">
 					<!-- 대형 이미지 클래스 product-sp-->
@@ -87,7 +83,7 @@
 					</figure>
 				</li>
 			</c:forEach>
-			</ul>
+		</ul>
 		<div class="paging" id="pagingArea">
 			<span> <strong title="현재 페이지">1</strong> <a
 				href="javascript:void(0)" id="page_2" onclick="movePage('2')">2</a>
@@ -97,6 +93,7 @@
 				<a href="javascript:void(0)" id="page_6" onclick="movePage('6')">6</a>
 			</span>
 		</div>
+
 	</section>
 </div>
 

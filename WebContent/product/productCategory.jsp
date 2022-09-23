@@ -23,15 +23,9 @@
 										<li><label><input type="radio" name="pdSort"
 												value="NEW_GOD_SEQ" checked=""> <span>신상품순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
-												value="SALE_QTY_SEQ"> <span>인기상품순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
 												value="LWET_PRC_SEQ"> <span>낮은가격순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
 												value="BEST_PRC_SEQ"> <span>높은가격순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
-												value="BEST_DC_SEQ"> <span>할인율순</span></label></li>
-										<li><label><input type="radio" name="pdSort"
-												value="BEST_CHOISE_SEQ"> <span>마이클로젯순</span></label></li>
 									</ul>
 								</div>
 							</div>
@@ -56,12 +50,7 @@
 									<div class="img">
 										<img src="product_images/${productVO.product_code}_01.jpg"
 											alt="[${productVO.product_code}] ${productVO.product_name} (${productVO.product_code})">
-									</div> <!--<div class="img">
-										<img
-											src="https://cdn.hfashionmall.com/goods/HFBR/22/08/17/GP4V22081779202_1_ORGINL.jpg?RS=600x600&amp;AR=0&amp;CS=400x600"
-											alt="[FILA] 헤리티지 우먼스 다운자켓 (FS2DJD4151F_BLK)"
-											onerror="this.src='/hfm_pc/resources/images/temp/pd_430x644.jpg'">
-									</div>-->
+									</div>
 								</a>
 							</div>
 						</div>
@@ -98,30 +87,6 @@
 			</span>
 		</div>
 	</section>
-	<!-- <div class="favor-item-box" id="favor-item-box">
-		<div class="favor-prd-list" id="favor-prd-list">
-			<c:forEach items="${productCategoryList}" var="productVO">
-				<div class="favor-prd-box" id="item"
-					style="float: left; width: 400px; margin: 0;">
 
-					<a
-						href="hfashionmallServlet?command=product_detail&product_code=${productVO.product_code}">
-						<img src="product_images/${productVO.product_code}_01.jpg"
-						style="width: 200px; height: 200px;" />
-					</a>
-
-					<ul class="favor-prd-item">
-
-						<li class="prd-item-brand">${productVO.product_category}</li>
-
-						<li class="prd-item-name">${productVO.product_name}</li>
-
-						<li class="prd-item-price"><fmt:formatNumber
-								value="${productVO.product_price}" type="number" /></li>
-					</ul>
-				</div>
-			</c:forEach>
-		</div>
-	</div>-->
 </div>
 <%@ include file="../footer.jsp"%>
