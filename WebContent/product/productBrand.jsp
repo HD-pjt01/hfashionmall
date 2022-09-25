@@ -3,6 +3,8 @@
 <%@ include file="../header.jsp"%>
 <div id="container">
 	<section class="content-response">
+		<!-- type2 저거를 뺐음 기존 클래스 명은 page-title type2 임 -->
+		<!-- <h2 class="page-title type2"> -->
 		<c:forEach items="${productBrandList}" var="productVO"
 			varStatus="status" begin="1" end="1">
 			<h2 class="page-title">${productVO.product_brand}</h2>
@@ -24,6 +26,8 @@
 												value="LWET_PRC_SEQ"> <span>낮은가격순</span></label></li>
 										<li><label><input type="radio" name="pdSort"
 												value="BEST_PRC_SEQ"> <span>높은가격순</span></label></li>
+										
+										
 									</ul>
 								</div>
 							</div>

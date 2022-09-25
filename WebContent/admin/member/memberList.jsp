@@ -30,7 +30,8 @@
 			</tr>
 			<c:forEach items="${memberList}" var="memberVO">
 				<tr>
-					<td>${memberVO.member_id}<%-- <c:choose>
+					<td>${memberVO.member_id}
+						<%-- <c:choose>
 							<c:when test='${memberVO.member_id !=""}'>
 								<input type="checkbox" name="member_id" disabled="disabled">
 							</c:when>

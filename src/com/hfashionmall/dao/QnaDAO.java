@@ -100,8 +100,10 @@ public class QnaDAO {
 		try {
 			conn = DBManager.getConnection();
 			cstmt = conn.prepareCall(sql);
-			cstmt.setInt(1, qna_sequence);
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.setInt(2, qna_sequence);
 			rs = cstmt.executeQuery();
+			rs = (ResultSet) cstmt.getObject(1);
 			if (rs.next()) {
 				qnaVO = new QnaVO();
 				qnaVO.setQna_sequence(rs.getInt("qna_sequence"));
@@ -128,8 +130,9 @@ public class QnaDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			System.out.println(qnaVO.getQna_subject() + "!!!" + qnaVO.getQna_content() + "!!!"
-					+ qnaVO.getQna_classification() + "!!!" + session_id);
+			System.out.println("접수분류 : " + qnaVO.getQna_classification());
+			System.out.println("제목 : " + qnaVO.getQna_subject());
+			System.out.println("고객의견 : " + qnaVO.getQna_content());
 			pstmt.setString(1, qnaVO.getQna_subject());
 			pstmt.setString(2, qnaVO.getQna_content());
 			pstmt.setString(3, qnaVO.getQna_classification());

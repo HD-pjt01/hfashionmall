@@ -20,7 +20,7 @@ public class QnaViewAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "member/qnaView.jsp";
-		System.out.println("member/qnaView.jsp");
+		System.out.println("사용자의 QnA 리스트 출력");
 		HttpSession session = request.getSession();
 		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
 		if (loginUser == null) {

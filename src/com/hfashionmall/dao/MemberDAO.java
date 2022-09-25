@@ -24,7 +24,7 @@ public class MemberDAO {
 	public static MemberDAO getInstance() {
 		return instance;
 	}
-
+	// ID 중복체크
 	public int confirmMemberID(String member_id) {
 		int result = -1;
 		String sql = "select * from member where member_id=?";
